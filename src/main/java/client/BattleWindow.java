@@ -4,16 +4,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class BattleWindow extends JPanel {
 
+    private final Map map;
     private List<Player> players;
     private Point lastMousePosition;
 
-    public BattleWindow(Player[] players) {
+    public BattleWindow(Map map, Player[] players) {
         super();
+        this.map = map;
         setSize(640,480);
         setPreferredSize(getSize());
         lastMousePosition = new Point(0, 0);
@@ -23,6 +23,15 @@ public class BattleWindow extends JPanel {
                 super.mouseMoved(e);
                 lastMousePosition = e.getPoint();
                 repaint();
+            }
+        });
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                var shape = map.getShapeAtPoint(lastMousePosition);
+                if (shape != null)
+                    players[0].getAnthill().getPlace().add(shape);
             }
         });
         this.players = List.of(players);
@@ -43,18 +52,16 @@ public class BattleWindow extends JPanel {
         players.stream()
                 .map(x -> x.getAnthill().getPlace())
                 .forEach(place -> {
-                    var circle = place.getCenter();
-                    g2d.drawArc(circle.x, circle.y, 2, 2, 0, 360);
-                    g2d.drawPolygon(place.getPolygon());
-
-                    var segment = new SegmentFinder(place.getPolygon()).getSegmentForPoint(lastMousePosition);
-                    if (segment != null) {
-                        g2d.drawLine(segment.start.x, segment.start.y, lastMousePosition.x, lastMousePosition.y);
-                        g2d.drawLine(segment.end.x, segment.end.y, lastMousePosition.x, lastMousePosition.y);
-                    }
+                    for (var hexagon : place.shapes)
+                        g2d.fill(hexagon);
                 });
+
+        var shape = map.getShapeAtPoint(lastMousePosition);
+        if (shape != null)
+            g2d.draw(shape);
         g2d.drawArc(lastMousePosition.x, lastMousePosition.y, 2, 2, 0, 360);
     }
 
 }
+
 
