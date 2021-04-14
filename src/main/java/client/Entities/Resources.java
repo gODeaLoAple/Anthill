@@ -1,2 +1,9 @@
-package client.Entities;public class Resources {
+package client.Entities;
+
+public class Resources {
+    private int resources;
+
+    public Resources(){
+        resources = 0;
+    }
 }

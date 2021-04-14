@@ -1,16 +1,7 @@
-package client;
+package client.Entities;
 
 
 import java.awt.*;
-import java.awt.geom.Point2D;
-import java.util.Vector;
-
-//public class Vector {
-//    private int x;
-//    private int y;
-//
-//    public Vector(int x, int y)
-//}
 
 public abstract class Ant {
     public int id;
@@ -27,8 +18,11 @@ public abstract class Ant {
         position = new Point(0, 0);
     }
 
-    public void (){
-        health -=
+    public void applyDamage(int damage){
+        health -= damage;
     }
 
+    public void setId(int id){
+        this.id = id;
+    }
 }
