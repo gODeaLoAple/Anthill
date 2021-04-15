@@ -15,12 +15,10 @@ public class BattleField extends JPanel {
     private PlayerActionState state = new Idle();
     private final ColorProvider colorProvider = new ColorProvider();
 
-
     public BattleField(Game game) {
         super();
 
         this.game = game;
-
         setFocusable(true);
         addMouseMotionListener(new MouseMotionAdapter() {
             @Override
@@ -76,7 +74,7 @@ public class BattleField extends JPanel {
     private void drawAnthills(Graphics2D graphics) {
         var players = game.getPlayers();
         for (var player : players) {
-            for (var hexagon : player.getAnthill().getPlace().shapes) {
+            for (var hexagon : player.getAnthill().getShapes()) {
                 graphics.setColor(colorProvider.getColor(player.getId()));
                 graphics.fill(hexagon);
                 graphics.setColor(Color.BLACK);

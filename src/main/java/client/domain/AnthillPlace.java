@@ -3,16 +3,23 @@ package client.domain;
 
 import java.awt.*;
 import java.util.*;
-import java.util.List;
 
 public class AnthillPlace {
-    public ArrayList<Shape> shapes;
+    private ArrayList<Shape> shapes;
     public AnthillPlace(Shape[] shapes) {
         this.shapes = new ArrayList<>();
-        Collections.addAll(this.shapes, shapes);
+        Collections.addAll(this.getShapes(), shapes);
     }
 
     public void add(Shape shape) {
-        shapes.add(shape);
+        getShapes().add(shape);
+    }
+
+    public boolean hasShape(Shape shape) {
+        return getShapes().contains(shape);
+    }
+
+    public ArrayList<Shape> getShapes() {
+        return shapes;
     }
 }

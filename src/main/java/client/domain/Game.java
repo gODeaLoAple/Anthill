@@ -18,4 +18,7 @@ public class Game {
         return map;
     }
 
+    public Player getMainPlayer() {
+        return players[0];
+    }
 }

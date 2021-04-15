@@ -9,10 +9,11 @@ public class ColorProvider {
     private static final Map<Integer, Color> idToColor = new HashMap<>() {{
         put(0, Color.GREEN);
         put(1, Color.BLUE);
+        put(2, Color.RED);
     }};
 
     public Color getColor(int id) {
-        return idToColor.getOrDefault(0, Color.BLACK);
+        return idToColor.getOrDefault(id, Color.BLACK);
     }
 
 }
