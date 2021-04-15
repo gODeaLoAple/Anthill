@@ -1,4 +1,6 @@
-package client;
+package client.domain;
+
+import client.domain.Anthill;
 
 public class Player {
     private final int id;
@@ -10,6 +12,9 @@ public class Player {
         this.anthill = anthill;
     }
 
+    public int getId() {
+        return id;
+    }
     public Anthill getAnthill() {
         return this.anthill;
     }

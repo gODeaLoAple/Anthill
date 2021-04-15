@@ -1,4 +1,4 @@
-package client;
+package client.domain;
 
 public class Resources {
     private int count = 0;

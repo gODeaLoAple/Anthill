@@ -1,4 +1,4 @@
-package client;
+package client.domain;
 
 public class Anthill {
     private final AnthillPlace place;

@@ -28,18 +28,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a7cff3a-ce77-4ca7-aefc-6773e6062a27" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/Hexagon.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/HexagonalMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/Map.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/Resources.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/domain/Game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/ColorProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/BattleField.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/BattleInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/BattleWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/Attack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/ExtendAnthill.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/Idle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/PickUpResources.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/PlayerActionState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/Anthill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Anthill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/AnthillPlace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/AnthillPlace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/BattleWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/BattleWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/Anthill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/Anthill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/AnthillPlace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/AnthillPlace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/BattleWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ColorProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/Game.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/Hexagon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/Hexagon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/HexagonalMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/HexagonalMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/main/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/SegmentFinder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/Resources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/Resources.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/Segment.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +84,7 @@
   </component>
   <component name="ProjectId" id="1qW36TNeEpoig4sEdXWN799HCFa" />
   <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
@@ -89,12 +102,12 @@
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="client" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\MaksiMath\Desktop\Programms\Anthill\src\anthill" />
       <recent name="C:\Users\MaksiMath\Desktop\Programms\Anthill\src\java" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="client" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Program">
@@ -114,7 +127,7 @@
       <module name="Anthill" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="client.*" />
+          <option name="PATTERN" value="client.ui.battle.actionStates.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -187,7 +200,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617615464453</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Create hexagonal map">
+      <created>1618384656669</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1618384656669</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -204,7 +224,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First attempts" />
-    <option name="LAST_COMMIT_MESSAGE" value="First attempts" />
+    <MESSAGE value="Create hexagonal map" />
+    <MESSAGE value="Implement some ui features&#10;Refactor packages" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement some ui features&#10;Refactor packages" />
   </component>
   <component name="WindowStateProjectService">
     <state x="163" y="0" key="#Project_Structure" timestamp="1617257573197">
@@ -223,11 +245,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="76" key="#com.intellij.ide.macro.MacrosDialog/0.0.1366.728@0.0.1366.728" timestamp="1617182171976" />
-    <state x="686" y="100" key="#com.intellij.ide.util.MemberChooser" timestamp="1618225140907">
+    <state x="686" y="100" key="#com.intellij.ide.util.MemberChooser" timestamp="1618470574887">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="488" y="70" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1617272267180" />
-    <state x="686" y="100" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1618225140907" />
+    <state x="488" y="70" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1618396747182" />
+    <state x="686" y="100" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1618470574887" />
     <state x="412" y="161" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1617257903024">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -245,26 +267,26 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1617257770498" />
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1618226247402">
+    <state width="1877" height="262" key="GridCell.Tab.0.bottom" timestamp="1618473303950">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1323" height="32" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1618027992860" />
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1618226247402" />
-    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1618226247402">
+    <state width="1323" height="119" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1618398491346" />
+    <state width="1877" height="262" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1618473303950" />
+    <state width="1877" height="262" key="GridCell.Tab.0.center" timestamp="1618473303950">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1323" height="32" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1618027992860" />
-    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1618226247402" />
-    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1618226247402">
+    <state width="1323" height="119" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1618398491346" />
+    <state width="1877" height="262" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1618473303950" />
+    <state width="1877" height="262" key="GridCell.Tab.0.left" timestamp="1618473303950">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1323" height="32" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1618027992860" />
-    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1618226247402" />
-    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1618226247402">
+    <state width="1323" height="119" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1618398491346" />
+    <state width="1877" height="262" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1618473303950" />
+    <state width="1877" height="262" key="GridCell.Tab.0.right" timestamp="1618473303950">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1323" height="32" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1618027992860" />
-    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1618226247402" />
+    <state width="1323" height="119" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1618398491346" />
+    <state width="1877" height="262" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1618473303950" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1618226247402">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -297,9 +319,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="404" y="109" width="540" height="524" key="StructurePopup/0.0.1366.728@0.0.1366.728" timestamp="1617260114779" />
-    <state x="552" y="240" key="Vcs.Push.Dialog.v2" timestamp="1617615466985">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="393" y="168" key="Vcs.Push.Dialog.v2" timestamp="1618384658650">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="393" y="168" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1618384658650" />
     <state x="552" y="240" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1617615466985" />
     <state x="387" y="256" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1617181866684">
       <screen x="0" y="0" width="1366" height="728" />
@@ -309,17 +332,19 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="65" y="25" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1617188751342" />
-    <state x="755" y="267" key="refactoring.ChangeSignatureDialog" timestamp="1618225722300">
+    <state x="537" y="169" key="refactoring.ChangeSignatureDialog" timestamp="1618387435470">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="537" y="169" key="refactoring.ChangeSignatureDialog/0.0.1366.728@0.0.1366.728" timestamp="1618387435470" />
+    <state x="755" y="267" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1618225722300" />
+    <state x="476" y="231" key="run.anything.popup" timestamp="1618465856813">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="755" y="267" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1618225722300" />
-    <state x="339" y="162" key="run.anything.popup" timestamp="1617271325087">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
     <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1617271325087" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1617782449665">
+    <state x="476" y="231" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1618465856813" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1618393121469">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1617782449665" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1618393121469" />
   </component>
 </project>

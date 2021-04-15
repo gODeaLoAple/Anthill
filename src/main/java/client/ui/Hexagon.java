@@ -1,4 +1,4 @@
-package client;
+package client.ui;
 
 import java.awt.*;
 
@@ -9,7 +9,7 @@ public class Hexagon extends Polygon {
     public static final int SIDES = 6;
 
     private final Point[] points = new Point[SIDES];
-    private Point center = new Point(0, 0);
+    private Point center;
     private int radius;
     private int rotation = 90;
 
