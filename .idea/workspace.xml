@@ -19,19 +19,29 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a7cff3a-ce77-4ca7-aefc-6773e6062a27" name="Default Changelist" comment="First attempts">
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/Direction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/Entities/Ant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/Entities/MasterAnt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/Entities/Resources.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/Entities/SlaveAnt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/Entities/Vector.java" afterDir="false" />
+    <list default="true" id="1a7cff3a-ce77-4ca7-aefc-6773e6062a27" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ColorProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/Hexagon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/HexagonalMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/Map.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/Resources.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/Anthill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Anthill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/AnthillPlace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/AnthillPlace.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/BattleWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/BattleWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/Entities/Resources.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Program.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/SegmentFinder.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,17 +132,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="JarApplication">
       <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2" />
@@ -187,6 +186,7 @@
       <workItem from="1618299712548" duration="5705000" />
       <workItem from="1618310684017" duration="82000" />
       <workItem from="1618384315337" duration="300000" />
+      <workItem from="1618570981942" duration="6000" />
     </task>
     <task id="LOCAL-00001" summary="First attempts">
       <created>1617615464453</created>
