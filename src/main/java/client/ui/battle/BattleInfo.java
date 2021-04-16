@@ -10,12 +10,9 @@ import java.awt.*;
 
 public class BattleInfo extends JPanel {
 
-    private final Game game;
     private final Label resourcesLabel;
 
     public BattleInfo(Game game, BattleField field) {
-
-        this.game = game;
 
         resourcesLabel = new Label("Ресурсы: 0");
         setLayout(new BorderLayout());

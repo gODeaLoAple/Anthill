@@ -29,16 +29,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1a7cff3a-ce77-4ca7-aefc-6773e6062a27" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Anthill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/Anthill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/AnthillPlace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/AnthillPlace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Resources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/Resources.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/ColorProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/ColorProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/HexagonalMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/HexagonalMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/BattleField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/BattleField.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/BattleInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/BattleInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/ExtendAnthill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/ExtendAnthill.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,26 +260,26 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1617257770498" />
-    <state width="1323" height="262" key="GridCell.Tab.0.bottom" timestamp="1618480571928">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1877" height="262" key="GridCell.Tab.0.bottom" timestamp="1618487878248">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1323" height="262" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1618480571928" />
-    <state width="1877" height="262" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1618474787478" />
-    <state width="1323" height="262" key="GridCell.Tab.0.center" timestamp="1618480571928">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1323" height="262" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1618483779057" />
+    <state width="1877" height="262" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1618487878248" />
+    <state width="1877" height="262" key="GridCell.Tab.0.center" timestamp="1618487878248">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1323" height="262" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1618480571928" />
-    <state width="1877" height="262" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1618474787478" />
-    <state width="1323" height="262" key="GridCell.Tab.0.left" timestamp="1618480571928">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1323" height="262" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1618483779057" />
+    <state width="1877" height="262" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1618487878248" />
+    <state width="1877" height="262" key="GridCell.Tab.0.left" timestamp="1618487878248">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1323" height="262" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1618480571928" />
-    <state width="1877" height="262" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1618474787477" />
-    <state width="1323" height="262" key="GridCell.Tab.0.right" timestamp="1618480571928">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1323" height="262" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1618483779057" />
+    <state width="1877" height="262" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1618487878248" />
+    <state width="1877" height="262" key="GridCell.Tab.0.right" timestamp="1618487878248">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1323" height="262" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1618480571928" />
-    <state width="1877" height="262" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1618474787478" />
+    <state width="1323" height="262" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1618483779057" />
+    <state width="1877" height="262" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1618487878248" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1618226247402">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
