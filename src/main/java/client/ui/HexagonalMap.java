@@ -1,18 +1,20 @@
-package client;
+package client.ui;
+
+import client.domain.Map;
 
 import java.awt.*;
-import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 public class HexagonalMap implements Map {
 
     public final Hexagon[] hexagons;
     private final int radius;
+    private final Dimension size;
 
     public HexagonalMap(int width, int height, int R) {
+        size = new Dimension(width, height);
         radius = R;
         hexagons = createMap(width, height, R);
-
     }
 
     public Shape getShapeAtPoint(Point point) {
@@ -20,6 +22,11 @@ public class HexagonalMap implements Map {
             if (hexagon.contains(point))
                 return hexagon;
         return null;
+    }
+
+    @Override
+    public Dimension getSize() {
+        return size;
     }
 
     public Point transformFromHexPoint(int i, int j) {
@@ -38,7 +45,7 @@ public class HexagonalMap implements Map {
         final var rows = height / (2 * R);
         var lst = new ArrayList<Hexagon>(columns * rows);
         for (var i = 0; i < columns; ++i)
-            for (var j = 0; j < rows; ++j) {
+            for (var j = 0; j <= rows; ++j) {
                 lst.add(new Hexagon(transformFromHexPoint(i, j), R + 1));
             }
         return lst.toArray(new Hexagon[0]);
