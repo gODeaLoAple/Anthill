@@ -28,6 +28,7 @@ public class HexagonalMap implements Map {
     public Dimension getSize() {
         return size;
     }
+
     public Point transformFromHexPoint(int i, int j) {
         final var R = radius;
         var x = Math.sqrt(3) * R * i;

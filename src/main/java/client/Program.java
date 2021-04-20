@@ -12,11 +12,11 @@ public class Program {
     public static void main(String[] args) {
         var map = new HexagonalMap(800, 600, 60);
         var players = new Player[] {
-            new Player(0, new Anthill(new AnthillPlace(new Hexagon[0]), new Resources(100))),
-            new Player(1, new Anthill(new AnthillPlace(new Hexagon[] {
-                    map.hexagons[0],
-                    map.hexagons[1],
-                    map.hexagons[2],
+            new Player(0, new Anthill(new AnthillPlace(new AnthillPart[0]), new Resources(100))),
+            new Player(1, new Anthill(new AnthillPlace(new AnthillPart[] {
+                    new AnthillPart(map.hexagons[0], 100, 100),
+                    new AnthillPart(map.hexagons[1], 100, 100),
+                    new AnthillPart(map.hexagons[2], 100, 100),
             }), new Resources()))
         };
         var game = new Game(map, players);
@@ -34,4 +34,3 @@ public class Program {
     }
 
 }
-

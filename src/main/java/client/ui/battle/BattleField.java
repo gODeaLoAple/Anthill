@@ -1,7 +1,8 @@
 package client.ui.battle;
 
-import client.ui.ColorProvider;
+import client.domain.AnthillPart;
 import client.domain.Game;
+import client.ui.ColorProvider;
 import client.ui.battle.actionStates.*;
 
 import javax.swing.*;
@@ -56,6 +57,7 @@ public class BattleField extends JPanel {
         });
 
     }
+
     public void setState(PlayerActionState state) {
         this.state = state;
     }
@@ -64,7 +66,7 @@ public class BattleField extends JPanel {
     public void paint(Graphics g) {
         setFocusable(true);
         requestFocus();
-        var g2d = (Graphics2D)g;
+        var g2d = (Graphics2D) g;
         var clip = g.getClip().getBounds();
         g2d.clearRect(clip.x, clip.y, clip.width, clip.height);
         drawAnthills(g2d);
@@ -74,14 +76,15 @@ public class BattleField extends JPanel {
     private void drawAnthills(Graphics2D graphics) {
         var players = game.getPlayers();
         for (var player : players) {
-            for (var hexagon : player.getAnthill().getShapes()) {
+            for (var part : player.getAnthill().getShapes()) {
                 graphics.setColor(colorProvider.getColor(player.getId()));
-                graphics.fill(hexagon);
+                graphics.fill(part.getShape());
                 graphics.setColor(Color.BLACK);
-                graphics.draw(hexagon);
+                graphics.draw(part.getShape());
+                if (part.getHealth() < 100) {
+                    Attack.drawAttackPart(graphics, part.getShape(), game);
+                }
             }
         }
     }
-
-
 }

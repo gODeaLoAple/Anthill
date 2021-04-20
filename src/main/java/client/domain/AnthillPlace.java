@@ -5,21 +5,21 @@ import java.awt.*;
 import java.util.*;
 
 public class AnthillPlace {
-    private ArrayList<Shape> shapes;
-    public AnthillPlace(Shape[] shapes) {
+    private final ArrayList<AnthillPart> shapes;
+    public AnthillPlace(AnthillPart[] shapes) {
         this.shapes = new ArrayList<>();
         Collections.addAll(this.getShapes(), shapes);
     }
 
     public void add(Shape shape) {
-        getShapes().add(shape);
+        getShapes().add(new AnthillPart(shape));
     }
 
     public boolean hasShape(Shape shape) {
         return getShapes().contains(shape);
     }
 
-    public ArrayList<Shape> getShapes() {
+    public ArrayList<AnthillPart> getShapes() {
         return shapes;
     }
 }

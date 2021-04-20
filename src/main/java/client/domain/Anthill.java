@@ -1,5 +1,7 @@
 package client.domain;
 
+import client.ui.Hexagon;
+
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -30,7 +32,20 @@ public class Anthill {
         place.add(shape);
     }
 
-    public ArrayList<Shape> getShapes() {
+    public ArrayList<AnthillPart> getShapes() {
         return place.getShapes();
+    }
+
+    public AnthillPart getAnthillPartById(Shape shape){
+        var parts = place.getShapes();
+        for (var part: parts)
+            if (part.getShape().getBounds().x == shape.getBounds().x && part.getShape().getBounds().y == shape.getBounds().y) return part;
+        return null;
+    }
+
+
+
+    public AnthillPlace getPlace() {
+        return place;
     }
 }
