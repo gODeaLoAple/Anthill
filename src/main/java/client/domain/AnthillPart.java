@@ -1,7 +1,5 @@
 package client.domain;
 
-import client.ui.Hexagon;
-
 import java.awt.*;
 
 public class AnthillPart {

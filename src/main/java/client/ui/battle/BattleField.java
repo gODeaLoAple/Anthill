@@ -1,7 +1,7 @@
 package client.ui.battle;
 
-import client.domain.AnthillPart;
 import client.domain.Game;
+import client.domain.Player;
 import client.ui.ColorProvider;
 import client.ui.battle.actionStates.*;
 
@@ -76,15 +76,51 @@ public class BattleField extends JPanel {
     private void drawAnthills(Graphics2D graphics) {
         var players = game.getPlayers();
         for (var player : players) {
+            var playerColor = colorProvider.getColor(player.getId());
             for (var part : player.getAnthill().getShapes()) {
-                graphics.setColor(colorProvider.getColor(player.getId()));
+                graphics.setColor(playerColor);
                 graphics.fill(part.getShape());
                 graphics.setColor(Color.BLACK);
                 graphics.draw(part.getShape());
-                if (part.getHealth() < 100) {
-                    Attack.drawAttackPart(graphics, part.getShape(), game);
-                }
             }
+            drawAttackPart(graphics, player);
         }
     }
+
+    private void drawAttackPart(Graphics2D graphics, Player player) {
+        player.getAnthill().getShapes().stream().filter(x -> x.getHealth() < 100).forEach(ap -> {
+            var shape = ap.getShape();
+            var r = 60;
+            var originalClipBounds = graphics.getClipBounds();
+            var rectX = (int) shape.getBounds().getCenterX() - r * Math.sqrt(3) / 2;
+            var rectY = (int) shape.getBounds().getCenterY() - r;
+            var health = ap.getHealth();
+            var w = shape.getBounds().width;
+            var h = shape.getBounds().height;
+
+
+            try {
+                graphics.clipRect((int) rectX,
+                        rectY,
+                        w,
+                        (int) (h * (1 - health / 100.0)));
+                graphics.setColor(Color.RED);
+                graphics.fill(shape);
+            } finally {
+                graphics.setClip(originalClipBounds);
+            }
+
+            try {
+                graphics.clipRect((int) rectX,
+                        rectY + (int) (h * (1 - health / 100.0)),
+                        w,
+                        (int) (h * health / 100.0));
+                graphics.setColor(Color.GREEN);
+                graphics.fill(shape);
+            } finally {
+                graphics.setClip(originalClipBounds);
+            }
+        });
+    }
+
 }

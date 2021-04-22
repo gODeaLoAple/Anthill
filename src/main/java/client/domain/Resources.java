@@ -10,6 +10,7 @@ public class Resources {
     public Resources() {
         this(0);
     }
+
     public int getCount() {
         return count;
     }

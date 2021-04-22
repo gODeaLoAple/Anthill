@@ -8,15 +8,21 @@ public class AnthillPlace {
     private final ArrayList<AnthillPart> shapes;
     public AnthillPlace(AnthillPart[] shapes) {
         this.shapes = new ArrayList<>();
-        Collections.addAll(this.getShapes(), shapes);
+        Collections.addAll(this.shapes, shapes);
     }
 
     public void add(Shape shape) {
-        getShapes().add(new AnthillPart(shape));
+        shapes.add(new AnthillPart(shape));
+    }
+
+    public void applyDamage(AnthillPart part, int damage){
+        part.changeHealth(-damage);
+        if (part.getHealth() <= 0)
+            shapes.remove(part);
     }
 
     public boolean hasShape(Shape shape) {
-        return getShapes().contains(shape);
+        return shapes.stream().anyMatch(x -> x.getShape().equals(shape));
     }
 
     public ArrayList<AnthillPart> getShapes() {

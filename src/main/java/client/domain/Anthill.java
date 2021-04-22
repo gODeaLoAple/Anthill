@@ -36,16 +36,18 @@ public class Anthill {
         return place.getShapes();
     }
 
-    public AnthillPart getAnthillPartById(Shape shape){
+    public AnthillPart getPartByShape(Shape shape){
         var parts = place.getShapes();
         for (var part: parts)
             if (part.getShape().getBounds().x == shape.getBounds().x && part.getShape().getBounds().y == shape.getBounds().y) return part;
         return null;
     }
 
-
-
+    public void applyDamage(AnthillPart part, int damage) {
+        place.applyDamage(part, damage);
+    }
     public AnthillPlace getPlace() {
         return place;
     }
+
 }
