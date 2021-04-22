@@ -1,7 +1,8 @@
 package client.ui.battle;
 
-import client.domain.AnthillPart;
+import client.Program;
 import client.domain.Game;
+import client.domain.Player;
 import client.ui.ColorProvider;
 import client.ui.battle.actionStates.*;
 
@@ -52,7 +53,6 @@ public class BattleField extends JPanel {
             @Override
             public void keyReleased(KeyEvent e) {
                 super.keyReleased(e);
-
             }
         });
 
@@ -76,15 +76,43 @@ public class BattleField extends JPanel {
     private void drawAnthills(Graphics2D graphics) {
         var players = game.getPlayers();
         for (var player : players) {
+            var playerColor = colorProvider.getColor(player.getId());
             for (var part : player.getAnthill().getShapes()) {
-                graphics.setColor(colorProvider.getColor(player.getId()));
+                graphics.setColor(playerColor);
                 graphics.fill(part.getShape());
                 graphics.setColor(Color.BLACK);
                 graphics.draw(part.getShape());
-                if (part.getHealth() < 100) {
-                    Attack.drawAttackPart(graphics, part.getShape(), game);
-                }
             }
+            drawAttackPart(graphics, player);
+        }
+    }
+
+    private void drawAttackPart(Graphics2D graphics, Player player) {
+        player.getAnthill().getShapes().stream().filter(x -> x.getHealth() < 100).forEach(ap -> {
+            var shape = ap.getShape();
+            var rectangle = shape.getBounds();
+            var health = ap.getHealth();
+            paintHexagon(graphics, rectangle, shape, Color.RED, 0, 1 - health / 100.0);
+            paintHexagon(graphics, rectangle, shape, Color.BLUE,
+                    (int) (rectangle.height * (1 - health / 100.0)), health / 100.0);
+        });
+    }
+
+    private static void paintHexagon(Graphics2D graphics,
+                                     Rectangle rectangle, Shape shape,
+                                     Color color, double k1, double k2) {
+        var originalClipBounds = graphics.getClipBounds();
+        var rectX = (int) (rectangle.getCenterX() - Program.hexRadius * Math.sqrt(3) / 2);
+        var rectY = (int) (rectangle.getCenterY() - Program.hexRadius);
+        try {
+            graphics.clipRect(rectX,
+                    (int) (rectY + (rectangle.height * k1)),
+                    rectangle.width,
+                    (int) (rectangle.height * k2));
+            graphics.setColor(color);
+            graphics.fill(shape);
+        } finally {
+            graphics.setClip(originalClipBounds);
         }
     }
 }

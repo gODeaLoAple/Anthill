@@ -8,9 +8,9 @@ import client.ui.battle.BattleWindow;
 import javax.swing.*;
 
 public class Program {
-
+    public static final int hexRadius = 60;
     public static void main(String[] args) {
-        var map = new HexagonalMap(800, 600, 60);
+        var map = new HexagonalMap(800, 600, hexRadius);
         var players = new Player[] {
             new Player(0, new Anthill(new AnthillPlace(new AnthillPart[0]), new Resources(100))),
             new Player(1, new Anthill(new AnthillPlace(new AnthillPart[] {

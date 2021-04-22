@@ -29,6 +29,14 @@
   <component name="ChangeListManager">
     <list default="true" id="1a7cff3a-ce77-4ca7-aefc-6773e6062a27" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Anthill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/Anthill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/AnthillPart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/AnthillPart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/AnthillPlace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/AnthillPlace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Resources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/Resources.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/HexagonalMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/HexagonalMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/BattleField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/BattleField.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/Attack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/Attack.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,12 +89,12 @@
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="client" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\MaksiMath\Desktop\Programms\Anthill\src\anthill" />
       <recent name="C:\Users\MaksiMath\Desktop\Programms\Anthill\src\java" />
-    </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="client" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Program">
@@ -118,6 +126,19 @@
       <option name="ALTERNATIVE_JRE_PATH" value="15" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <module name="Anthill" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -204,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618473346373</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Merge branch remote dev into dev">
+      <created>1618940288085</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1618940288085</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,6 +254,7 @@
     <MESSAGE value="First attempts" />
     <MESSAGE value="Create hexagonal map" />
     <MESSAGE value="Implement some ui features&#10;Refactor packages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement some ui features&#10;Refactor packages" />
+    <MESSAGE value="Merge branch remote dev into dev" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch remote dev into dev" />
   </component>
 </project>

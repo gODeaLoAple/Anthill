@@ -18,15 +18,6 @@ public class Player {
         return id;
     }
 
-    public void attack(Anthill anthill, Shape target){
-        var shapes = anthill.getShapes();
-        for (var shape: shapes){
-            if (shape.hashCode() == target.hashCode()){
-                System.out.println("Jopa");
-            }
-        }
-    }
-
     public Anthill getAnthill() {
         return this.anthill;
     }

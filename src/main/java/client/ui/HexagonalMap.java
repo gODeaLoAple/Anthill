@@ -24,6 +24,10 @@ public class HexagonalMap implements Map {
         return null;
     }
 
+    public Shape[] getShapes(){
+        return hexagons;
+    }
+
     @Override
     public Dimension getSize() {
         return size;
