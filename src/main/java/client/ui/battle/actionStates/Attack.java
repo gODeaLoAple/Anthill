@@ -1,9 +1,6 @@
 package client.ui.battle.actionStates;
 
-import client.domain.AnthillPart;
 import client.domain.Game;
-import client.domain.Player;
-import client.ui.battle.BattleField;
 
 import java.awt.*;
 import java.util.Arrays;
@@ -22,34 +19,33 @@ public class Attack implements PlayerActionState {
 
     public static void drawAttackPart(Graphics2D graphics, Shape shape, Game game) {
         var r = 60;
+        var rectangle = shape.getBounds();
         var originalClipBounds = graphics.getClipBounds();
-        var rectX = (int) shape.getBounds().getCenterX() - r * Math.sqrt(3) / 2;
-        var rectY = (int) shape.getBounds().getCenterY() - r;
+        var rectX = (int) (rectangle.getCenterX() - r * Math.sqrt(3) / 2);
+        var rectY = (int) (rectangle.getCenterY() - r);
         var ap = game.getMainPlayer().getAnthill().getAnthillPartById(shape);
         if (ap == null)
             return;
         var health = ap.getHealth();
-        var w = shape.getBounds().width;
-        var h = shape.getBounds().height;
+        var w = rectangle.width;
+        var h = rectangle.height;
+        paintHexagon(graphics, rectX, rectY, h, w, shape, Color.RED, originalClipBounds, 0, health / 100);
+        paintHexagon(graphics, rectX, rectY, h, w, shape, Color.GREEN, originalClipBounds,
+                (int)(h * (1 - health / 100.0)), health / 100);
+    }
 
-
+    private static void paintHexagon(Graphics2D graphics,
+                                     int x, int y,
+                                     int height,
+                                     int width, Shape shape,
+                                     Color color, Rectangle originalClipBounds,
+                                     int k1, int k2) {
         try {
-            graphics.clipRect((int) rectX,
-                    rectY,
-                    w,
-                    (int) (h * (1 - health / 100.0)));
-            graphics.setColor(Color.RED);
-            graphics.fill(shape);
-        } finally {
-            graphics.setClip(originalClipBounds);
-        }
-
-        try {
-            graphics.clipRect((int) rectX,
-                    rectY + (int) (h * (1 - health / 100.0)),
-                    w,
-                    (int) (h * health / 100.0));
-            graphics.setColor(Color.GREEN);
+            graphics.clipRect(x,
+                    y + (height * k1),
+                    width,
+                    height * k2);
+            graphics.setColor(color);
             graphics.fill(shape);
         } finally {
             graphics.setClip(originalClipBounds);
@@ -65,13 +61,11 @@ public class Attack implements PlayerActionState {
         var shape = game.getMap().getShapeAtPoint(point);
         var players = game.getPlayers();
         for (var player : players) {
-
-            assert shape != null;
-            var anthillPartByAnthillPart = player.getAnthill().getAnthillPartById(shape);;
-            if (anthillPartByAnthillPart != null) {
-                if (canAddShape(game, shape)){
-                    player.attack(player.getAnthill(), anthillPartByAnthillPart.getShape());
-                    anthillPartByAnthillPart.changeHealth(-20);
+            var ap = player.getAnthill().getAnthillPartById(shape);
+            if (ap != null) {
+                if (canAddShape(game, shape)) {
+                    player.attack(player.getAnthill(), ap.getShape());
+                    ap.changeHealth(-20);
                 }
             }
         }

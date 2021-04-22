@@ -28,35 +28,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a7cff3a-ce77-4ca7-aefc-6773e6062a27" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/domain/Anthill.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/domain/AnthillPart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/domain/AnthillPlace.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/domain/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/ColorProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/BattleField.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/BattleInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/BattleWindow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/Attack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/ExtendAnthill.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/Idle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/PickUpResources.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/PlayerActionState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/Anthill.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/AnthillPlace.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/BattleWindow.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ColorProvider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/Direction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/Game.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/Hexagon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/Hexagon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/HexagonalMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/HexagonalMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/main/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/Player.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/Resources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/Resources.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/Segment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/Attack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/Attack.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,6 +75,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -144,17 +118,6 @@
       <option name="ALTERNATIVE_JRE_PATH" value="15" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <module name="Anthill" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -214,6 +177,11 @@
       <workItem from="1618310684017" duration="82000" />
       <workItem from="1618384315337" duration="300000" />
       <workItem from="1618570981942" duration="6000" />
+      <workItem from="1618634994690" duration="192000" />
+      <workItem from="1618635864638" duration="49000" />
+      <workItem from="1619099972612" duration="997000" />
+      <workItem from="1619101126935" duration="292000" />
+      <workItem from="1619105599866" duration="1142000" />
     </task>
     <task id="LOCAL-00001" summary="First attempts">
       <created>1617615464453</created>
