@@ -1,4 +1,4 @@
-package client.domain;
+package client.domain.map;
 
 import java.awt.*;
 
@@ -9,4 +9,6 @@ public interface Map {
     Dimension getSize();
 
     Shape[] getShapes();
+
 }
+

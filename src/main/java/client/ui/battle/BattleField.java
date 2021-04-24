@@ -1,7 +1,7 @@
 package client.ui.battle;
 
 import client.domain.Game;
-import client.domain.Player;
+import client.domain.entities.Player;
 import client.ui.ColorProvider;
 import client.ui.battle.actionStates.*;
 
@@ -70,6 +70,7 @@ public class BattleField extends JPanel {
         var clip = g.getClip().getBounds();
         g2d.clearRect(clip.x, clip.y, clip.width, clip.height);
         drawAnthills(g2d);
+        drawResources(g2d);
         state.paint(lastMousePosition, g2d, game);
     }
 
@@ -121,6 +122,14 @@ public class BattleField extends JPanel {
                 graphics.setClip(originalClipBounds);
             }
         });
+    }
+
+    private void drawResources(Graphics2D graphics) {
+        for (var shape : game.getResourcesMap().getShapes())
+        {
+            graphics.setColor(Color.CYAN);
+            graphics.fill(shape);
+        }
     }
 
 }

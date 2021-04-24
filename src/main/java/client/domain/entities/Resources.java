@@ -1,7 +1,7 @@
-package client.domain;
+package client.domain.entities;
 
 public class Resources {
-    private int count = 0;
+    private int count;
 
     public Resources(int count) {
         this.count = count;

@@ -1,6 +1,6 @@
 package client.ui;
 
-import client.domain.Map;
+import client.domain.map.Map;
 
 import java.awt.*;
 import java.util.ArrayList;

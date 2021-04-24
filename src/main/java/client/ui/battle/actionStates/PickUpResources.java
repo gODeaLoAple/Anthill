@@ -8,7 +8,11 @@ public class PickUpResources implements PlayerActionState {
 
     @Override
     public void paint(Point clickedPoint, Graphics2D graphics, Game game) {
-
+        var shape = game.getResourcesMap().getShapeAtPoint(clickedPoint);
+        if (shape != null) {
+            graphics.setColor(Color.BLACK);
+            graphics.draw(shape);
+        }
     }
 
     @Override

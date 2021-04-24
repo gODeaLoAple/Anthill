@@ -1,4 +1,4 @@
-package client.domain;
+package client.domain.entities;
 
 import java.awt.*;
 

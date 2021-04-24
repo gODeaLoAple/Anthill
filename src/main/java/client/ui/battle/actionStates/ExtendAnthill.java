@@ -3,14 +3,13 @@ package client.ui.battle.actionStates;
 import client.domain.Game;
 
 import java.awt.*;
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class ExtendAnthill implements PlayerActionState {
 
     @Override
     public void paint(Point clickedPoint, Graphics2D graphics, Game game) {
-        var shape = game.getMap().getShapeAtPoint(clickedPoint);
+        var shape = game.getPartsMap().getShapeAtPoint(clickedPoint);
         if (shape != null) {
             if (canAddShape(game, shape)) {
                 graphics.setColor(Color.BLACK);
@@ -30,7 +29,7 @@ public class ExtendAnthill implements PlayerActionState {
 
     @Override
     public void clicked(Point point, Game game) {
-        var shape = game.getMap().getShapeAtPoint(point);
+        var shape = game.getPartsMap().getShapeAtPoint(point);
         if (shape != null && canAddShape(game, shape))
             game.getMainPlayer().getAnthill().extend(shape);
     }

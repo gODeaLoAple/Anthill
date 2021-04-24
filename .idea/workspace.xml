@@ -28,16 +28,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a7cff3a-ce77-4ca7-aefc-6773e6062a27" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/domain/map/DynamicMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/domain/map/MapContainer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/domain/map/ResourcesMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Anthill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/Anthill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/AnthillPart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/AnthillPart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/AnthillPlace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/AnthillPlace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Resources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/Resources.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Program.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Anthill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/entities/Anthill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/AnthillPart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/entities/AnthillPart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/AnthillPlace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/entities/AnthillPlace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/map/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/entities/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Resources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/entities/Resources.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/HexagonalMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/HexagonalMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/BattleField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/BattleField.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/Attack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/Attack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/ExtendAnthill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/ExtendAnthill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/PickUpResources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/PickUpResources.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,8 +57,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -86,6 +93,7 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -247,33 +255,42 @@
     <MESSAGE value="Create hexagonal map" />
     <MESSAGE value="Implement some ui features&#10;Refactor packages" />
     <MESSAGE value="Merge branch remote dev into dev" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch remote dev into dev" />
+    <MESSAGE value="Add resources on map" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add resources on map" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="733" y="12" key="#Auto_Import" timestamp="1619292713669">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="733" y="12" key="#Auto_Import/0.0.1920.1040@0.0.1920.1040" timestamp="1619292713669" />
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1619178607587">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1619178607587" />
     <state x="754" y="225" key="#com.intellij.refactoring.move.moveInstanceMethod.MoveInstanceMethodDialog" timestamp="1619015591177">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="754" y="225" key="#com.intellij.refactoring.move.moveInstanceMethod.MoveInstanceMethodDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619015591177" />
-    <state width="1877" height="166" key="GridCell.Tab.0.bottom" timestamp="1619098905933">
+    <state width="1877" height="166" key="GridCell.Tab.0.bottom" timestamp="1619293159842">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="166" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1619077922779" />
-    <state width="1877" height="166" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1619098905933" />
-    <state width="1877" height="166" key="GridCell.Tab.0.center" timestamp="1619098905933">
+    <state width="1877" height="166" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1619293159842" />
+    <state width="1877" height="166" key="GridCell.Tab.0.center" timestamp="1619293159842">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="166" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1619077922779" />
-    <state width="1877" height="166" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1619098905933" />
-    <state width="1877" height="166" key="GridCell.Tab.0.left" timestamp="1619098905933">
+    <state width="1877" height="166" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1619293159842" />
+    <state width="1877" height="166" key="GridCell.Tab.0.left" timestamp="1619293159842">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="166" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1619077922779" />
-    <state width="1877" height="166" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1619098905933" />
-    <state width="1877" height="166" key="GridCell.Tab.0.right" timestamp="1619098905933">
+    <state width="1877" height="166" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1619293159842" />
+    <state width="1877" height="166" key="GridCell.Tab.0.right" timestamp="1619293159842">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="166" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1619077922779" />
-    <state width="1877" height="166" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1619098905933" />
+    <state width="1877" height="166" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1619293159842" />
     <state width="1323" height="223" key="GridCell.Tab.1.bottom" timestamp="1619015611689">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -294,6 +311,10 @@
     </state>
     <state width="1323" height="223" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1619000560572" />
     <state width="1323" height="223" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1619015611689" />
+    <state x="461" y="165" key="SettingsEditor" timestamp="1619177246607">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1619177246607" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1618997706055">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

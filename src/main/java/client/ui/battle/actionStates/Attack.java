@@ -9,7 +9,7 @@ public class Attack implements PlayerActionState {
 
     @Override
     public void paint(Point clickedPoint, Graphics2D graphics, Game game) {
-        var shape = game.getMap().getShapeAtPoint(clickedPoint);
+        var shape = game.getPartsMap().getShapeAtPoint(clickedPoint);
         if (shape != null && canAttack(shape, game)) {
             graphics.setColor(Color.BLACK);
             graphics.fill(shape);
@@ -23,7 +23,7 @@ public class Attack implements PlayerActionState {
 
     @Override
     public void clicked(Point point, Game game) {
-        var shape = game.getMap().getShapeAtPoint(point);
+        var shape = game.getPartsMap().getShapeAtPoint(point);
         if (shape == null)
             return;
         for (var player : game.getPlayers()) {

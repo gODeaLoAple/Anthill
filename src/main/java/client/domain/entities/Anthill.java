@@ -1,6 +1,4 @@
-package client.domain;
-
-import client.ui.Hexagon;
+package client.domain.entities;
 
 import java.awt.*;
 import java.util.ArrayList;
