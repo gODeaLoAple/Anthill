@@ -39,7 +39,7 @@ public class BattleInfo extends JPanel {
         add(buttons, BorderLayout.CENTER);
 
         var resources = game.getMainPlayer().getAnthill().getResources();
-        var timer = new Timer(500, e -> {
+        var timer = new Timer(100, e -> {
             var resourcesCount = resources.getCount();
             resourcesLabel.setText("Ресурсы: " + resourcesCount);
         });

@@ -4,6 +4,8 @@ import client.domain.map.Map;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Stream;
 
 public class HexagonalMap implements Map {
 
@@ -26,6 +28,15 @@ public class HexagonalMap implements Map {
 
     public Shape[] getShapes(){
         return hexagons;
+    }
+
+    @Override
+    public Stream<Shape> getNeighbours(Shape shape) {
+        var hexagon = (Hexagon)shape; // TODO плохо, скорее всего, нужно использовать Generics
+        var center = hexagon.getCenter();
+        return Arrays.stream(hexagons)
+                .filter(x -> x.getCenter().distanceSq(center) <= 3 * radius * radius + radius / 3.0)
+                .map(x -> x);
     }
 
     @Override

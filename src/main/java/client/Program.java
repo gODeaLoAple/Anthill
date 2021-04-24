@@ -18,7 +18,9 @@ public class Program {
         var resourcesMap = new ResourcesMap(size, new Shape[] { new Hexagon(new Point(200, 300), 20) });
         var container = new MapContainer(map, resourcesMap);
         var players = new Player[] {
-            new Player(0, new Anthill(new AnthillPlace(new AnthillPart[0]), new Resources(1000))),
+            new Player(0, new Anthill(new AnthillPlace(new AnthillPart[]{
+                    new AnthillPart(map.hexagons[5], 100, 100),
+            }), new Resources(1000))),
             new Player(1, new Anthill(new AnthillPlace(new AnthillPart[] {
                     new AnthillPart(map.hexagons[0], 100, 100),
                     new AnthillPart(map.hexagons[1], 100, 100),

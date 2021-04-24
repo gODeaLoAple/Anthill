@@ -2,6 +2,7 @@ package client.domain.map;
 
 import java.awt.*;
 import java.util.Arrays;
+import java.util.stream.Stream;
 
 public class ResourcesMap implements DynamicMap {
 
@@ -41,5 +42,10 @@ public class ResourcesMap implements DynamicMap {
     @Override
     public Shape[] getShapes() {
         return resourceShapes.toArray(new Shape[0]);
+    }
+
+    @Override
+    public Stream<Shape> getNeighbours(Shape shape) {
+        return Stream.empty();
     }
 }

@@ -19,5 +19,6 @@ public class PickUpResources implements PlayerActionState {
     public void clicked(Point point, Game game) {
 
     }
+
 }
 
