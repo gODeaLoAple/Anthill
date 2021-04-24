@@ -15,10 +15,6 @@ public class Resources {
         return count;
     }
 
-    public void add(int count) {
-        this.count += count;
-    }
-
     public void apply(int count) {
         this.count -= count;
     }

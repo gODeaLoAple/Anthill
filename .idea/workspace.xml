@@ -27,18 +27,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a7cff3a-ce77-4ca7-aefc-6773e6062a27" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Anthill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/Anthill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/AnthillPart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/AnthillPart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/AnthillPlace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/AnthillPlace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Resources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/Resources.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/HexagonalMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/HexagonalMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/BattleField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/BattleField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/Attack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/Attack.java" afterDir="false" />
-    </list>
+    <list default="true" id="1a7cff3a-ce77-4ca7-aefc-6773e6062a27" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -130,19 +119,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="JarApplication">
       <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2" />
@@ -203,6 +179,7 @@
       <workItem from="1619099972612" duration="997000" />
       <workItem from="1619101126935" duration="292000" />
       <workItem from="1619105599866" duration="1142000" />
+      <workItem from="1619177480918" duration="5000" />
     </task>
     <task id="LOCAL-00001" summary="First attempts">
       <created>1617615464453</created>
