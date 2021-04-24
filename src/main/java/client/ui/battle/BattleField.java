@@ -70,7 +70,6 @@ public class BattleField extends JPanel {
         var clip = g.getClip().getBounds();
         g2d.clearRect(clip.x, clip.y, clip.width, clip.height);
         drawAnthills(g2d);
-        drawResources(g2d);
         state.paint(lastMousePosition, g2d, game);
     }
 
@@ -91,37 +90,30 @@ public class BattleField extends JPanel {
     private void drawAttackPart(Graphics2D graphics, Player player) {
         player.getAnthill().getShapes().stream().filter(x -> x.getHealth() < 100).forEach(ap -> {
             var shape = ap.getShape();
-            var r = 60;
-            var originalClipBounds = graphics.getClipBounds();
-            var rectX = (int) shape.getBounds().getCenterX() - r * Math.sqrt(3) / 2;
-            var rectY = (int) shape.getBounds().getCenterY() - r;
+            var rectangle = shape.getBounds();
             var health = ap.getHealth();
-            var w = shape.getBounds().width;
-            var h = shape.getBounds().height;
-
-
-            try {
-                graphics.clipRect((int) rectX,
-                        rectY,
-                        w,
-                        (int) (h * (1 - health / 100.0)));
-                graphics.setColor(Color.RED);
-                graphics.fill(shape);
-            } finally {
-                graphics.setClip(originalClipBounds);
-            }
-
-            try {
-                graphics.clipRect((int) rectX,
-                        rectY + (int) (h * (1 - health / 100.0)),
-                        w,
-                        (int) (h * health / 100.0));
-                graphics.setColor(Color.GREEN);
-                graphics.fill(shape);
-            } finally {
-                graphics.setClip(originalClipBounds);
-            }
+            paintHexagon(graphics, rectangle, shape, Color.RED, 0, 1 - health / 100.0);
+            paintHexagon(graphics, rectangle, shape, Color.BLUE,
+                    (int) (rectangle.height * (1 - health / 100.0)), health / 100.0);
         });
+    }
+
+    private static void paintHexagon(Graphics2D graphics,
+                                     Rectangle rectangle, Shape shape,
+                                     Color color, double k1, double k2) {
+        var originalClipBounds = graphics.getClipBounds();
+        var rectX = (int) (rectangle.getCenterX() - Program.hexRadius * Math.sqrt(3) / 2);
+        var rectY = (int) (rectangle.getCenterY() - Program.hexRadius);
+        try {
+            graphics.clipRect(rectX,
+                    (int) (rectY + (rectangle.height * k1)),
+                    rectangle.width,
+                    (int) (rectangle.height * k2));
+            graphics.setColor(color);
+            graphics.fill(shape);
+        } finally {
+            graphics.setClip(originalClipBounds);
+        }
     }
 
     private void drawResources(Graphics2D graphics) {

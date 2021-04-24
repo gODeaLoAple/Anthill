@@ -1,6 +1,8 @@
 package client.ui.battle.actionStates;
 
+import client.domain.Anthill;
 import client.domain.Game;
+import client.ui.battle.BattleField;
 
 import java.awt.*;
 import java.util.Arrays;
@@ -26,12 +28,17 @@ public class Attack implements PlayerActionState {
         var shape = game.getPartsMap().getShapeAtPoint(point);
         if (shape == null)
             return;
+        var res = game.getMainPlayer().getAnthill().getResources();
         for (var player : game.getPlayers()) {
             var anthill = player.getAnthill();
             var part = anthill.getPartByShape(shape);
             if (part != null) {
-                if (canAttack(shape, game))
-                    anthill.applyDamage(part, 20);
+                if (canAttack(shape, game)){
+                    if (res.getCount() >= Anthill.RESOURCE_FOR_ATTACK){
+                        anthill.applyDamage(part, 20);
+                        res.apply(Anthill.RESOURCE_FOR_ATTACK);
+                    }
+                }
                 break;
             }
         }

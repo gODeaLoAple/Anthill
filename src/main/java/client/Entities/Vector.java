@@ -1,8 +1,8 @@
 package client.Entities;
 
 public class Vector {
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
 
     public Vector(int x, int y) {
         this.x = x;
@@ -21,9 +21,8 @@ public class Vector {
         return new Vector(x - v.x, y - v.y);
     }
 
-    public Vector normalized(Vector v) {
+    public Vector normalized() {
         var l = getLength();
-        assert l != 0;
         return new Vector((int) (x / l), (int) (y / l));
     }
 

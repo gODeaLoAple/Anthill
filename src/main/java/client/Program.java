@@ -12,12 +12,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Program {
-
+    public static final int hexRadius = 60;
     public static void main(String[] args) {
-        var size = new Dimension(800, 600);
-        var map = new HexagonalMap(size.width, size.height, 60);
-        var resources = new ResourcesMap(size, new Shape[]{ new Hexagon(new Point(200, 200), 20)});
-        var container = new MapContainer(map, resources);
+        var map = new HexagonalMap(800, 600, hexRadius);
         var players = new Player[] {
             new Player(0, new Anthill(new AnthillPlace(new AnthillPart[0]), new Resources(100))),
             new Player(1, new Anthill(new AnthillPlace(new AnthillPart[] {

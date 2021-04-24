@@ -4,7 +4,8 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Anthill {
-    public static final int RESOURCE_FOR_EXTEND = 10;
+    public static final int RESOURCE_FOR_EXTEND = 60;
+    public static final int RESOURCE_FOR_ATTACK = 20;
     private final AnthillPlace place;
     private final Resources resources;
 
@@ -25,8 +26,12 @@ public class Anthill {
         return resources.getCount() > RESOURCE_FOR_EXTEND;
     }
 
+    public boolean hasEnoughResourcesToAttack() {
+        return resources.getCount() > RESOURCE_FOR_ATTACK;
+    }
+
     public void extend(Shape shape) {
-        resources.remove(RESOURCE_FOR_EXTEND);
+        resources.apply(RESOURCE_FOR_EXTEND);
         place.add(shape);
     }
 
@@ -44,6 +49,7 @@ public class Anthill {
     public void applyDamage(AnthillPart part, int damage) {
         place.applyDamage(part, damage);
     }
+
     public AnthillPlace getPlace() {
         return place;
     }
