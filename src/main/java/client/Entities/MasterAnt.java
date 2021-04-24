@@ -1,7 +1,5 @@
 package client.Entities;
 
-import client.domain.AnthillPart;
-
 public class MasterAnt extends Ant{
     private final int health = 300;
     private final int speed = 15;
