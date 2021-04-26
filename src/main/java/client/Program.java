@@ -2,9 +2,13 @@ package client;
 
 import client.domain.*;
 import client.domain.entities.*;
+import client.domain.entities.anthill.Anthill;
+import client.domain.entities.anthill.AnthillPart;
+import client.domain.entities.anthill.AnthillPlace;
+import client.domain.entities.anthill.Resources;
+import client.domain.map.AntsMap;
 import client.domain.map.MapContainer;
 import client.domain.map.ResourcesMap;
-import client.ui.battle.Hexagon;
 import client.ui.battle.HexagonResourcePoint;
 import client.ui.battle.HexagonalMap;
 import client.ui.battle.BattleWindow;
@@ -22,7 +26,8 @@ public class Program {
                         new HexagonResourcePoint(new Point(200, 400), 20, 20),
                         new HexagonResourcePoint(new Point(200, 500), 20, 20),
                 });
-        var container = new MapContainer(map, resourcesMap);
+        var ants = new AntsMap(size, new Shape[0]);
+        var container = new MapContainer(map, resourcesMap, ants);
         var players = new Player[] {
             new Player(0, new Anthill(new AnthillPlace(new AnthillPart[]{
                     new AnthillPart(map.hexagons[5], 100, 100),

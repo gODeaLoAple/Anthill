@@ -4,9 +4,12 @@ public class MapContainer {
 
     private final Map parts;
     private final DynamicMap resources;
-    public MapContainer(Map parts, DynamicMap resources) {
+    private final AntsMap ants;
+
+    public MapContainer(Map parts, DynamicMap resources, AntsMap ants) {
         this.parts = parts;
         this.resources = resources;
+        this.ants = ants;
     }
 
     public Map getParts() {
@@ -17,4 +20,8 @@ public class MapContainer {
         return resources;
     }
 
+
+    public AntsMap getAnts() {
+        return ants;
+    }
 }

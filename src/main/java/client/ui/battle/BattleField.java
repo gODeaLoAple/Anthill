@@ -3,6 +3,7 @@ package client.ui.battle;
 import client.domain.Game;
 import client.ui.battle.actionStates.*;
 import client.ui.battle.drawers.AnthillsDrawer;
+import client.ui.battle.drawers.AntsDrawer;
 import client.ui.battle.drawers.Drawer;
 import client.ui.battle.drawers.ResourceDrawer;
 
@@ -68,6 +69,7 @@ public class BattleField extends JPanel {
         return new Drawer[] {
             new AnthillsDrawer(game, colorProvider, filler),
             new ResourceDrawer(game),
+                new AntsDrawer(game),
         };
     }
 

@@ -1,7 +1,7 @@
 package client.ui.battle.actionStates;
 
 import client.domain.Game;
-import client.domain.entities.Anthill;
+import client.domain.entities.anthill.Anthill;
 
 import java.awt.*;
 import java.util.Arrays;

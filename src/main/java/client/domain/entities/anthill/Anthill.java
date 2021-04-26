@@ -1,4 +1,4 @@
-package client.domain.entities;
+package client.domain.entities.anthill;
 
 import java.awt.*;
 import java.util.ArrayList;

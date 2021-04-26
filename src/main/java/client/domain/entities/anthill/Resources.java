@@ -1,4 +1,4 @@
-package client.domain.entities;
+package client.domain.entities.anthill;
 
 public class Resources {
     private int count;

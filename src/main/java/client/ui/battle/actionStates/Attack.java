@@ -1,7 +1,8 @@
 package client.ui.battle.actionStates;
 
 import client.domain.Game;
-import client.domain.entities.Anthill;
+import client.domain.entities.anthill.Anthill;
+import client.ui.battle.Hexagon;
 
 import java.awt.*;
 import java.util.Arrays;
@@ -40,6 +41,10 @@ public class Attack extends ActionState {
                     if (res.getCount() >= Anthill.RESOURCE_FOR_ATTACK){
                         anthill.applyDamage(part, 20);
                         res.change(-Anthill.RESOURCE_FOR_ATTACK);
+                        var rectangle = shape.getBounds();
+                        var x = Math.random() * 10 + rectangle.getCenterX();
+                        var y = Math.random() * 10 + rectangle.getCenterY();
+                        game.getAntsMap().add(new Hexagon(new Point((int)x, (int)y), 10));
                     }
                 }
                 break;
