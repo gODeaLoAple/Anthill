@@ -54,6 +54,7 @@ public class Hexagon extends Polygon {
         updatePoints();
     }
 
+    public Point getCenter() { return center; }
     public void setCenter(int x, int y) {
         setCenter(new Point(x, y));
     }

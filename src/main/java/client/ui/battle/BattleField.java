@@ -1,10 +1,11 @@
 package client.ui.battle;
 
-import client.Program;
 import client.domain.Game;
-import client.domain.Player;
 import client.ui.ColorProvider;
 import client.ui.battle.actionStates.*;
+import client.ui.battle.drawers.AnthillsDrawer;
+import client.ui.battle.drawers.Drawer;
+import client.ui.battle.drawers.ResourceDrawer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,13 +15,17 @@ public class BattleField extends JPanel {
 
     private final Game game;
     private Point lastMousePosition = new Point();
-    private PlayerActionState state = new Idle();
+    private PlayerActionState state;
     private final ColorProvider colorProvider = new ColorProvider();
+    private final IShapeFiller filler;
 
-    public BattleField(Game game) {
+    private final Drawer[] drawers;
+
+    public BattleField(Game game, IShapeFiller filter) {
         super();
-
+        this.filler = filter;
         this.game = game;
+        state = new Idle(game);
         setFocusable(true);
         addMouseMotionListener(new MouseMotionAdapter() {
             @Override
@@ -34,7 +39,7 @@ public class BattleField extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                state.clicked(lastMousePosition, game);
+                state.clicked(lastMousePosition);
                 repaint();
             }
         });
@@ -44,18 +49,27 @@ public class BattleField extends JPanel {
             public void keyPressed(KeyEvent e) {
                 super.keyPressed(e);
                 switch (e.getKeyCode()) {
-                    case KeyEvent.VK_E -> setState(new ExtendAnthill());
-                    case KeyEvent.VK_A -> setState(new Attack());
-                    case KeyEvent.VK_P -> setState(new PickUpResources());
+                    case KeyEvent.VK_E -> setState(new ExtendAnthill(game));
+                    case KeyEvent.VK_A -> setState(new Attack(game));
+                    case KeyEvent.VK_P -> setState(new PickUpResources(game));
                 }
             }
 
             @Override
             public void keyReleased(KeyEvent e) {
                 super.keyReleased(e);
+
             }
         });
 
+        drawers = createDrawers();
+    }
+
+    private Drawer[] createDrawers() {
+        return new Drawer[] {
+            new AnthillsDrawer(game, colorProvider, filler),
+            new ResourceDrawer(game),
+        };
     }
 
     public void setState(PlayerActionState state) {
@@ -69,50 +83,10 @@ public class BattleField extends JPanel {
         var g2d = (Graphics2D) g;
         var clip = g.getClip().getBounds();
         g2d.clearRect(clip.x, clip.y, clip.width, clip.height);
-        drawAnthills(g2d);
-        state.paint(lastMousePosition, g2d, game);
+        for (var drawer : drawers)
+            drawer.draw(g2d);
+        state.paint(lastMousePosition, g2d);
     }
 
-    private void drawAnthills(Graphics2D graphics) {
-        var players = game.getPlayers();
-        for (var player : players) {
-            var playerColor = colorProvider.getColor(player.getId());
-            for (var part : player.getAnthill().getShapes()) {
-                graphics.setColor(playerColor);
-                graphics.fill(part.getShape());
-                graphics.setColor(Color.BLACK);
-                graphics.draw(part.getShape());
-            }
-            drawAttackPart(graphics, player);
-        }
-    }
-
-    private void drawAttackPart(Graphics2D graphics, Player player) {
-        player.getAnthill().getShapes().stream().filter(x -> x.getHealth() < 100).forEach(ap -> {
-            var shape = ap.getShape();
-            var rectangle = shape.getBounds();
-            var health = ap.getHealth();
-            paintHexagon(graphics, rectangle, shape, Color.RED, 0, 1 - health / 100.0);
-            paintHexagon(graphics, rectangle, shape, Color.BLUE,
-                    (int) (rectangle.height * (1 - health / 100.0)), health / 100.0);
-        });
-    }
-
-    private static void paintHexagon(Graphics2D graphics,
-                                     Rectangle rectangle, Shape shape,
-                                     Color color, double k1, double k2) {
-        var originalClipBounds = graphics.getClipBounds();
-        var rectX = (int) (rectangle.getCenterX() - Program.hexRadius * Math.sqrt(3) / 2);
-        var rectY = (int) (rectangle.getCenterY() - Program.hexRadius);
-        try {
-            graphics.clipRect(rectX,
-                    (int) (rectY + (rectangle.height * k1)),
-                    rectangle.width,
-                    (int) (rectangle.height * k2));
-            graphics.setColor(color);
-            graphics.fill(shape);
-        } finally {
-            graphics.setClip(originalClipBounds);
-        }
-    }
 }
+

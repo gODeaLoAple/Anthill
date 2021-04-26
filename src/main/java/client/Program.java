@@ -1,25 +1,33 @@
 package client;
 
 import client.domain.*;
+import client.domain.entities.*;
+import client.domain.map.MapContainer;
+import client.domain.map.ResourcesMap;
 import client.ui.Hexagon;
 import client.ui.HexagonalMap;
 import client.ui.battle.BattleWindow;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Program {
-    public static final int hexRadius = 60;
     public static void main(String[] args) {
-        var map = new HexagonalMap(800, 600, hexRadius);
+        var size = new Dimension(800, 600);
+        var map = new HexagonalMap(size.width, size.height, 60);
+        var resourcesMap = new ResourcesMap(size, new Shape[] { new Hexagon(new Point(200, 300), 20) });
+        var container = new MapContainer(map, resourcesMap);
         var players = new Player[] {
-            new Player(0, new Anthill(new AnthillPlace(new AnthillPart[0]), new Resources(100))),
+            new Player(0, new Anthill(new AnthillPlace(new AnthillPart[]{
+                    new AnthillPart(map.hexagons[5], 100, 100),
+            }), new Resources(1000))),
             new Player(1, new Anthill(new AnthillPlace(new AnthillPart[] {
                     new AnthillPart(map.hexagons[0], 100, 100),
                     new AnthillPart(map.hexagons[1], 100, 100),
                     new AnthillPart(map.hexagons[2], 100, 100),
             }), new Resources()))
         };
-        var game = new Game(map, players);
+        var game = new Game(container, players);
 
         SwingUtilities.invokeLater(() -> {
             var frame = new JFrame("Anthill");

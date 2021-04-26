@@ -1,8 +1,10 @@
-package client.domain;
+package client.domain.entities;
 
 import java.awt.*;
 
 public class AnthillPart {
+    public static final int MAX_HEALTH = 100;
+    public static final int MAX_ARMOR = 100;
     private final Shape shape;
     private int health;
     private int armor;
@@ -14,7 +16,7 @@ public class AnthillPart {
     }
 
     public AnthillPart(Shape shape) {
-        this(shape, 100, 100);
+        this(shape, MAX_HEALTH, MAX_HEALTH);
     }
 
     public Shape getShape() {

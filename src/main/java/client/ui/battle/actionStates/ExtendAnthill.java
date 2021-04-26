@@ -1,18 +1,21 @@
 package client.ui.battle.actionStates;
 
 import client.domain.Game;
+import client.domain.entities.Anthill;
 
 import java.awt.*;
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
-public class ExtendAnthill implements PlayerActionState {
+public class ExtendAnthill extends ActionState {
+    public ExtendAnthill(Game game) {
+        super(game);
+    }
 
     @Override
-    public void paint(Point clickedPoint, Graphics2D graphics, Game game) {
-        var shape = game.getMap().getShapeAtPoint(clickedPoint);
+    public void paint(Point clickedPoint, Graphics2D graphics) {
+        var shape = game.getPartsMap().getShapeAtPoint(clickedPoint);
         if (shape != null) {
-            if (canAddShape(game, shape)) {
+            if (canAddShape(shape)) {
                 graphics.setColor(Color.BLACK);
                 graphics.draw(shape);
             }
@@ -23,15 +26,24 @@ public class ExtendAnthill implements PlayerActionState {
         }
     }
 
-    private boolean canAddShape(Game game, Shape shape) {
+    private boolean canAddShape(Shape shape) {
+        var playerAnthill = game.getMainPlayer().getAnthill();
         return game.getMainPlayer().getAnthill().hasEnoughResourcesToExtend()
-                && Arrays.stream(game.getPlayers()).noneMatch(x -> x.getAnthill().hasShape(shape));
+                && isShapeNearAnthill(shape, playerAnthill)
+                && isFreeShape(shape);
+    }
+
+    private boolean isShapeNearAnthill(Shape shape, Anthill anthill) {
+        return game.getPartsMap().getNeighbours(shape).anyMatch(anthill::hasShape);
+    }
+    private boolean isFreeShape(Shape shape) {
+        return Arrays.stream(game.getPlayers()).noneMatch(x -> x.getAnthill().hasShape(shape));
     }
 
     @Override
-    public void clicked(Point point, Game game) {
-        var shape = game.getMap().getShapeAtPoint(point);
-        if (shape != null && canAddShape(game, shape))
+    public void clicked(Point point) {
+        var shape = game.getPartsMap().getShapeAtPoint(point);
+        if (shape != null && canAddShape(shape))
             game.getMainPlayer().getAnthill().extend(shape);
     }
 

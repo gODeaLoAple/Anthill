@@ -4,15 +4,18 @@ import client.domain.Game;
 
 import java.awt.*;
 
-public class Idle implements PlayerActionState {
+public class Idle extends ActionState {
+    public Idle(Game game) {
+        super(game);
+    }
 
     @Override
-    public void paint(Point clickedPoint, Graphics2D graphics, Game game) {
+    public void paint(Point clickedPoint, Graphics2D graphics) {
 
     }
 
     @Override
-    public void clicked(Point point, Game game) {
+    public void clicked(Point point) {
 
     }
 }

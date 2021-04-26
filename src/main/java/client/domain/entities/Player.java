@@ -1,8 +1,4 @@
-package client.domain;
-
-import client.domain.Anthill;
-
-import java.awt.*;
+package client.domain.entities;
 
 public class Player {
     private final int id;

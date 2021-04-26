@@ -28,7 +28,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a7cff3a-ce77-4ca7-aefc-6773e6062a27" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/domain/map/DynamicMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/domain/map/MapContainer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/domain/map/ResourcesMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/ShapeFiller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/ActionState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/drawers/AnthillsDrawer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/drawers/Drawer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/drawers/GameDrawer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/drawers/ResourceDrawer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/Entities/MasterAnt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Entities/MasterAnt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Program.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Anthill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/entities/Anthill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/AnthillPart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/entities/AnthillPart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/AnthillPlace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/entities/AnthillPlace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/map/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/entities/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Resources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/entities/Resources.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/Hexagon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/Hexagon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/HexagonalMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/HexagonalMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/BattleField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/BattleField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/BattleInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/BattleInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/Attack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/Attack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/ExtendAnthill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/ExtendAnthill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/Idle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/Idle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/PickUpResources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/PickUpResources.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/PlayerActionState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/PlayerActionState.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,8 +68,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -74,10 +101,10 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -117,6 +144,19 @@
       <option name="ALTERNATIVE_JRE_PATH" value="15" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <module name="Anthill" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -176,14 +216,6 @@
       <workItem from="1618310684017" duration="82000" />
       <workItem from="1618384315337" duration="300000" />
       <workItem from="1618570981942" duration="6000" />
-      <workItem from="1618634994690" duration="192000" />
-      <workItem from="1618635864638" duration="49000" />
-      <workItem from="1619099972612" duration="997000" />
-      <workItem from="1619101126935" duration="292000" />
-      <workItem from="1619105599866" duration="1142000" />
-      <workItem from="1619177480918" duration="5000" />
-      <workItem from="1619292044789" duration="833000" />
-      <workItem from="1619420945503" duration="1149000" />
     </task>
     <task id="LOCAL-00001" summary="First attempts">
       <created>1617615464453</created>
@@ -236,6 +268,7 @@
     <MESSAGE value="Create hexagonal map" />
     <MESSAGE value="Implement some ui features&#10;Refactor packages" />
     <MESSAGE value="Merge branch remote dev into dev" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch remote dev into dev" />
+    <MESSAGE value="Add resources on map" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add resources on map" />
   </component>
 </project>
