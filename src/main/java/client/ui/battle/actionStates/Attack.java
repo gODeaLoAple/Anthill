@@ -39,7 +39,7 @@ public class Attack extends ActionState {
                 if (canAttack(shape)){
                     if (res.getCount() >= Anthill.RESOURCE_FOR_ATTACK){
                         anthill.applyDamage(part, Anthill.RESOURCE_FOR_ATTACK);
-                        res.apply(Anthill.RESOURCE_FOR_ATTACK);
+                        res.apply(-Anthill.RESOURCE_FOR_ATTACK);
                     }
                 }
                 break;

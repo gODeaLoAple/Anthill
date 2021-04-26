@@ -21,7 +21,16 @@ public class PickUpResources extends ActionState {
 
     @Override
     public void clicked(Point point) {
-
+        var resourceMap = game.getResourcesMap();
+        var shape = resourceMap.getShapeAtPoint(point);
+        if (shape != null) {
+            game
+                    .getMainPlayer()
+                    .getAnthill()
+                    .getResources()
+                    .apply(1000);
+            resourceMap.remove(shape);
+        }
     }
 
 }

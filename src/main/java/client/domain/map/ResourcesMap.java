@@ -2,6 +2,7 @@ package client.domain.map;
 
 import java.awt.*;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.stream.Stream;
 
 public class ResourcesMap implements DynamicMap {
@@ -12,7 +13,7 @@ public class ResourcesMap implements DynamicMap {
     public ResourcesMap(Dimension size, Shape[] resourceShapes) {
 
         this.size = size;
-        this.resourceShapes = Arrays.asList(resourceShapes);
+        this.resourceShapes = new LinkedList<>(Arrays.asList(resourceShapes));
     }
 
     @Override

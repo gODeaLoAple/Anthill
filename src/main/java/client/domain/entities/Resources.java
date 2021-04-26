@@ -16,7 +16,7 @@ public class Resources {
     }
 
     public void apply(int count) {
-        this.count -= count;
+        this.count += count;
     }
 
 }
