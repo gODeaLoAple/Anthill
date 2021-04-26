@@ -2,7 +2,6 @@ package client.domain.entities;
 
 public class Resources {
     private int count;
-
     public Resources(int count) {
         this.count = count;
     }
