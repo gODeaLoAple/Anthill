@@ -1,7 +1,8 @@
 package client.ui.battle.actionStates;
 
 import client.domain.Game;
-import client.ui.battle.ResourcePoint;
+import client.domain.entities.anthill.Anthill;
+
 
 import java.awt.*;
 
@@ -22,12 +23,16 @@ public class PickUpResources extends ActionState {
 
     @Override
     public void clicked(Point point) {
-        var map = game.getResourcesMap();
-        var shape = game.getResourcesMap().getShapeAtPoint(point);
-        if (shape instanceof ResourcePoint){
-            var resource = (ResourcePoint)shape;
-            game.getMainPlayer().getAnthill().getResources().change(resource.getResources());
-            map.remove(shape);
+        var resourceMap = game.getResourcesMap();
+        var shape = resourceMap.getShapeAtPoint(point);
+        if (shape != null) {
+            game
+                    .getMainPlayer()
+                    .getAnthill()
+                    .getResources()
+                    .change(Anthill.RESOURCE);
+            resourceMap.remove(shape);
+            resourceMap.spawnResources(game);
         }
     }
 

@@ -22,7 +22,7 @@ public class Attack extends ActionState {
         }
     }
 
-    private boolean canAttack(Shape shape, Game game){
+    private boolean canAttack(Shape shape, Game game) {
         return !game.getMainPlayer().getAnthill().hasShape(shape)
                 && Arrays.stream(game.getPlayers()).anyMatch(x -> x.getAnthill().hasShape(shape));
     }
@@ -32,19 +32,20 @@ public class Attack extends ActionState {
         var shape = game.getPartsMap().getShapeAtPoint(point);
         if (shape == null)
             return;
-        var res = game.getMainPlayer().getAnthill().getResources();
+        var mainAnthill = game.getMainPlayer().getAnthill();
         for (var player : game.getPlayers()) {
             var anthill = player.getAnthill();
             var part = anthill.getPartByShape(shape);
             if (part != null) {
-                if (canAttack(shape, game)){
-                    if (res.getCount() >= Anthill.RESOURCE_FOR_ATTACK){
-                        anthill.applyDamage(part, 20);
+                if (canAttack(shape, game)) {
+                    var res = mainAnthill.getResources();
+                    if (mainAnthill.hasEnoughResourcesToAttack()) {
+                        anthill.applyDamage(part, Anthill.RESOURCE_FOR_ATTACK);
                         res.change(-Anthill.RESOURCE_FOR_ATTACK);
-                        var rectangle = shape.getBounds();
-                        var x = Math.random() * 10 + rectangle.getCenterX();
-                        var y = Math.random() * 10 + rectangle.getCenterY();
-                        game.getAntsMap().add(new Hexagon(new Point((int)x, (int)y), 10));
+                        //var rectangle = shape.getBounds();
+                        //var x = Math.random() * 10 + rectangle.getCenterX();
+                        //var y = Math.random() * 10 + rectangle.getCenterY();
+                        //game.getAntsMap().add(new Hexagon(new Point((int)x, (int)y), 10));
                     }
                 }
                 break;

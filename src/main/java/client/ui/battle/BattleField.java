@@ -69,7 +69,7 @@ public class BattleField extends JPanel {
         return new Drawer[] {
             new AnthillsDrawer(game, colorProvider, filler),
             new ResourceDrawer(game),
-                new AntsDrawer(game),
+            new AntsDrawer(game),
         };
     }
 

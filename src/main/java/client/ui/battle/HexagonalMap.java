@@ -1,5 +1,6 @@
 package client.ui.battle;
 
+import client.domain.map.DynamicMap;
 import client.domain.map.Map;
 import client.ui.battle.Hexagon;
 
@@ -20,6 +21,7 @@ public class HexagonalMap implements Map {
         hexagons = createMap(width, height, R);
     }
 
+    @Override
     public Shape getShapeAtPoint(Point point) {
         for (var hexagon : hexagons)
             if (hexagon.contains(point))
@@ -27,16 +29,17 @@ public class HexagonalMap implements Map {
         return null;
     }
 
-    public Shape[] getShapes(){
+    @Override
+    public Shape[] getShapes() {
         return hexagons;
     }
 
     @Override
     public Stream<Shape> getNeighbours(Shape shape) {
-        var hexagon = (Hexagon)shape; // TODO плохо, скорее всего, нужно использовать Generics
+        var hexagon = (Hexagon) shape; // TODO плохо, скорее всего, нужно использовать Generics
         var center = hexagon.getCenter();
         return Arrays.stream(hexagons)
-                .filter(x -> x.getCenter().distanceSq(center) <= 3 * radius * radius + radius / 3.0)
+                .filter(x -> x.getCenter().distanceSq(center) <= 3 * (radius + 1) * (radius + 1))
                 .map(x -> x);
     }
 
@@ -53,11 +56,11 @@ public class HexagonalMap implements Map {
     }
 
     private static Point fromDouble(double x, double y) {
-        return new Point((int)x, (int)y);
+        return new Point((int) x, (int) y);
     }
 
     private Hexagon[] createMap(final int width, final int height, final int R) {
-        final var columns = (int)Math.floor(width / (Math.sqrt(3) * R));
+        final var columns = (int) Math.floor(width / (Math.sqrt(3) * R));
         final var rows = height / (2 * R);
         var lst = new ArrayList<Hexagon>(columns * rows);
         for (var i = 0; i < columns; ++i)

@@ -1,10 +1,12 @@
 package client.domain;
 
 import client.domain.entities.Player;
+import client.domain.entities.anthill.AnthillPlace;
 import client.domain.map.AntsMap;
 import client.domain.map.DynamicMap;
 import client.domain.map.Map;
 import client.domain.map.MapContainer;
+import client.domain.map.ResourcesMap;
 
 public class Game {
 
@@ -24,11 +26,13 @@ public class Game {
         return container.getParts();
     }
 
-    public DynamicMap getResourcesMap() { return container.getResources(); }
-
-    public AntsMap getAntsMap() { return container.getAnts(); }
+    public ResourcesMap getResourcesMap() { return container.getResources(); }
 
     public Player getMainPlayer() {
         return players[0];
+    }
+
+    public AntsMap getAntsMap() {
+        return container.getAnts();
     }
 }

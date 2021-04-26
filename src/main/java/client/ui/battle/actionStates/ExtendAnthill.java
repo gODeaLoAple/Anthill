@@ -4,7 +4,6 @@ import client.domain.Game;
 import client.domain.entities.anthill.Anthill;
 
 import java.awt.*;
-import java.util.Arrays;
 
 public class ExtendAnthill extends ActionState {
     public ExtendAnthill(Game game) {
@@ -33,11 +32,27 @@ public class ExtendAnthill extends ActionState {
                 && isFreeShape(shape);
     }
 
+
     private boolean isShapeNearAnthill(Shape shape, Anthill anthill) {
         return game.getPartsMap().getNeighbours(shape).anyMatch(anthill::hasShape);
     }
     private boolean isFreeShape(Shape shape) {
-        return Arrays.stream(game.getPlayers()).noneMatch(x -> x.getAnthill().hasShape(shape));
+        var resourcesMap = game.getResourcesMap();
+        for(var player : game.getPlayers()){
+            var anthill = player.getAnthill();
+            for (var rsh : resourcesMap.getShapes()){
+                var rect = rsh.getBounds();
+                var centerPoint = new Point((int)rect.getCenterX(), (int)rect.getCenterY());
+                if (shape.contains(centerPoint) || shape.contains(rect)
+                        || (anthill.hasShape(game.getPartsMap().getShapeAtPoint(centerPoint))))
+                    return false;
+            }
+
+            if (anthill.hasShape(shape))
+                return false;
+        }
+
+        return true;
     }
 
     @Override

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class Anthill {
     public static final int RESOURCE_FOR_EXTEND = 60;
     public static final int RESOURCE_FOR_ATTACK = 20;
+    public static final int RESOURCE = 300; // NICE DELAEM
     private final AnthillPlace place;
     private final Resources resources;
 
@@ -42,7 +43,9 @@ public class Anthill {
     public AnthillPart getPartByShape(Shape shape){
         var parts = place.getShapes();
         for (var part: parts)
-            if (part.getShape().getBounds().x == shape.getBounds().x && part.getShape().getBounds().y == shape.getBounds().y) return part;
+            if (part.getShape().getBounds().x == shape.getBounds().x
+                    && part.getShape().getBounds().y == shape.getBounds().y)
+                return part;
         return null;
     }
 
