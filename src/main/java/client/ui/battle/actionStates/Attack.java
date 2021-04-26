@@ -31,13 +31,14 @@ public class Attack extends ActionState {
         var shape = game.getPartsMap().getShapeAtPoint(point);
         if (shape == null)
             return;
-        var res = game.getMainPlayer().getAnthill().getResources();
+        var mainAnthill = game.getMainPlayer().getAnthill();
         for (var player : game.getPlayers()) {
             var anthill = player.getAnthill();
             var part = anthill.getPartByShape(shape);
             if (part != null) {
                 if (canAttack(shape)){
-                    if (res.getCount() >= Anthill.RESOURCE_FOR_ATTACK){
+                    var res = mainAnthill.getResources();
+                    if (mainAnthill.hasEnoughResourcesToAttack()){
                         anthill.applyDamage(part, Anthill.RESOURCE_FOR_ATTACK);
                         res.apply(-Anthill.RESOURCE_FOR_ATTACK);
                     }

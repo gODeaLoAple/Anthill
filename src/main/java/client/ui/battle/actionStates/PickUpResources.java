@@ -1,6 +1,7 @@
 package client.ui.battle.actionStates;
 
 import client.domain.Game;
+import client.domain.entities.Anthill;
 
 import java.awt.*;
 
@@ -28,8 +29,9 @@ public class PickUpResources extends ActionState {
                     .getMainPlayer()
                     .getAnthill()
                     .getResources()
-                    .apply(1000);
+                    .apply(Anthill.RESOURCE);
             resourceMap.remove(shape);
+            resourceMap.spawnResources(game);
         }
     }
 

@@ -11,6 +11,7 @@ import client.ui.battle.BattleWindow;
 import javax.swing.*;
 import java.awt.*;
 
+
 public class Program {
     public static void main(String[] args) {
         var size = new Dimension(800, 600);

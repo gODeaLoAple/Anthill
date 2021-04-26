@@ -3,8 +3,8 @@ package client.domain.map;
 public class MapContainer {
 
     private final Map parts;
-    private final DynamicMap resources;
-    public MapContainer(Map parts, DynamicMap resources) {
+    private final ResourcesMap resources;
+    public MapContainer(Map parts, ResourcesMap resources) {
         this.parts = parts;
         this.resources = resources;
     }
@@ -13,7 +13,7 @@ public class MapContainer {
         return parts;
     }
 
-    public DynamicMap getResources() {
+    public ResourcesMap getResources() {
         return resources;
     }
 

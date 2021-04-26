@@ -14,4 +14,3 @@ public interface Map {
     Stream<Shape> getNeighbours(Shape shape);
 
 }
-

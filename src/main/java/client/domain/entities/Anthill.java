@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class Anthill {
     public static final int RESOURCE_FOR_EXTEND = 60;
     public static final int RESOURCE_FOR_ATTACK = 20;
+    public static final int RESOURCE = 300;
     private final AnthillPlace place;
     private final Resources resources;
 

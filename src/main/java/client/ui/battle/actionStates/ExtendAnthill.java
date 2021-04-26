@@ -33,6 +33,7 @@ public class ExtendAnthill extends ActionState {
                 && isFreeShape(shape);
     }
 
+
     private boolean isShapeNearAnthill(Shape shape, Anthill anthill) {
         return game.getPartsMap().getNeighbours(shape).anyMatch(anthill::hasShape);
     }

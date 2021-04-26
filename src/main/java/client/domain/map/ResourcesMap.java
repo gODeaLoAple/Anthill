@@ -1,5 +1,6 @@
 package client.domain.map;
 
+import client.domain.Game;
 import client.ui.Hexagon;
 
 import java.awt.*;
@@ -12,12 +13,11 @@ public class ResourcesMap implements DynamicMap {
 
     private final Dimension size;
     private final java.util.List<Shape> resourceShapes;
-    private final int maxResourceCountOnMap = 5;
+    public static final int maxResourceCountOnMap = 10;
 
     public ResourcesMap(Dimension size, Shape[] resourceShapes) {
         this.size = size;
         this.resourceShapes = new LinkedList<>(Arrays.asList(resourceShapes));
-        spawnResources();
     }
 
     @Override
@@ -49,21 +49,33 @@ public class ResourcesMap implements DynamicMap {
         return resourceShapes.toArray(new Shape[0]);
     }
 
-    public void spawnResources() {
-        if (resourceShapes.size() == maxResourceCountOnMap) {
-            return;
-        }
-        for(var i = 0; i < maxResourceCountOnMap; i++){
-            var rnd = new Random();
-            var rndX = rnd.nextInt(100);
-            var rndY = rnd.nextInt(100);
-            resourceShapes.add(new Hexagon(new Point(rndX, rndY), 20));
-        }
-
-    }
-
     @Override
     public Stream<Shape> getNeighbours(Shape shape) {
         return Stream.empty();
+    }
+
+    public void spawnResources(Game game) {
+        var size = resourceShapes.size();
+        if (size == maxResourceCountOnMap) {
+            return;
+        }
+
+        for (var i = 0; i < maxResourceCountOnMap - size; i++) {
+            var shape = getRandomShape();
+            var rect = shape.getBounds();
+            if (canAddResource(shape.getCenter(), game) && canAddResource(new Point(rect.x, rect.y), game))
+                resourceShapes.add(shape);
+            else spawnResources(game);
+        }
+    }
+
+    private Hexagon getRandomShape(){
+        var rnd = new Random();
+        var rndPoint = new Point(rnd.nextInt(600), rnd.nextInt(600));
+        return new Hexagon(new Point(rndPoint.x, rndPoint.y), 20);
+    }
+    private boolean canAddResource(Point rndPoint, Game game) {
+        var shape = game.getPartsMap().getShapeAtPoint(rndPoint);
+        return Arrays.stream(game.getPlayers()).noneMatch(x -> x.getAnthill().hasShape(shape));
     }
 }
