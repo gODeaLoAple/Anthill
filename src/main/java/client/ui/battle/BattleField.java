@@ -14,16 +14,17 @@ public class BattleField extends JPanel {
 
     private final Game game;
     private Point lastMousePosition = new Point();
-    private PlayerActionState state = new Idle();
+    private PlayerActionState state;
     private final ColorProvider colorProvider = new ColorProvider();
-    private final ShapeFiller filler = new ShapeFiller(Color.GREEN, Color.RED); // TODO хорошо бы сделать интерфейсом и пробрасывать через DI
+    private final IShapeFiller filler;
 
     private final Drawer[] drawers;
 
-    public BattleField(Game game) {
+    public BattleField(Game game, IShapeFiller filter) {
         super();
-
+        this.filler = filter;
         this.game = game;
+        state = new Idle(game);
         setFocusable(true);
         addMouseMotionListener(new MouseMotionAdapter() {
             @Override
@@ -37,7 +38,7 @@ public class BattleField extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                state.clicked(lastMousePosition, game);
+                state.clicked(lastMousePosition);
                 repaint();
             }
         });
@@ -47,9 +48,9 @@ public class BattleField extends JPanel {
             public void keyPressed(KeyEvent e) {
                 super.keyPressed(e);
                 switch (e.getKeyCode()) {
-                    case KeyEvent.VK_E -> setState(new ExtendAnthill());
-                    case KeyEvent.VK_A -> setState(new Attack());
-                    case KeyEvent.VK_P -> setState(new PickUpResources());
+                    case KeyEvent.VK_E -> setState(new ExtendAnthill(game));
+                    case KeyEvent.VK_A -> setState(new Attack(game));
+                    case KeyEvent.VK_P -> setState(new PickUpResources(game));
                 }
             }
 
@@ -83,7 +84,7 @@ public class BattleField extends JPanel {
         g2d.clearRect(clip.x, clip.y, clip.width, clip.height);
         for (var drawer : drawers)
             drawer.draw(g2d);
-        state.paint(lastMousePosition, g2d, game);
+        state.paint(lastMousePosition, g2d);
     }
 
 }

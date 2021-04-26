@@ -5,10 +5,14 @@ import client.ui.battle.ResourcePoint;
 
 import java.awt.*;
 
-public class PickUpResources implements PlayerActionState {
+public class PickUpResources extends ActionState {
+
+    public PickUpResources(Game game) {
+        super(game);
+    }
 
     @Override
-    public void paint(Point clickedPoint, Graphics2D graphics, Game game) {
+    public void paint(Point clickedPoint, Graphics2D graphics) {
         var shape = game.getResourcesMap().getShapeAtPoint(clickedPoint);
         if (shape != null) {
             graphics.setColor(Color.BLACK);
@@ -17,7 +21,7 @@ public class PickUpResources implements PlayerActionState {
     }
 
     @Override
-    public void clicked(Point point, Game game) {
+    public void clicked(Point point) {
         var map = game.getResourcesMap();
         var shape = game.getResourcesMap().getShapeAtPoint(point);
         if (shape instanceof ResourcePoint){

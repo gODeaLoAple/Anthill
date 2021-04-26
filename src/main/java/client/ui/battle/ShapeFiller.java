@@ -2,7 +2,7 @@ package client.ui.battle;
 
 import java.awt.*;
 
-public class ShapeFiller {
+public class ShapeFiller implements IShapeFiller {
 
     private final Color upper;
     private final Color bottom;
@@ -13,11 +13,11 @@ public class ShapeFiller {
         this.bottom = bottom;
     }
 
-    public void fill(Shape shape, Graphics2D graphics, double k) {
+    public void fill(Shape shape, Graphics2D graphics, double percents) {
         if (shape instanceof Hexagon) {
             var hexagon = (Hexagon)shape;
-            paintHexagon(hexagon, graphics, upper, 0, 1 - k);
-            paintHexagon(hexagon, graphics, bottom, hexagon.getBounds().height * (1 - k), k);
+            paintHexagon(hexagon, graphics, upper, 0, 1 - percents);
+            paintHexagon(hexagon, graphics, bottom, (1 - percents), percents);
         }
     }
 
@@ -28,7 +28,7 @@ public class ShapeFiller {
         var rectY = (int) (rectangle.getCenterY() - shape.getRadius());
         try {
             graphics.clipRect(rectX, (int) (rectY + (rectangle.height * k1)),
-                    rectangle.width, (int) (rectangle.height * k2));
+                    rectangle.width, (int) (rectangle.height * rectangle.height * k2));
             graphics.setColor(color);
             graphics.fill(shape);
         } finally {

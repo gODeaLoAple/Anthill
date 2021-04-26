@@ -25,15 +25,15 @@ public class BattleInfo extends JPanel {
         buttons.setLayout(new GridLayout(3, 1, 0, 5));
 
         var extendButton = new JButton("Расширить");
-        extendButton.addActionListener(e -> field.setState(new ExtendAnthill()));
+        extendButton.addActionListener(e -> field.setState(new ExtendAnthill(game)));
         buttons.add(extendButton, BorderLayout.NORTH);
 
         var attackButton = new JButton("Атаковать");
-        attackButton.addActionListener(e -> field.setState(new Attack()));
+        attackButton.addActionListener(e -> field.setState(new Attack(game)));
         buttons.add(attackButton, BorderLayout.CENTER);
 
         var pickupButton = new JButton("Собрать");
-        pickupButton.addActionListener(e -> field.setState(new PickUpResources()));
+        pickupButton.addActionListener(e -> field.setState(new PickUpResources(game)));
         buttons.add(pickupButton, BorderLayout.SOUTH);
 
         add(buttons, BorderLayout.CENTER);

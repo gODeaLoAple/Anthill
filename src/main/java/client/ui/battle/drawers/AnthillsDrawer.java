@@ -4,16 +4,16 @@ import client.domain.Game;
 import client.domain.entities.AnthillPart;
 import client.domain.entities.Player;
 import client.ui.battle.ColorProvider;
-import client.ui.battle.ShapeFiller;
+import client.ui.battle.IShapeFiller;
 
 import java.awt.*;
 
 public class AnthillsDrawer extends GameDrawer {
 
     private final ColorProvider colorProvider;
-    private final ShapeFiller filler;
+    private final IShapeFiller filler;
 
-    public AnthillsDrawer(Game game, ColorProvider provider, ShapeFiller filler) {
+    public AnthillsDrawer(Game game, ColorProvider provider, IShapeFiller filler) {
         super(game);
         this.colorProvider = provider;
         this.filler = filler;
@@ -42,8 +42,8 @@ public class AnthillsDrawer extends GameDrawer {
                 .forEach(ap -> {
                     var shape = ap.getShape();
                     var health = ap.getHealth();
-                    var k = (double) health / AnthillPart.MAX_HEALTH;
-                    filler.fill(shape, graphics, k);
+                    var percents = (double) health / AnthillPart.MAX_HEALTH;
+                    filler.fill(shape, graphics, percents);
                 });
     }
 }

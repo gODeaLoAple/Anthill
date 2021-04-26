@@ -6,10 +6,14 @@ import client.domain.entities.Anthill;
 import java.awt.*;
 import java.util.Arrays;
 
-public class Attack implements PlayerActionState {
+public class Attack extends ActionState {
+
+    public Attack(Game game) {
+        super(game);
+    }
 
     @Override
-    public void paint(Point clickedPoint, Graphics2D graphics, Game game) {
+    public void paint(Point clickedPoint, Graphics2D graphics) {
         var shape = game.getPartsMap().getShapeAtPoint(clickedPoint);
         if (shape != null && canAttack(shape, game)) {
             graphics.setColor(Color.RED);
@@ -23,7 +27,7 @@ public class Attack implements PlayerActionState {
     }
 
     @Override
-    public void clicked(Point point, Game game) {
+    public void clicked(Point point) {
         var shape = game.getPartsMap().getShapeAtPoint(point);
         if (shape == null)
             return;

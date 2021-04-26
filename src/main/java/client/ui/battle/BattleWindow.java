@@ -12,7 +12,7 @@ public class BattleWindow extends JPanel {
         super();
         setLayout(new BorderLayout());
 
-        var field = new BattleField(game);
+        var field = new BattleField(game,  new ShapeFiller(Color.RED, Color.BLUE));
         var info = new BattleInfo(game, field);
 
         add(field, BorderLayout.CENTER);
