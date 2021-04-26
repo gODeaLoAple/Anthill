@@ -39,7 +39,7 @@ public class HexagonalMap implements Map {
         var hexagon = (Hexagon) shape; // TODO плохо, скорее всего, нужно использовать Generics
         var center = hexagon.getCenter();
         return Arrays.stream(hexagons)
-                .filter(x -> x.getCenter().distanceSq(center) <= 3 * radius * radius + radius / 3.0)
+                .filter(x -> x.getCenter().distanceSq(center) <= 3 * (radius + 1) * (radius + 1))
                 .map(x -> x);
     }
 

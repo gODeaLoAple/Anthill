@@ -28,18 +28,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a7cff3a-ce77-4ca7-aefc-6773e6062a27" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/entities/Anthill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/entities/Anthill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/map/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/map/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/map/MapContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/map/MapContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/map/ResourcesMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/map/ResourcesMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/HexagonalMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/HexagonalMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/ShapeFiller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/ShapeFiller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/Attack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/Attack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/HexagonalMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/HexagonalMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/ExtendAnthill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/ExtendAnthill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/PickUpResources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/PickUpResources.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/drawers/AnthillsDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/drawers/AnthillsDrawer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
