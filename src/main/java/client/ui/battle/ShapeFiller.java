@@ -1,7 +1,5 @@
 package client.ui.battle;
 
-import client.ui.Hexagon;
-
 import java.awt.*;
 
 public class ShapeFiller {

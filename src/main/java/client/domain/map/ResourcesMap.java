@@ -2,17 +2,18 @@ package client.domain.map;
 
 import java.awt.*;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.stream.Stream;
 
 public class ResourcesMap implements DynamicMap {
 
     private final Dimension size;
-    private final java.util.List<Shape> resourceShapes;
+    private final HashSet<Shape> resourceShapes;
 
     public ResourcesMap(Dimension size, Shape[] resourceShapes) {
 
         this.size = size;
-        this.resourceShapes = Arrays.asList(resourceShapes);
+        this.resourceShapes = new HashSet<>(Arrays.asList(resourceShapes));
     }
 
     @Override

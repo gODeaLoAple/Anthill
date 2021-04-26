@@ -1,6 +1,7 @@
 package client.ui.battle.actionStates;
 
 import client.domain.Game;
+import client.ui.battle.ResourcePoint;
 
 import java.awt.*;
 
@@ -17,7 +18,13 @@ public class PickUpResources implements PlayerActionState {
 
     @Override
     public void clicked(Point point, Game game) {
-
+        var map = game.getResourcesMap();
+        var shape = game.getResourcesMap().getShapeAtPoint(point);
+        if (shape instanceof ResourcePoint){
+            var resource = (ResourcePoint)shape;
+            game.getMainPlayer().getAnthill().getResources().change(resource.getResources());
+            map.remove(shape);
+        }
     }
 
 }

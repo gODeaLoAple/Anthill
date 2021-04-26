@@ -12,8 +12,8 @@ public class Attack implements PlayerActionState {
     public void paint(Point clickedPoint, Graphics2D graphics, Game game) {
         var shape = game.getPartsMap().getShapeAtPoint(clickedPoint);
         if (shape != null && canAttack(shape, game)) {
-            graphics.setColor(Color.BLACK);
-            graphics.fill(shape);
+            graphics.setColor(Color.RED);
+            graphics.draw(shape);
         }
     }
 
@@ -35,7 +35,7 @@ public class Attack implements PlayerActionState {
                 if (canAttack(shape, game)){
                     if (res.getCount() >= Anthill.RESOURCE_FOR_ATTACK){
                         anthill.applyDamage(part, 20);
-                        res.apply(Anthill.RESOURCE_FOR_ATTACK);
+                        res.change(-Anthill.RESOURCE_FOR_ATTACK);
                     }
                 }
                 break;

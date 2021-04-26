@@ -1,6 +1,7 @@
-package client.ui;
+package client.ui.battle;
 
 import client.domain.map.Map;
+import client.ui.battle.Hexagon;
 
 import java.awt.*;
 import java.util.ArrayList;
