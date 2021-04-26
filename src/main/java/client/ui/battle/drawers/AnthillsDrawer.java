@@ -30,6 +30,7 @@ public class AnthillsDrawer extends GameDrawer {
                 graphics.setColor(Color.BLACK);
                 graphics.draw(part.getShape());
             }
+
             drawAttackPart(graphics, player);
         }
     }
@@ -43,7 +44,6 @@ public class AnthillsDrawer extends GameDrawer {
                     var shape = ap.getShape();
                     var percents = (double) ap.getHealth() / AnthillPart.MAX_HEALTH;
                     filler.fill(shape, graphics, percents);
-
                 });
     }
 }

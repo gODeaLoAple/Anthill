@@ -55,7 +55,6 @@ public class ExtendAnthill extends ActionState {
         }
 
         return true;
-        //return Arrays.stream(game.getPlayers()).noneMatch(x -> x.getAnthill().hasShape(shape));
     }
 
     @Override

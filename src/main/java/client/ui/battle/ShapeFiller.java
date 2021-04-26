@@ -23,11 +23,13 @@ public class ShapeFiller implements IShapeFiller {
     private void paintHexagon(Hexagon shape, Graphics2D graphics, Color color, double k1, double k2){
         var rectangle = shape.getBounds();
         var radius = shape.getRadius();
-        var rectX = (int) (rectangle.getCenterX() - radius * Math.sqrt(3) / 2);
-        var rectY = (int) (rectangle.getCenterY() - radius);
+        var rectX = (rectangle.getCenterX() - radius * Math.sqrt(3) / 2);
+        var rectY = (rectangle.getCenterY() - radius);
         try {
-            graphics.clipRect(rectX, (int) (rectY + (rectangle.height * k1)),
-                    rectangle.width, (int) (rectangle.height * rectangle.height * k2));
+            graphics.clipRect((int)rectX,
+                    (int) (rectY + (rectangle.height * k1)),
+                    rectangle.width,
+                    (int) (rectangle.height * rectangle.height * k2));
             graphics.setColor(color);
             graphics.fill(shape);
         } finally {
