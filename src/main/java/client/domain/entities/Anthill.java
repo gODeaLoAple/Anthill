@@ -32,7 +32,7 @@ public class Anthill {
     }
 
     public void extend(Shape shape) {
-        resources.apply(-RESOURCE_FOR_EXTEND);
+        resources.change(-RESOURCE_FOR_EXTEND);
         place.add(shape);
     }
 

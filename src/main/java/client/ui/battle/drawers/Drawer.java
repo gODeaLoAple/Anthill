@@ -1,7 +1,5 @@
 package client.ui.battle.drawers;
 
-import client.domain.Game;
-
 import java.awt.*;
 
 public interface Drawer {

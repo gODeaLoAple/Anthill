@@ -3,7 +3,7 @@ package client.ui.battle.drawers;
 import client.domain.Game;
 import client.domain.entities.AnthillPart;
 import client.domain.entities.Player;
-import client.ui.ColorProvider;
+import client.ui.battle.ColorProvider;
 import client.ui.battle.IShapeFiller;
 
 import java.awt.*;
@@ -41,8 +41,9 @@ public class AnthillsDrawer extends GameDrawer {
                 .filter(x -> x.getHealth() < AnthillPart.MAX_HEALTH)
                 .forEach(ap -> {
                     var shape = ap.getShape();
-                    var percent = (double) ap.getHealth() / AnthillPart.MAX_HEALTH;
-                    filler.fill(shape, graphics, percent);
+                    var percents = (double) ap.getHealth() / AnthillPart.MAX_HEALTH;
+                    filler.fill(shape, graphics, percents);
+
                 });
     }
 }

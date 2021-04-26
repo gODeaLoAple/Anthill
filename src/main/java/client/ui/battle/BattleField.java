@@ -1,7 +1,6 @@
 package client.ui.battle;
 
 import client.domain.Game;
-import client.ui.ColorProvider;
 import client.ui.battle.actionStates.*;
 import client.ui.battle.drawers.AnthillsDrawer;
 import client.ui.battle.drawers.Drawer;

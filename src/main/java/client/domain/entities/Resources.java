@@ -14,8 +14,8 @@ public class Resources {
         return count;
     }
 
-    public void apply(int count) {
-        this.count += count;
+    public void change(int difference) {
+        this.count += difference;
     }
 
 }

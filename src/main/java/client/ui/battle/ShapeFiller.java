@@ -1,8 +1,5 @@
 package client.ui.battle;
 
-import client.domain.entities.AnthillPart;
-import client.ui.Hexagon;
-
 import java.awt.*;
 
 public class ShapeFiller implements IShapeFiller {

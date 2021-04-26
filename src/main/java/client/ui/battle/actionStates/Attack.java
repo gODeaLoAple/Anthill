@@ -15,13 +15,13 @@ public class Attack extends ActionState {
     @Override
     public void paint(Point clickedPoint, Graphics2D graphics) {
         var shape = game.getPartsMap().getShapeAtPoint(clickedPoint);
-        if (shape != null && canAttack(shape)) {
-            graphics.setColor(Color.BLACK);
-            graphics.fill(shape);
+        if (shape != null && canAttack(shape, game)) {
+            graphics.setColor(Color.RED);
+            graphics.draw(shape);
         }
     }
 
-    private boolean canAttack(Shape shape){
+    private boolean canAttack(Shape shape, Game game) {
         return !game.getMainPlayer().getAnthill().hasShape(shape)
                 && Arrays.stream(game.getPlayers()).anyMatch(x -> x.getAnthill().hasShape(shape));
     }
@@ -36,11 +36,11 @@ public class Attack extends ActionState {
             var anthill = player.getAnthill();
             var part = anthill.getPartByShape(shape);
             if (part != null) {
-                if (canAttack(shape)){
+                if (canAttack(shape, game)) {
                     var res = mainAnthill.getResources();
-                    if (mainAnthill.hasEnoughResourcesToAttack()){
+                    if (mainAnthill.hasEnoughResourcesToAttack()) {
                         anthill.applyDamage(part, Anthill.RESOURCE_FOR_ATTACK);
-                        res.apply(-Anthill.RESOURCE_FOR_ATTACK);
+                        res.change(-Anthill.RESOURCE_FOR_ATTACK);
                     }
                 }
                 break;

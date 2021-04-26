@@ -1,7 +1,7 @@
 package client.domain.map;
 
 import client.domain.Game;
-import client.ui.Hexagon;
+import client.ui.battle.Hexagon;
 
 import java.awt.*;
 import java.util.Arrays;
@@ -71,7 +71,7 @@ public class ResourcesMap implements DynamicMap {
 
     private Hexagon getRandomShape(){
         var rnd = new Random();
-        var rndPoint = new Point(rnd.nextInt(600), rnd.nextInt(600));
+        var rndPoint = new Point(rnd.nextInt(800), rnd.nextInt(600));
         return new Hexagon(new Point(rndPoint.x, rndPoint.y), 20);
     }
     private boolean canAddResource(Point rndPoint, Game game) {

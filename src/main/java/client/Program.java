@@ -4,8 +4,9 @@ import client.domain.*;
 import client.domain.entities.*;
 import client.domain.map.MapContainer;
 import client.domain.map.ResourcesMap;
-import client.ui.Hexagon;
-import client.ui.HexagonalMap;
+import client.ui.battle.Hexagon;
+import client.ui.battle.HexagonResourcePoint;
+import client.ui.battle.HexagonalMap;
 import client.ui.battle.BattleWindow;
 
 import javax.swing.*;
@@ -16,7 +17,12 @@ public class Program {
     public static void main(String[] args) {
         var size = new Dimension(800, 600);
         var map = new HexagonalMap(size.width, size.height, 60);
-        var resourcesMap = new ResourcesMap(size, new Shape[] { new Hexagon(new Point(200, 300), 20) });
+        var resourcesMap = new ResourcesMap(size, new Shape[]
+                {
+                        new HexagonResourcePoint(new Point(200, 300), 20, 20),
+                        new HexagonResourcePoint(new Point(200, 400), 20, 20),
+                        new HexagonResourcePoint(new Point(200, 500), 20, 20),
+                });
         var container = new MapContainer(map, resourcesMap);
         var players = new Player[] {
             new Player(0, new Anthill(new AnthillPlace(new AnthillPart[]{
