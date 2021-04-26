@@ -22,29 +22,30 @@
     <select>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:dev" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a7cff3a-ce77-4ca7-aefc-6773e6062a27" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/domain/map/DynamicMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/domain/map/MapContainer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/domain/map/ResourcesMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/HexagonResourcePoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/ResourcePoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Anthill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/entities/Anthill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/AnthillPart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/entities/AnthillPart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/AnthillPlace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/entities/AnthillPlace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/map/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/entities/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/Resources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/entities/Resources.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/HexagonalMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/HexagonalMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/entities/Anthill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/entities/Anthill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/entities/Resources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/entities/Resources.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/map/ResourcesMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/map/ResourcesMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/ColorProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/ColorProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/Hexagon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/Hexagon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/HexagonalMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/HexagonalMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/BattleField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/BattleField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/ShapeFiller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/ShapeFiller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/Attack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/Attack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/ExtendAnthill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/ExtendAnthill.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/PickUpResources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/actionStates/PickUpResources.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/drawers/AnthillsDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/drawers/AnthillsDrawer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/drawers/Drawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/drawers/Drawer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/drawers/GameDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/drawers/GameDrawer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,7 +233,28 @@
       <option name="project" value="LOCAL" />
       <updated>1618940288085</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add resources on map">
+      <created>1619293172550</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1619293172550</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Refactor ui">
+      <created>1619295380443</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1619295380443</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add neighbour-test on extend anthill state">
+      <created>1619297252308</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1619297252308</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,7 +265,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="dev" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -256,41 +290,43 @@
     <MESSAGE value="Implement some ui features&#10;Refactor packages" />
     <MESSAGE value="Merge branch remote dev into dev" />
     <MESSAGE value="Add resources on map" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add resources on map" />
+    <MESSAGE value="Refactor ui" />
+    <MESSAGE value="Add neighbour-test on extend anthill state" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add neighbour-test on extend anthill state" />
   </component>
   <component name="WindowStateProjectService">
     <state x="733" y="12" key="#Auto_Import" timestamp="1619292713669">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="733" y="12" key="#Auto_Import/0.0.1920.1040@0.0.1920.1040" timestamp="1619292713669" />
-    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1619178607587">
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1619424974186">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1619178607587" />
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1619424974186" />
     <state x="754" y="225" key="#com.intellij.refactoring.move.moveInstanceMethod.MoveInstanceMethodDialog" timestamp="1619015591177">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="754" y="225" key="#com.intellij.refactoring.move.moveInstanceMethod.MoveInstanceMethodDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619015591177" />
-    <state width="1877" height="166" key="GridCell.Tab.0.bottom" timestamp="1619293159842">
+    <state width="1877" height="166" key="GridCell.Tab.0.bottom" timestamp="1619425918519">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="166" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1619077922779" />
-    <state width="1877" height="166" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1619293159842" />
-    <state width="1877" height="166" key="GridCell.Tab.0.center" timestamp="1619293159842">
+    <state width="1877" height="166" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1619425918519" />
+    <state width="1877" height="166" key="GridCell.Tab.0.center" timestamp="1619425918519">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="166" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1619077922779" />
-    <state width="1877" height="166" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1619293159842" />
-    <state width="1877" height="166" key="GridCell.Tab.0.left" timestamp="1619293159842">
+    <state width="1877" height="166" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1619425918519" />
+    <state width="1877" height="166" key="GridCell.Tab.0.left" timestamp="1619425918519">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="166" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1619077922779" />
-    <state width="1877" height="166" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1619293159842" />
-    <state width="1877" height="166" key="GridCell.Tab.0.right" timestamp="1619293159842">
+    <state width="1877" height="166" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1619425918519" />
+    <state width="1877" height="166" key="GridCell.Tab.0.right" timestamp="1619425918519">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1323" height="166" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1619077922779" />
-    <state width="1877" height="166" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1619293159842" />
+    <state width="1877" height="166" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1619425918519" />
     <state width="1323" height="223" key="GridCell.Tab.1.bottom" timestamp="1619015611689">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -311,13 +347,26 @@
     </state>
     <state width="1323" height="223" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1619000560572" />
     <state width="1323" height="223" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1619015611689" />
+    <state x="184" y="86" key="MergeDialog" timestamp="1619293334823">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="184" y="86" key="MergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619293334823" />
+    <state x="598" y="281" key="MultipleFileMergeDialog" timestamp="1619293334827">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="598" y="281" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619293334827" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1619177246607">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1619177246607" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1618997706055">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="552" y="240" key="Vcs.Push.Dialog.v2" timestamp="1619297422933">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="240" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1619297422933" />
+    <state x="486" y="70" width="945" height="969" key="search.everywhere.popup" timestamp="1619293660790">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1618997706055" />
+    <state x="486" y="70" width="945" height="969" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1619293660790" />
   </component>
 </project>
