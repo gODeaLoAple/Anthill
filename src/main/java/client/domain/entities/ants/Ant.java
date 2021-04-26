@@ -1,4 +1,4 @@
-package client.Entities;
+package client.domain.entities.ants;
 
 
 import java.awt.*;

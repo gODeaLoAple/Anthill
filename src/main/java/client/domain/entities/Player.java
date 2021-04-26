@@ -1,5 +1,7 @@
 package client.domain.entities;
 
+import client.domain.entities.anthill.Anthill;
+
 public class Player {
     private final int id;
     private final Anthill anthill;

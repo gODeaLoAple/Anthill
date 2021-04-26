@@ -54,6 +54,7 @@ public class ResourcesMap implements DynamicMap {
         return Stream.empty();
     }
 
+    // TODO в отдельный объект ResourceSpawner
     public void spawnResources(Game game) {
         var size = resourceShapes.size();
         if (size == maxResourceCountOnMap) {
@@ -65,7 +66,8 @@ public class ResourcesMap implements DynamicMap {
             var rect = shape.getBounds();
             if (canAddResource(shape.getCenter(), game) && canAddResource(new Point(rect.x, rect.y), game))
                 resourceShapes.add(shape);
-            else spawnResources(game);
+            else
+                spawnResources(game);
         }
     }
 

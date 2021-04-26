@@ -1,9 +1,8 @@
 package client.ui.battle.actionStates;
 
 import client.domain.Game;
+import client.domain.entities.anthill.Anthill;
 
-import client.domain.entities.Anthill;
-import client.ui.battle.ResourcePoint;
 
 import java.awt.*;
 

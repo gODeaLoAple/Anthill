@@ -1,4 +1,4 @@
-package client.Entities;
+package client.domain.entities.ants;
 
 public class SlaveAnt extends Ant{
     private final int health = 100;
