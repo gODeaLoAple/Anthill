@@ -27,7 +27,13 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a7cff3a-ce77-4ca7-aefc-6773e6062a27" name="Default Changelist" comment="Add resources on map" />
+    <list default="true" id="1a7cff3a-ce77-4ca7-aefc-6773e6062a27" name="Default Changelist" comment="Add resources on map">
+      <change afterPath="$PROJECT_DIR$/src/main/java/client/domain/algorithm/ChaoticMovement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/entities/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/entities/Vector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/entities/ants/Ant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/entities/ants/Ant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/BattleInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/BattleInfo.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,8 +46,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -71,6 +77,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/client" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -117,6 +124,17 @@
       <option name="ALTERNATIVE_JRE_PATH" value="15" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <module name="Anthill" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -178,6 +196,9 @@
       <workItem from="1618570981942" duration="6000" />
       <workItem from="1619436789656" duration="296000" />
       <workItem from="1619437267656" duration="1891000" />
+      <workItem from="1619441574999" duration="84000" />
+      <workItem from="1619460866200" duration="7000" />
+      <workItem from="1619593842459" duration="3475000" />
     </task>
     <task id="LOCAL-00001" summary="First attempts">
       <created>1617615464453</created>
