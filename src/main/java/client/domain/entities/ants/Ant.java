@@ -4,25 +4,35 @@ package client.domain.entities.ants;
 import java.awt.*;
 
 public abstract class Ant {
-    public int id;
-    public int health;
-    public int speed;
-    public Point position;
-    public Point direction;
+    private int health;
+    private Point position;
+    private Point direction;
 
-    public void setPosition(int x, int y){
-        position = new Point(x, y);
+    public Ant(Point point, int health) {
+        this.health = health;
+        position = point;
     }
-
-    public void move(){
-        position = new Point(0, 0);
-    }
-
     public void applyDamage(int damage){
         health -= damage;
     }
 
-    public void setId(int id){
-        this.id = id;
+    public int getHealth() {
+        return health;
+    }
+
+    public Point getDirection() {
+        return direction;
+    }
+
+    public void setDirection(Point direction) {
+        this.direction = direction;
+    }
+
+    public Point getPosition() {
+        return position;
+    }
+
+    public void setPosition(Point position) {
+        this.position = position;
     }
 }

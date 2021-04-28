@@ -6,7 +6,7 @@ import client.domain.entities.anthill.Anthill;
 import client.domain.entities.anthill.AnthillPart;
 import client.domain.entities.anthill.AnthillPlace;
 import client.domain.entities.anthill.Resources;
-import client.domain.map.AntsMap;
+import client.domain.entities.ants.SlaveAnt;
 import client.domain.map.MapContainer;
 import client.domain.map.ResourcesMap;
 import client.ui.battle.HexagonResourcePoint;
@@ -27,8 +27,7 @@ public class Program {
                         new HexagonResourcePoint(new Point(200, 400), 20, 20),
                         new HexagonResourcePoint(new Point(200, 500), 20, 20),
                 });
-        var ants = new AntsMap(size, new Shape[0]);
-        var container = new MapContainer(map, resourcesMap, ants);
+        var container = new MapContainer(map, resourcesMap);
         var players = new Player[] {
             new Player(0, new Anthill(new AnthillPlace(new AnthillPart[]{
                     new AnthillPart(map.hexagons[5], 100, 100),
@@ -39,6 +38,7 @@ public class Program {
                     new AnthillPart(map.hexagons[2], 100, 100),
             }), new Resources()))
         };
+        players[1].getAnthill().addAnt(new SlaveAnt(new Point(500, 500), 100));
         var game = new Game(container, players);
 
         SwingUtilities.invokeLater(() -> {
