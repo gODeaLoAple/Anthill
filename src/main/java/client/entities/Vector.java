@@ -9,6 +9,8 @@ public class Vector {
         this.point = point;
     }
 
+    public Point getPoint() { return point; }
+
     public Vector multiply(int d) {
         return new Vector(new Point(point.x * d, point.y * d));
     }

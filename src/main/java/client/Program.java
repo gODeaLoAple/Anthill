@@ -1,6 +1,7 @@
 package client;
 
 import client.domain.*;
+import client.domain.algorithm.ChaoticMovement;
 import client.domain.entities.*;
 import client.domain.entities.anthill.Anthill;
 import client.domain.entities.anthill.AnthillPart;
@@ -31,12 +32,12 @@ public class Program {
         var players = new Player[] {
             new Player(0, new Anthill(new AnthillPlace(new AnthillPart[]{
                     new AnthillPart(map.hexagons[5], 100, 100),
-            }), new Resources(1000))),
+            }), new Resources(1000), new ChaoticMovement(new Point(500, 500)))),
             new Player(1, new Anthill(new AnthillPlace(new AnthillPart[] {
                     new AnthillPart(map.hexagons[0], 100, 100),
                     new AnthillPart(map.hexagons[1], 100, 100),
                     new AnthillPart(map.hexagons[2], 100, 100),
-            }), new Resources()))
+            }), new Resources(), new ChaoticMovement(new Point(100,100))))
         };
         players[1].getAnthill().addAnt(new SlaveAnt(new Point(500, 500), 100));
         var game = new Game(container, players);

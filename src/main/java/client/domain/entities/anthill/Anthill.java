@@ -1,5 +1,6 @@
 package client.domain.entities.anthill;
 
+import client.domain.algorithm.ChaoticMovement;
 import client.domain.entities.ants.Ant;
 
 import java.awt.*;
@@ -13,11 +14,13 @@ public class Anthill {
     private final AnthillPlace place;
     private final Resources resources;
     private final List<Ant> ants;
+    private final ChaoticMovement movement;
     
-    public Anthill(AnthillPlace startOwnLand, Resources resources) {
+    public Anthill(AnthillPlace startOwnLand, Resources resources, ChaoticMovement movement) {
         place = startOwnLand;
         this.resources = resources;
         ants = new ArrayList<>();
+        this.movement = movement;
     }
     
     public List<Ant> getAnts() { return ants;}
@@ -67,5 +70,8 @@ public class Anthill {
         return place;
     }
 
+    public ChaoticMovement getMovement() {
+        return movement;
+    }
 }
 
