@@ -15,4 +15,7 @@ public class MasterAnt extends Ant{
     public void protectColony(){
 
     }
+    private final int health = 300;
+    private final int speed = 15;
+    private final int id = 1;
 }
