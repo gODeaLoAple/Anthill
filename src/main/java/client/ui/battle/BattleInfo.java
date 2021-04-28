@@ -17,7 +17,7 @@ public class BattleInfo extends JPanel {
 
         this.game = game;
 
-        resourcesLabel = new Label("Ресурсы: " + game.getMainPlayer().getAnthill().getResources());
+        resourcesLabel = new Label("Ресурсы: " + game.getMainPlayer().getAnthill().getResources().getCount());
         setLayout(new BorderLayout());
         add(resourcesLabel, BorderLayout.NORTH);
 
