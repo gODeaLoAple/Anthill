@@ -28,11 +28,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a7cff3a-ce77-4ca7-aefc-6773e6062a27" name="Default Changelist" comment="Add resources on map">
-      <change afterPath="$PROJECT_DIR$/src/main/java/client/domain/algorithm/ChaoticMovement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/entities/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/entities/Vector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/entities/ants/Ant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/entities/ants/Ant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/client/ui/battle/BattleInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/ui/battle/BattleInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/entities/ants/MasterAnt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/entities/ants/MasterAnt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/client/domain/entities/ants/SlaveAnt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/client/domain/entities/ants/SlaveAnt.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,7 +196,7 @@
       <workItem from="1619437267656" duration="1891000" />
       <workItem from="1619441574999" duration="84000" />
       <workItem from="1619460866200" duration="7000" />
-      <workItem from="1619593842459" duration="3475000" />
+      <workItem from="1619593842459" duration="4537000" />
     </task>
     <task id="LOCAL-00001" summary="First attempts">
       <created>1617615464453</created>
