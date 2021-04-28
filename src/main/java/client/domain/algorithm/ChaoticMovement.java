@@ -14,15 +14,9 @@ public class ChaoticMovement {
     public ChaoticMovement(Point location){
         this.location = location;
         rnd = new Random();
-
     }
 
-
-    private Point normalizedVector(Point point){
-        return new Vector(point).normalized();
-    }
-
-    public void getRandomPoint(Ant[] ants){
+    public void moveAll(Ant[] ants){
 
         for (var ant : ants){
             var source = ant.getPosition();
