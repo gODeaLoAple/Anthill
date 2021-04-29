@@ -8,6 +8,7 @@ import client.ui.battle.IShapeFiller;
 
 import java.awt.*;
 
+
 public class AnthillsDrawer extends GameDrawer {
 
     private final ColorProvider colorProvider;

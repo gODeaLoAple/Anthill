@@ -1,7 +1,11 @@
 package client.domain.entities.anthill;
 
+import client.domain.algorithm.ChaoticMovement;
+import client.domain.entities.ants.Ant;
+
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Anthill {
     public static final int RESOURCE_FOR_EXTEND = 60;
@@ -9,10 +13,19 @@ public class Anthill {
     public static final int RESOURCE = 300; // NICE DELAEM
     private final AnthillPlace place;
     private final Resources resources;
-
-    public Anthill(AnthillPlace startOwnLand, Resources resources) {
+    private final List<Ant> ants;
+    private final ChaoticMovement movement;
+    
+    public Anthill(AnthillPlace startOwnLand, Resources resources, ChaoticMovement movement) {
         place = startOwnLand;
         this.resources = resources;
+        ants = new ArrayList<>();
+        this.movement = movement;
+    }
+    
+    public List<Ant> getAnts() { return ants;}
+    public void addAnt(Ant ant) {
+        ants.add(ant);
     }
 
     public Resources getResources() {
@@ -57,4 +70,8 @@ public class Anthill {
         return place;
     }
 
+    public ChaoticMovement getMovement() {
+        return movement;
+    }
 }
+

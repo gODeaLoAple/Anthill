@@ -2,8 +2,8 @@ package client.ui.battle;
 
 import client.domain.Game;
 import client.ui.battle.actionStates.*;
+import client.ui.battle.drawers.AntDrawer;
 import client.ui.battle.drawers.AnthillsDrawer;
-import client.ui.battle.drawers.AntsDrawer;
 import client.ui.battle.drawers.Drawer;
 import client.ui.battle.drawers.ResourceDrawer;
 
@@ -69,7 +69,7 @@ public class BattleField extends JPanel {
         return new Drawer[] {
             new AnthillsDrawer(game, colorProvider, filler),
             new ResourceDrawer(game),
-            new AntsDrawer(game),
+            new AntDrawer(game),
         };
     }
 
@@ -84,10 +84,20 @@ public class BattleField extends JPanel {
         var g2d = (Graphics2D) g;
         var clip = g.getClip().getBounds();
         g2d.clearRect(clip.x, clip.y, clip.width, clip.height);
-        for (var drawer : drawers)
-            drawer.draw(g2d);
-        state.paint(lastMousePosition, g2d);
-    }
 
+        for (var player : game.getPlayers())
+            if (!game.checkIsAlive(player)){
+                game.removePLayer(player);
+            }
+
+        if (game.isGameOver()){
+            g2d.drawString("Game Over", 100, 100);
+        }
+        else {
+            for (var drawer : drawers)
+                drawer.draw(g2d);
+            state.paint(lastMousePosition, g2d);
+        }
+    }
 }
 
