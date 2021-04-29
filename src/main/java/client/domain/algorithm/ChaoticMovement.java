@@ -3,6 +3,7 @@ package client.domain.algorithm;
 import client.domain.entities.ants.Ant;
 
 import java.awt.*;
+import java.awt.geom.Point2D;
 import java.util.List;
 import java.util.Random;
 import client.entities.Vector;
@@ -15,6 +16,10 @@ public class ChaoticMovement {
     public ChaoticMovement(Point location){
         this.location = location;
         rnd = new Random();
+    }
+
+    public void setLocation(Point location) {
+        this.location = new Point(location);
     }
 
     public void moveAll(List<Ant> ants){
@@ -34,7 +39,17 @@ public class ChaoticMovement {
             var dx = vector.getPoint().x * ant.getSpeed() / length;
             var dy = vector.getPoint().y * ant.getSpeed() / length;
             source.translate((int)dx, (int)dy);
-            System.out.println(dest);
         }
+    }
+
+    public boolean isAnyInRadius(List<Ant> ants) {
+        return ants.stream().anyMatch(x -> {
+            var position = x.getPosition();
+            return Point.distanceSq(position.x, position.y, location.x, location.y) <= radius * radius;
+        });
+    }
+
+    public Point getLocation() {
+        return location;
     }
 }

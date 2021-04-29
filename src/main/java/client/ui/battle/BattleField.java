@@ -1,6 +1,7 @@
 package client.ui.battle;
 
 import client.domain.Game;
+import client.domain.entities.anthill.Anthill;
 import client.ui.battle.actionStates.*;
 import client.ui.battle.drawers.AntDrawer;
 import client.ui.battle.drawers.AnthillsDrawer;
@@ -10,23 +11,27 @@ import client.ui.battle.drawers.ResourceDrawer;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Arrays;
 
 public class BattleField extends JPanel {
 
     private final Game game;
     private Point lastMousePosition = new Point();
     private PlayerActionState state;
+    private final ImageProvider imageProvider;
     private final ColorProvider colorProvider = new ColorProvider();
     private final IShapeFiller filler;
 
     private final Drawer[] drawers;
 
-    public BattleField(Game game, IShapeFiller filter) {
+    public BattleField(Game game, IShapeFiller filter, ImageProvider imageProvider) {
         super();
         this.filler = filter;
         this.game = game;
         state = new Idle(game);
+        this.imageProvider = imageProvider;
         setFocusable(true);
+
         addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {
@@ -69,7 +74,7 @@ public class BattleField extends JPanel {
         return new Drawer[] {
             new AnthillsDrawer(game, colorProvider, filler),
             new ResourceDrawer(game),
-            new AntDrawer(game),
+            new AntDrawer(game, imageProvider),
         };
     }
 
@@ -84,19 +89,37 @@ public class BattleField extends JPanel {
         var g2d = (Graphics2D) g;
         var clip = g.getClip().getBounds();
         g2d.clearRect(clip.x, clip.y, clip.width, clip.height);
-
         for (var player : game.getPlayers())
             if (!game.checkIsAlive(player)){
                 game.removePLayer(player);
             }
 
         if (game.isGameOver()){
-            g2d.drawString("Game Over", 100, 100);
+            g2d.drawString("Game Over " + game.getMainPlayer().getId(), 100, 100);
         }
         else {
+            logic();
+
+        }
             for (var drawer : drawers)
                 drawer.draw(g2d);
             state.paint(lastMousePosition, g2d);
+    }
+
+    public void logic() {
+        var resourceMap = game.getResourcesMap();
+        for (var player : game.getPlayers()) {
+            var anthill = player.getAnthill();
+            var movement = anthill.getMovement();
+            var shape = resourceMap.getShapeAtPoint(movement.getLocation());
+            if (shape != null && movement.isAnyInRadius(anthill.getAnts())) {
+                    anthill
+                            .getResources()
+                            .change(Anthill.RESOURCE);
+                    resourceMap.remove(shape);
+                    resourceMap.spawnResources(game);
+
+            }
         }
     }
 }

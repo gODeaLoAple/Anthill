@@ -1,6 +1,7 @@
 package client.ui.battle.drawers;
 
 import client.domain.Game;
+import client.ui.battle.ImageProvider;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -10,19 +11,10 @@ import java.io.IOException;
 public class AntDrawer extends GameDrawer {
 
     private Image antImage;
-    public AntDrawer(Game game) {
-        super(game);
-        antImage = loadAntImage();
-    }
 
-    private Image loadAntImage() {
-        var file = "./assets/ant.png";
-        try {
-            return ImageIO.read(new File(file));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
+    public AntDrawer(Game game, ImageProvider provider) {
+        super(game);
+        antImage = provider.getAntImage();
     }
 
     @Override
