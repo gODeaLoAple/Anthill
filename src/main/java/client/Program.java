@@ -13,9 +13,11 @@ import client.domain.map.ResourcesMap;
 import client.ui.battle.HexagonResourcePoint;
 import client.ui.battle.HexagonalMap;
 import client.ui.battle.BattleWindow;
+import client.ui.battle.ImageProvider;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 
 public class Program {
@@ -39,13 +41,20 @@ public class Program {
                     new AnthillPart(map.hexagons[2], 100, 100),
             }), new Resources(), new ChaoticMovement(new Point(100,100))))
         };
-        players[1].getAnthill().addAnt(new SlaveAnt(new Point(500, 500), 100));
+        players[0].getAnthill().addAnt(new SlaveAnt(new Point(500, 500), 100));
         var game = new Game(container, players);
+        var imageProvider = new ImageProvider();
 
+        try {
+            imageProvider.loadAll();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
         SwingUtilities.invokeLater(() -> {
             var frame = new JFrame("Anthill");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.add(new BattleWindow(game));
+            frame.add(new BattleWindow(game, imageProvider));
             frame.setPreferredSize(map.getSize());
             frame.pack();
             frame.setLocationRelativeTo(null);

@@ -8,11 +8,11 @@ import java.awt.*;
 public class BattleWindow extends JPanel {
 
 
-    public BattleWindow(Game game) {
+    public BattleWindow(Game game, ImageProvider imageProvider) {
         super();
         setLayout(new BorderLayout());
 
-        var field = new BattleField(game,  new ShapeFiller(Color.RED, Color.BLUE));
+        var field = new BattleField(game, new ShapeFiller(Color.RED, Color.BLUE), imageProvider);
         var info = new BattleInfo(game, field);
 
         add(field, BorderLayout.CENTER);

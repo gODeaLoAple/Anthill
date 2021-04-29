@@ -26,15 +26,13 @@ public class PickUpResources extends ActionState {
         var resourceMap = game.getResourcesMap();
         var shape = resourceMap.getShapeAtPoint(point);
         if (shape != null) {
-            game
-                    .getMainPlayer()
-                    .getAnthill()
-                    .getResources()
-                    .change(Anthill.RESOURCE);
-            resourceMap.remove(shape);
-            resourceMap.spawnResources(game);
+            var bounds = shape.getBounds();
+            sendAntsToResource(point);
         }
     }
 
+    private void sendAntsToResource(Point p) {
+        game.getMainPlayer().getAnthill().getMovement().setLocation(p);
+    }
 }
 
