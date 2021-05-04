@@ -1,4 +1,4 @@
-package client.ui.battle;
+package client.ui.battle.utils;
 
 import java.awt.*;
 import java.util.HashMap;

@@ -1,15 +1,16 @@
-package client.ui.battle.drawers;
+package client.ui.battle.drawers.forEachPlayer;
 
 import client.domain.Game;
 import client.domain.entities.anthill.AnthillPart;
 import client.domain.entities.Player;
-import client.ui.battle.ColorProvider;
-import client.ui.battle.IShapeFiller;
+import client.ui.battle.utils.ColorProvider;
+import client.ui.battle.utils.IShapeFiller;
+import client.ui.battle.drawers.GameDrawer;
 
 import java.awt.*;
 
 
-public class AnthillsDrawer extends GameDrawer {
+public class AnthillsDrawer extends GameDrawer implements ForEachPlayerDrawer {
 
     private final ColorProvider colorProvider;
     private final IShapeFiller filler;
@@ -22,18 +23,22 @@ public class AnthillsDrawer extends GameDrawer {
 
     @Override
     public void draw(Graphics2D graphics) {
-        var players = game.getPlayers();
-        for (var player : players) {
-            var playerColor = colorProvider.getColor(player.getId());
-            for (var part : player.getAnthill().getShapes()) {
-                graphics.setColor(playerColor);
-                graphics.fill(part.getShape());
-                graphics.setColor(Color.BLACK);
-                graphics.draw(part.getShape());
-            }
-
-            drawAttackPart(graphics, player);
+        for (var player : game.getPlayers()) {
+            draw(graphics, player);
         }
+    }
+
+    @Override
+    public void draw(Graphics2D graphics, Player player) {
+        var playerColor = colorProvider.getColor(player.getId());
+        for (var part : player.getAnthill().getShapes()) {
+            graphics.setColor(playerColor);
+            graphics.fill(part.getShape());
+            graphics.setColor(Color.BLACK);
+            graphics.draw(part.getShape());
+        }
+
+        drawAttackPart(graphics, player);
     }
 
     private void drawAttackPart(Graphics2D graphics, Player player) {
@@ -47,5 +52,7 @@ public class AnthillsDrawer extends GameDrawer {
                     filler.fill(shape, graphics, percents);
                 });
     }
+
+
 }
 

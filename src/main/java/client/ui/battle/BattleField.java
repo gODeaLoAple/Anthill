@@ -1,12 +1,16 @@
 package client.ui.battle;
 
 import client.domain.Game;
-import client.domain.entities.anthill.Anthill;
 import client.ui.battle.actionStates.*;
-import client.ui.battle.drawers.AntDrawer;
-import client.ui.battle.drawers.AnthillsDrawer;
 import client.ui.battle.drawers.Drawer;
 import client.ui.battle.drawers.ResourceDrawer;
+import client.ui.battle.drawers.forEachPlayer.AntDrawer;
+import client.ui.battle.drawers.forEachPlayer.AnthillsDrawer;
+import client.ui.battle.drawers.forEachPlayer.ForEachPlayerDrawer;
+import client.ui.battle.drawers.forEachPlayer.ForEachPlayerDrawerContainer;
+import client.ui.battle.utils.ColorProvider;
+import client.ui.battle.utils.IShapeFiller;
+import client.ui.battle.utils.ImageProvider;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,7 +41,6 @@ public class BattleField extends JPanel {
             @Override
             public void mouseMoved(MouseEvent e) {
                 super.mouseMoved(e);
-                repaint();
                 lastMousePosition = e.getPoint();
             }
         });
@@ -46,7 +49,6 @@ public class BattleField extends JPanel {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 state.clicked(lastMousePosition);
-                repaint();
             }
         });
 
@@ -71,7 +73,7 @@ public class BattleField extends JPanel {
     }
 
 
-    private void startTimer(){
+    private void startTimer() {
         var timer = new java.util.Timer("jopa");
         TimerTask timerTask = new TimerTask() {
             @Override
@@ -81,11 +83,14 @@ public class BattleField extends JPanel {
         };
         timer.schedule(timerTask, 60, 10);
     }
+
     private Drawer[] createDrawers() {
-        return new Drawer[] {
-            new AnthillsDrawer(game, colorProvider, filler),
-            new ResourceDrawer(game),
-            new AntDrawer(game, imageProvider),
+        return new Drawer[]{
+                new ResourceDrawer(game),
+                new ForEachPlayerDrawerContainer(game, new ForEachPlayerDrawer[]{
+                        new AnthillsDrawer(game, colorProvider, filler),
+                        new AntDrawer(game, imageProvider)
+                })
         };
     }
 
@@ -100,36 +105,15 @@ public class BattleField extends JPanel {
         var g2d = (Graphics2D) g;
         var clip = g.getClip().getBounds();
         g2d.clearRect(clip.x, clip.y, clip.width, clip.height);
-        for (var player : game.getPlayers())
-            if (!game.checkIsAlive(player)){
-                game.removePLayer(player);
-            }
-        if (game.isGameOver()){
-            g2d.drawString("Game Over " + game.getMainPlayer().getId(), 100, 100);
-        }
-        else {
-            logic();
-        }
-            for (var drawer : drawers)
-                drawer.draw(g2d);
-            state.paint(lastMousePosition, g2d);
-    }
 
-    public void logic() {
-        var resourceMap = game.getResourcesMap();
-        for (var player : game.getPlayers()) {
-            var anthill = player.getAnthill();
-            var movement = anthill.getMovement();
-            var shape = resourceMap.getShapeAtPoint(movement.getLocation());
-            if (shape != null && movement.isAnyInRadius(anthill.getAnts())) {
-                    anthill
-                            .getResources()
-                            .change(Anthill.RESOURCE);
-                    resourceMap.remove(shape);
-                    resourceMap.spawnResources(game);
-
-            }
+        if (game.isGameOver()) {
+            g2d.drawString("Победитель: " + game.getMainPlayer().getId(), 100, 100);
+        } else {
+            game.step();
         }
+        for (var drawer : drawers)
+            drawer.draw(g2d);
+        state.paint(lastMousePosition, g2d);
     }
 }
 

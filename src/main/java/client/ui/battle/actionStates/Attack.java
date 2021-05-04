@@ -2,8 +2,6 @@ package client.ui.battle.actionStates;
 
 import client.domain.Game;
 import client.domain.entities.anthill.Anthill;
-import client.ui.battle.BattleField;
-import client.ui.battle.Hexagon;
 
 import java.awt.*;
 import java.util.Arrays;
@@ -30,24 +28,19 @@ public class Attack extends ActionState {
 
     @Override
     public void clicked(Point point) {
-        var shape = game.getPartsMap().getShapeAtPoint(point);
+        final var shape = game.getPartsMap().getShapeAtPoint(point);
         if (shape == null)
             return;
-        var mainAnthill = game.getMainPlayer().getAnthill();
+        final var mainAnthill = game.getMainPlayer().getAnthill();
         for (var player : game.getPlayers()) {
-            var anthill = player.getAnthill();
-            var part = anthill.getPartByShape(shape);
+            final var anthill = player.getAnthill();
+            final var part = anthill.getPartByShape(shape);
             if (part != null) {
                 if (canAttack(shape, game)) {
                     var res = mainAnthill.getResources();
                     if (mainAnthill.hasEnoughResourcesToAttack()) {
                         anthill.applyDamage(part, Anthill.RESOURCE_FOR_ATTACK);
                         res.change(-Anthill.RESOURCE_FOR_ATTACK);
-
-                        //var rectangle = shape.getBounds();
-                        //var x = Math.random() * 10 + rectangle.getCenterX();
-                        //var y = Math.random() * 10 + rectangle.getCenterY();
-                        //game.getAntsMap().add(new Hexagon(new Point((int)x, (int)y), 10));
                     }
                 }
                 break;

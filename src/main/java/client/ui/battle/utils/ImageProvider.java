@@ -1,4 +1,4 @@
-package client.ui.battle;
+package client.ui.battle.utils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

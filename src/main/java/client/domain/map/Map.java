@@ -9,8 +9,8 @@ public interface Map {
 
     Dimension getSize();
 
-    Shape[] getShapes();
+    java.util.List<? extends Shape> getShapes();
 
-    Stream<Shape> getNeighbours(Shape shape);
+    Stream<? extends Shape> getNeighbours(Shape shape);
 
 }
