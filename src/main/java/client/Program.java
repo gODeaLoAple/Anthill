@@ -44,6 +44,7 @@ public class Program {
                     new AnthillPart(map.hexagons.get(2), 100, 100),
             }), new Resources(), new ChaoticMovement(new Point(100,100))))
         };
+
         players[0].getAnthill().addAnt(new SlaveAnt(new Point(500, 500), 100));
         var spawner = new ResourceSpawner(center -> new Hexagon(center, 20));
         var game = new Game(container, players, spawner);

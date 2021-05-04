@@ -1,7 +1,6 @@
 package client.ui.battle;
 
 import client.domain.Game;
-import client.domain.entities.anthill.Anthill;
 import client.ui.battle.actionStates.*;
 import client.ui.battle.drawers.forEachPlayer.AntDrawer;
 import client.ui.battle.drawers.forEachPlayer.AnthillsDrawer;
@@ -95,7 +94,15 @@ public class BattleField extends JPanel {
         var g2d = (Graphics2D) g;
         var clip = g.getClip().getBounds();
         g2d.clearRect(clip.x, clip.y, clip.width, clip.height);
-        game.step();
+
+
+        if (game.isGameOver()){
+            g2d.drawString("Победитель: " + game.getMainPlayer().getId(), 100, 100);
+        }
+        else {
+            game.step();
+
+        }
         for (var drawer : drawers)
             drawer.draw(g2d);
         state.paint(lastMousePosition, g2d);

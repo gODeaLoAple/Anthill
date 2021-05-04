@@ -10,7 +10,7 @@ import client.domain.map.ResourcesMap;
 public class Game {
 
     private final MapContainer container;
-    private final Player[] players;
+    private Player[] players;
     private final ResourceSpawner spawner;
 
     public Game(MapContainer container, Player[] players, ResourceSpawner spawner) {
@@ -34,6 +34,11 @@ public class Game {
     }
 
     public void step() {
+        handleResources();
+        handlePlayersCount();
+    }
+
+    private void handleResources() {
         var resourceMap = getResourcesMap();
         for (var player : getPlayers()) {
             var anthill = player.getAnthill();
@@ -47,5 +52,33 @@ public class Game {
                 spawner.spawn(this);
             }
         }
+    }
+
+    private void handlePlayersCount() {
+        for (var player : getPlayers())
+            if (!checkIsAlive(player)){
+                removePLayer(player);
+            }
+    }
+
+    private void removePLayer(Player player){
+        var res = new Player[players.length - 1];
+        var c = 0;
+        for (var i = 0; i < players.length; i++){
+            if (players[i].equals(player)){
+                c = 1;
+                continue;
+            }
+            res[i - c] = players[i];
+        }
+        players = res;
+    }
+
+    private boolean checkIsAlive(Player player){
+        return player.getAnthill().getShapes().size() != 0;
+    }
+
+    public boolean isGameOver(){
+        return players.length == 1;
     }
 }
