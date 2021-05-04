@@ -2,6 +2,8 @@ package client;
 
 import client.domain.*;
 import client.domain.algorithm.ChaoticMovement;
+import client.domain.algorithm.ResourceSpawner;
+import client.domain.algorithm.ShapeFactory;
 import client.domain.entities.*;
 import client.domain.entities.anthill.Anthill;
 import client.domain.entities.anthill.AnthillPart;
@@ -10,10 +12,11 @@ import client.domain.entities.anthill.Resources;
 import client.domain.entities.ants.SlaveAnt;
 import client.domain.map.MapContainer;
 import client.domain.map.ResourcesMap;
-import client.ui.battle.HexagonResourcePoint;
-import client.ui.battle.HexagonalMap;
+import client.ui.battle.utils.Hexagon;
+import client.ui.battle.utils.HexagonResourcePoint;
+import client.ui.battle.utils.HexagonalMap;
 import client.ui.battle.BattleWindow;
-import client.ui.battle.ImageProvider;
+import client.ui.battle.utils.ImageProvider;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,16 +36,17 @@ public class Program {
         var container = new MapContainer(map, resourcesMap);
         var players = new Player[] {
             new Player(0, new Anthill(new AnthillPlace(new AnthillPart[]{
-                    new AnthillPart(map.hexagons[5], 100, 100),
+                    new AnthillPart(map.hexagons.get(5), 100, 100),
             }), new Resources(1000), new ChaoticMovement(new Point(500, 500)))),
             new Player(1, new Anthill(new AnthillPlace(new AnthillPart[] {
-                    new AnthillPart(map.hexagons[0], 100, 100),
-                    new AnthillPart(map.hexagons[1], 100, 100),
-                    new AnthillPart(map.hexagons[2], 100, 100),
+                    new AnthillPart(map.hexagons.get(0), 100, 100),
+                    new AnthillPart(map.hexagons.get(1), 100, 100),
+                    new AnthillPart(map.hexagons.get(2), 100, 100),
             }), new Resources(), new ChaoticMovement(new Point(100,100))))
         };
         players[0].getAnthill().addAnt(new SlaveAnt(new Point(500, 500), 100));
-        var game = new Game(container, players);
+        var spawner = new ResourceSpawner(center -> new Hexagon(center, 20));
+        var game = new Game(container, players, spawner);
         var imageProvider = new ImageProvider();
 
         try {

@@ -1,6 +1,8 @@
 package client.ui.battle;
 
 import client.domain.Game;
+import client.ui.battle.utils.ImageProvider;
+import client.ui.battle.utils.ShapeFiller;
 
 import javax.swing.*;
 import java.awt.*;

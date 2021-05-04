@@ -1,8 +1,6 @@
-package client.ui.battle;
+package client.ui.battle.utils;
 
-import client.domain.map.DynamicMap;
 import client.domain.map.Map;
-import client.ui.battle.Hexagon;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -11,14 +9,14 @@ import java.util.stream.Stream;
 
 public class HexagonalMap implements Map {
 
-    public final Hexagon[] hexagons;
+    public final  java.util.List<Hexagon> hexagons;
     private final int radius;
     private final Dimension size;
 
     public HexagonalMap(int width, int height, int R) {
         size = new Dimension(width, height);
         radius = R;
-        hexagons = createMap(width, height, R);
+        hexagons = Arrays.asList(createMap(width, height, R).clone());
     }
 
     @Override
@@ -30,17 +28,17 @@ public class HexagonalMap implements Map {
     }
 
     @Override
-    public Shape[] getShapes() {
+    public  java.util.List<Hexagon> getShapes() {
         return hexagons;
     }
 
     @Override
-    public Stream<Shape> getNeighbours(Shape shape) {
+    public Stream<Hexagon> getNeighbours(Shape shape) {
         var hexagon = (Hexagon) shape; // TODO плохо, скорее всего, нужно использовать Generics
         var center = hexagon.getCenter();
-        return Arrays.stream(hexagons)
-                .filter(x -> x.getCenter().distanceSq(center) <= 3 * (radius + 1) * (radius + 1))
-                .map(x -> x);
+        return hexagons
+                .stream()
+                .filter(x -> x.getCenter().distanceSq(center) <= 3 * (radius + 1) * (radius + 1));
     }
 
     @Override

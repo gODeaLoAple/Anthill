@@ -3,15 +3,19 @@ package client.ui.battle;
 import client.domain.Game;
 import client.domain.entities.anthill.Anthill;
 import client.ui.battle.actionStates.*;
-import client.ui.battle.drawers.AntDrawer;
-import client.ui.battle.drawers.AnthillsDrawer;
+import client.ui.battle.drawers.forEachPlayer.AntDrawer;
+import client.ui.battle.drawers.forEachPlayer.AnthillsDrawer;
 import client.ui.battle.drawers.Drawer;
 import client.ui.battle.drawers.ResourceDrawer;
+import client.ui.battle.drawers.forEachPlayer.ForEachPlayerDrawer;
+import client.ui.battle.drawers.forEachPlayer.ForEachPlayerDrawerContainer;
+import client.ui.battle.utils.ColorProvider;
+import client.ui.battle.utils.IShapeFiller;
+import client.ui.battle.utils.ImageProvider;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Arrays;
 
 public class BattleField extends JPanel {
 
@@ -72,9 +76,11 @@ public class BattleField extends JPanel {
 
     private Drawer[] createDrawers() {
         return new Drawer[] {
-            new AnthillsDrawer(game, colorProvider, filler),
             new ResourceDrawer(game),
-            new AntDrawer(game, imageProvider),
+            new ForEachPlayerDrawerContainer(game, new ForEachPlayerDrawer[] {
+                new AnthillsDrawer(game, colorProvider, filler),
+                new AntDrawer(game, imageProvider)
+            })
         };
     }
 
@@ -89,27 +95,10 @@ public class BattleField extends JPanel {
         var g2d = (Graphics2D) g;
         var clip = g.getClip().getBounds();
         g2d.clearRect(clip.x, clip.y, clip.width, clip.height);
-        logic();
+        game.step();
         for (var drawer : drawers)
             drawer.draw(g2d);
         state.paint(lastMousePosition, g2d);
-    }
-
-    public void logic() {
-        var resourceMap = game.getResourcesMap();
-        for (var player : game.getPlayers()) {
-            var anthill = player.getAnthill();
-            var movement = anthill.getMovement();
-            var shape = resourceMap.getShapeAtPoint(movement.getLocation());
-            if (shape != null && movement.isAnyInRadius(anthill.getAnts())) {
-                    anthill
-                            .getResources()
-                            .change(Anthill.RESOURCE);
-                    resourceMap.remove(shape);
-                    resourceMap.spawnResources(game);
-
-            }
-        }
     }
 }
 
