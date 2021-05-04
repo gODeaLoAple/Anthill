@@ -1,20 +1,30 @@
 package client.ui.battle.drawers;
 
 import client.domain.Game;
+import client.entities.Vector;
 import client.ui.battle.ImageProvider;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
+import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
 
 public class AntDrawer extends GameDrawer {
 
-    private Image antImage;
+    private BufferedImage antImage;
+    private int height;
+    private int width;
+    private ImageObserver obs;
+    private AffineTransform identity;
 
     public AntDrawer(Game game, ImageProvider provider) {
         super(game);
+        obs = (img, infoflags, x, y, width, height) -> false;
         antImage = provider.getAntImage();
+        width = antImage.getWidth();
+        height = antImage.getHeight();
+        identity = new AffineTransform();
     }
 
     @Override
@@ -25,7 +35,19 @@ public class AntDrawer extends GameDrawer {
             anthill.getMovement().moveAll(ants);
             for (var ant : ants) {
                 var position = ant.getPosition();
-                graphics.drawImage(antImage, position.x, position.y, 30, 30, (img, infoflags, x, y, width, height) -> false);
+                var vect = new Vector(position, ant.getDestination());
+                var angle = vect.getAngle() + Math.PI / 2;
+                var trans = new AffineTransform();
+                var newImage = new BufferedImage(width, height, antImage.getType());
+                var newImageHeight = newImage.getHeight();
+                var newImageWidth = newImage.getWidth();
+                trans.rotate(angle, newImageWidth / 2.0, newImageHeight / 2.0);
+                trans.translate((newImageWidth - width) / 2.0, (newImageHeight - height) / 2.0);
+                var op = new AffineTransformOp(trans, AffineTransformOp.TYPE_BILINEAR);
+                try {
+                    graphics.drawImage(op.filter(antImage, newImage), position.x, position.y, 30, 30, obs);
+                } catch (Exception ignoredd) {
+                }
             }
         }
     }

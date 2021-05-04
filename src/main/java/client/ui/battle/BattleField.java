@@ -11,7 +11,7 @@ import client.ui.battle.drawers.ResourceDrawer;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Arrays;
+import java.util.TimerTask;
 
 public class BattleField extends JPanel {
 
@@ -31,6 +31,7 @@ public class BattleField extends JPanel {
         state = new Idle(game);
         this.imageProvider = imageProvider;
         setFocusable(true);
+        startTimer();
 
         addMouseMotionListener(new MouseMotionAdapter() {
             @Override
@@ -66,10 +67,20 @@ public class BattleField extends JPanel {
 
             }
         });
-
         drawers = createDrawers();
     }
 
+
+    private void startTimer(){
+        var timer = new java.util.Timer("jopa");
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                repaint();
+            }
+        };
+        timer.schedule(timerTask, 60, 10);
+    }
     private Drawer[] createDrawers() {
         return new Drawer[] {
             new AnthillsDrawer(game, colorProvider, filler),
@@ -93,13 +104,11 @@ public class BattleField extends JPanel {
             if (!game.checkIsAlive(player)){
                 game.removePLayer(player);
             }
-
         if (game.isGameOver()){
             g2d.drawString("Game Over " + game.getMainPlayer().getId(), 100, 100);
         }
         else {
             logic();
-
         }
             for (var drawer : drawers)
                 drawer.draw(g2d);

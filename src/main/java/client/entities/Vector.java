@@ -9,26 +9,24 @@ public class Vector {
         this.point = point;
     }
 
+    public Vector(Point start, Point end) {
+        var x = end.x - start.x;
+        var y = end.y - start.y;
+        this.point = new Point(x, y);
+    }
+
     public Point getPoint() { return point; }
 
-    public Vector multiply(int d) {
-        return new Vector(new Point(point.x * d, point.y * d));
-    }
+    public int getX() { return point.x; }
 
-    public Point plus(Vector v) {
-        return new Point(point.x + v.point.x, point.y + v.point.y);
-    }
-
-    public Point minus(Vector v) {
-        return new Point(point.x - v.point.x, point.y - v.point.y);
-    }
-
-    public Point normalized() {
-        var l = getLength();
-        return new Point((int) (point.x / l), (int) (point.y / l));
-    }
+    public int getY() { return point.y; }
 
     public double getLength() {
         return Math.sqrt(this.point.x * this.point.x + this.point.y * this.point.y);
+    }
+
+    public double getAngle(){
+        var l = getLength();
+        return Math.atan2(this.getY() / l, this.getX() / l);
     }
 }

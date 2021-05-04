@@ -43,6 +43,13 @@ public class Program {
         };
 
         players[0].getAnthill().addAnt(new SlaveAnt(new Point(500, 500), 100));
+        players[0].getAnthill().addAnt(new SlaveAnt(new Point(500, 500), 100));
+        players[0].getAnthill().addAnt(new SlaveAnt(new Point(500, 500), 100));
+        players[0].getAnthill().addAnt(new SlaveAnt(new Point(500, 500), 100));
+        players[0].getAnthill().addAnt(new SlaveAnt(new Point(500, 500), 100));
+        players[0].getAnthill().addAnt(new SlaveAnt(new Point(500, 500), 100));
+        players[0].getAnthill().addAnt(new SlaveAnt(new Point(500, 500), 100));
+
         var game = new Game(container, players);
         var imageProvider = new ImageProvider();
 

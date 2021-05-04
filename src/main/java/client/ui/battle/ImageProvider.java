@@ -1,15 +1,17 @@
 package client.ui.battle;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
 public class ImageProvider {
 
-    private Image antImage;
+    private BufferedImage antImage;
 
-    public Image getAntImage() {
+    public BufferedImage getAntImage() {
         return antImage;
     }
 
@@ -17,7 +19,7 @@ public class ImageProvider {
         antImage = loadImage("./assets/ant.png");
     }
 
-    private Image loadImage(String pathToImage) throws IOException {
+    private BufferedImage loadImage(String pathToImage) throws IOException {
         return ImageIO.read(new File(pathToImage));
     }
 }
