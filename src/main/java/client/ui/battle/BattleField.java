@@ -74,8 +74,8 @@ public class BattleField extends JPanel {
 
 
     private void startTimer() {
-        var timer = new java.util.Timer("jopa");
-        TimerTask timerTask = new TimerTask() {
+        var timer = new java.util.Timer("Timer");
+        var timerTask = new TimerTask() {
             @Override
             public void run() {
                 repaint();
