@@ -22,23 +22,31 @@ public class ChaoticMovement {
         this.location = new Point(location);
     }
 
-    public void moveAll(List<Ant> ants){
+    public void move(Ant ant) {
+        var source = ant.getPosition();
+        var dest = ant.getDestination();
+        var distance = (dest.x - source.x) * (dest.x - source.x) + (dest.y - source.y) * (dest.y - source.y);
+        if (distance < radius) {
+            dest = updateDestination(ant);
+        }
+        var vector = new Vector(new Point(dest.x - source.x, dest.y - source.y));
+        var length = vector.getLength();
+        var dx = vector.getPoint().x * ant.getSpeed() / length;
+        var dy = vector.getPoint().y * ant.getSpeed() / length;
+        source.translate((int)dx, (int)dy);
+    }
 
+    public Point updateDestination(Ant ant) {
+        var dx = radius * rnd.nextDouble();
+        var dy = radius * rnd.nextDouble();
+        var dest = new Point(location.x + (int)dx, location.y + (int)dy);
+        ant.setDestination(dest);
+        return dest;
+    }
+
+    public void moveAll(List<Ant> ants){
         for (var ant : ants){
-            var source = ant.getPosition();
-            var dest = ant.getDestination();
-            var distance = (dest.x - source.x) * (dest.x - source.x) + (dest.y - source.y) * (dest.y - source.y);
-            if (distance < radius){
-                var dx = radius * rnd.nextDouble();
-                var dy = radius * rnd.nextDouble();
-                dest = new Point(location.x + (int)dx, location.y + (int)dy);
-                ant.setDestination(dest);
-            }
-            var vector = new Vector(new Point(dest.x - source.x, dest.y - source.y));
-            var length = vector.getLength();
-            var dx = vector.getPoint().x * ant.getSpeed() / length;
-            var dy = vector.getPoint().y * ant.getSpeed() / length;
-            source.translate((int)dx, (int)dy);
+            move(ant);
         }
     }
 
