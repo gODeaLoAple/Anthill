@@ -32,7 +32,11 @@ public class PickUpResources extends ActionState {
     }
 
     private void sendAntsToResource(Point p) {
-        game.getMainPlayer().getAnthill().getMovement().setLocation(p);
+        var anthill = game.getMainPlayer().getAnthill();
+        var movement = anthill.getMovement();
+        movement.setLocation(p);
+        for (var ant : anthill.getAnts())
+            movement.updateDestination(ant);
     }
 }
 

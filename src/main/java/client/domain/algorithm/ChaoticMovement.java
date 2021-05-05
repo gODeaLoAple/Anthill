@@ -11,7 +11,7 @@ public class ChaoticMovement {
     private Point location;
     private final int radius = 60;
     private final Random rnd;
-    private final int offset = 0;
+    private final int offset = 10;
 
     public ChaoticMovement(Point location) {
         this.location = location;
@@ -27,12 +27,13 @@ public class ChaoticMovement {
         var dest = ant.getDestination();
         var distance = (dest.x - source.x) * (dest.x - source.x) + (dest.y - source.y) * (dest.y - source.y);
         if (distance < radius) {
-            var dx = radius * rnd.nextDouble();
-            var dy = radius * rnd.nextDouble();
-            dest = new Point(location.x + (int) dx, location.y + (int) dy);
-            ant.setDestination(dest);
+            dest = updateDestination(ant);
         }
-        translateAnt(ant, source, dest);
+        var vector = new Vector(new Point(dest.x - source.x, dest.y - source.y));
+        var length = vector.getLength();
+        var dx = vector.getPoint().x * ant.getSpeed() / length;
+        var dy = vector.getPoint().y * ant.getSpeed() / length;
+        source.translate((int)dx, (int)dy);
     }
 
     private void translateAnt(Ant ant, Point source, Point dest) {
@@ -60,5 +61,13 @@ public class ChaoticMovement {
 
     public Point getLocation() {
         return location;
+    }
+
+    public Point updateDestination(Ant ant) {
+        var dx = radius * rnd.nextDouble();
+        var dy = radius * rnd.nextDouble();
+        var dest = new Point(location.x + (int)dx, location.y + (int)dy);
+        ant.setDestination(dest);
+        return dest;
     }
 }
