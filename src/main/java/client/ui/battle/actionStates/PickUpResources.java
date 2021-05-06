@@ -1,8 +1,6 @@
 package client.ui.battle.actionStates;
 
 import client.domain.Game;
-import client.domain.entities.anthill.Anthill;
-
 
 import java.awt.*;
 
@@ -25,10 +23,7 @@ public class PickUpResources extends ActionState {
     public void clicked(Point point) {
         var resourceMap = game.getResourcesMap();
         var shape = resourceMap.getShapeAtPoint(point);
-        if (shape != null) {
-            var bounds = shape.getBounds();
-            sendAntsToResource(point);
-        }
+        if (shape != null) sendAntsToResource(point);
     }
 
     private void sendAntsToResource(Point p) {

@@ -3,6 +3,7 @@ package client.ui.battle;
 import client.domain.Game;
 import client.ui.battle.actionStates.Attack;
 import client.ui.battle.actionStates.ExtendAnthill;
+import client.ui.battle.actionStates.HireMole;
 import client.ui.battle.actionStates.PickUpResources;
 
 import javax.swing.*;
@@ -35,6 +36,20 @@ public class BattleInfo extends JPanel {
         var pickupButton = new JButton("Собрать");
         pickupButton.addActionListener(e -> field.setState(new PickUpResources(game)));
         buttons.add(pickupButton, BorderLayout.SOUTH);
+
+        var molButton = new JButton("Нанять крота");
+        molButton.addActionListener(e -> field.setState(new HireMole(game)));
+        buttons.add(molButton, BorderLayout.LINE_END);
+
+        var armagedon = new JButton("ВЫЗВАТЬ АРМАГЕДОН");
+        armagedon.addActionListener(e -> field.setState(new HireMole(game)));
+        buttons.add(armagedon, BorderLayout.LINE_END);
+
+
+        var exit = new JButton("ВЫХОД");
+        exit.addActionListener(e -> field.setState(new HireMole(game)));
+        buttons.add(exit, BorderLayout.LINE_END);
+
 
         add(buttons, BorderLayout.CENTER);
 

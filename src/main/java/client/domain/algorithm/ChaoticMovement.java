@@ -25,15 +25,10 @@ public class ChaoticMovement {
     public void moveAnt(Ant ant) {
         var source = ant.getPosition();
         var dest = ant.getDestination();
-        var distance = (dest.x - source.x) * (dest.x - source.x) + (dest.y - source.y) * (dest.y - source.y);
-        if (distance < radius) {
-            dest = updateDestination(ant);
-        }
-        var vector = new Vector(new Point(dest.x - source.x, dest.y - source.y));
-        var length = vector.getLength();
-        var dx = vector.getPoint().x * ant.getSpeed() / length;
-        var dy = vector.getPoint().y * ant.getSpeed() / length;
-        source.translate((int)dx, (int)dy);
+        var dx = dest.x - source.x;
+        var dy = dest.y - source.y;
+        if (dx * dx + dy * dy < radius) dest = updateDestination(ant);
+        translateAnt(ant, source, dest);
     }
 
     private void translateAnt(Ant ant, Point source, Point dest) {
@@ -48,14 +43,14 @@ public class ChaoticMovement {
     public boolean isAnyInRadius(List<Ant> ants) {
         return ants.stream().anyMatch(ant -> {
             var position = ant.getPosition();
-            return Point.distanceSq(position.x + offset, position.y + offset, location.x, location.y) <= radius * radius;
+            return Point.distanceSq(position.x, position.y, location.x, location.y) <= radius * radius;
         });
     }
 
     public boolean isAnyNearPoint(List<Ant> ants, Point point) {
         return ants.stream().anyMatch(ant -> {
             var position = ant.getPosition();
-            return Point.distanceSq(position.x + offset, position.y + offset, point.x, point.y) <= radius * radius;
+            return Point.distanceSq(position.x , position.y, point.x, point.y) <= radius * radius;
         });
     }
 

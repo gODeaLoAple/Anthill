@@ -21,6 +21,7 @@ import client.ui.battle.utils.ImageProvider;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
+import java.util.stream.IntStream;
 
 
 public class Program {
@@ -45,13 +46,12 @@ public class Program {
             }), new Resources(), new ChaoticMovement(new Point(100,100))))
         };
 
-        players[0].getAnthill().addAnt(new SlaveAnt(new Point(500, 500), 100));
-        players[0].getAnthill().addAnt(new SlaveAnt(new Point(500, 500), 100));
-        players[0].getAnthill().addAnt(new SlaveAnt(new Point(500, 500), 100));
-        players[0].getAnthill().addAnt(new SlaveAnt(new Point(500, 500), 100));
-        players[0].getAnthill().addAnt(new SlaveAnt(new Point(500, 500), 100));
-        players[0].getAnthill().addAnt(new SlaveAnt(new Point(500, 500), 100));
-        players[0].getAnthill().addAnt(new SlaveAnt(new Point(500, 500), 100));
+        IntStream
+                .range(10 * 20, 10 * 21)
+                .forEach(i -> players[0]
+                        .getAnthill()
+                        .addAnt(new SlaveAnt(new Point(500, 500), 100)));
+
 
         var spawner = new ResourceSpawner(center -> new Hexagon(center, 20));
         var game = new Game(container, players, spawner);
