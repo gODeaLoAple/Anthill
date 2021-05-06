@@ -33,8 +33,9 @@ public class AntDrawer extends GameDrawer implements ForEachPlayerDrawer{
     public void draw(Graphics2D graphics, Player player) {
         var anthill = player.getAnthill();
         var ants = anthill.getAnts();
-        anthill.getMovement().moveAll(ants);
+        var movement = anthill.getMovement();
         for (var ant : ants) {
+            movement.move(ant);
             var position = ant.getPosition();
             var vect = new Vector(position, ant.getDestination());
             var angle = vect.getAngle() + Math.PI / 2;
