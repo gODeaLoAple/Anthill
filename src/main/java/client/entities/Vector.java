@@ -15,6 +15,10 @@ public class Vector {
         this.point = new Point(x, y);
     }
 
+    public Vector(int x, int y) {
+        this.point = new Point(x, y);
+    }
+
     public Point getPoint() { return point; }
 
     public int getX() { return point.x; }

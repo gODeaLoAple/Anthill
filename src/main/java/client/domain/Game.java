@@ -7,6 +7,9 @@ import client.domain.map.Map;
 import client.domain.map.MapContainer;
 import client.domain.map.ResourcesMap;
 
+import java.awt.*;
+import java.util.ArrayList;
+
 public class Game {
 
     private final MapContainer container;
@@ -27,7 +30,9 @@ public class Game {
         return container.getParts();
     }
 
-    public ResourcesMap getResourcesMap() { return container.getResources(); }
+    public ResourcesMap getResourcesMap() {
+        return container.getResources();
+    }
 
     public Player getMainPlayer() {
         return players[0];
@@ -40,32 +45,49 @@ public class Game {
 
     private void handleResources() {
         var resourceMap = getResourcesMap();
+        var shapesToRemove = new ArrayList<Shape>();
         for (var player : getPlayers()) {
             var anthill = player.getAnthill();
             var movement = anthill.getMovement();
             var shape = resourceMap.getShapeAtPoint(movement.getLocation());
+            var ants = anthill.getAnts();
+
+            for (var res : getResourcesMap().getShapes()) {
+                if (movement.isAnyNearPoint(ants, res.getBounds().getLocation())) {
+                    anthill
+                            .getResources()
+                            .change(Anthill.RESOURCE);
+                    shapesToRemove.add(res);
+                }
+            }
+
             if (shape != null && movement.isAnyInRadius(anthill.getAnts())) {
                 anthill
                         .getResources()
                         .change(Anthill.RESOURCE);
-                resourceMap.remove(shape);
-                spawner.spawn(this);
+                shapesToRemove.add(shape);
+            }
+
+        }
+        shapesToRemove.forEach(shape -> {
+            resourceMap.remove(shape);
+            spawner.spawn(this);
+        });
+    }
+
+    private void handlePlayersCount() {
+        for (var player : getPlayers()) {
+            if (!checkIsAlive(player)) {
+                removePLayer(player);
             }
         }
     }
 
-    private void handlePlayersCount() {
-        for (var player : getPlayers())
-            if (!checkIsAlive(player)){
-                removePLayer(player);
-            }
-    }
-
-    private void removePLayer(Player player){
+    private void removePLayer(Player player) {
         var res = new Player[players.length - 1];
         var c = 0;
-        for (var i = 0; i < players.length; i++){
-            if (players[i].equals(player)){
+        for (var i = 0; i < players.length; i++) {
+            if (players[i].equals(player)) {
                 c = 1;
                 continue;
             }
@@ -74,11 +96,11 @@ public class Game {
         players = res;
     }
 
-    private boolean checkIsAlive(Player player){
+    private boolean checkIsAlive(Player player) {
         return player.getAnthill().getShapes().size() != 0;
     }
 
-    public boolean isGameOver(){
+    public boolean isGameOver() {
         return players.length == 1;
     }
 }

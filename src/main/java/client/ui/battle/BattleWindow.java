@@ -1,8 +1,9 @@
 package client.ui.battle;
 
 import client.domain.Game;
+import client.ui.PanelsSwitcher;
 import client.ui.battle.utils.ImageProvider;
-import client.ui.battle.utils.ShapeFiller;
+import client.ui.battle.utils.HexagonFiller;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,12 +11,12 @@ import java.awt.*;
 public class BattleWindow extends JPanel {
 
 
-    public BattleWindow(Game game, ImageProvider imageProvider) {
+    public BattleWindow(PanelsSwitcher switcher, Game game, ImageProvider imageProvider) {
         super();
         setLayout(new BorderLayout());
 
-        var field = new BattleField(game, new ShapeFiller(Color.RED, Color.BLUE), imageProvider);
-        var info = new BattleInfo(game, field);
+        var field = new BattleField(game, new HexagonFiller(Color.RED, Color.BLUE), imageProvider);
+        var info = new BattleInfo(switcher, game, field);
 
         add(field, BorderLayout.CENTER);
         add(info, BorderLayout.WEST);

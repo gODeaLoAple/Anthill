@@ -4,8 +4,8 @@ import client.domain.Game;
 import client.domain.entities.anthill.AnthillPart;
 import client.domain.entities.Player;
 import client.ui.battle.utils.ColorProvider;
-import client.ui.battle.utils.IShapeFiller;
 import client.ui.battle.drawers.GameDrawer;
+import client.ui.battle.utils.ShapeFiller;
 
 import java.awt.*;
 
@@ -13,9 +13,9 @@ import java.awt.*;
 public class AnthillsDrawer extends GameDrawer implements ForEachPlayerDrawer {
 
     private final ColorProvider colorProvider;
-    private final IShapeFiller filler;
+    private final ShapeFiller filler;
 
-    public AnthillsDrawer(Game game, ColorProvider provider, IShapeFiller filler) {
+    public AnthillsDrawer(Game game, ColorProvider provider, ShapeFiller filler) {
         super(game);
         this.colorProvider = provider;
         this.filler = filler;

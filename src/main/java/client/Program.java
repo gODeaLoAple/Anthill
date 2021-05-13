@@ -1,78 +1,26 @@
 package client;
 
-import client.domain.*;
-import client.domain.algorithm.ChaoticMovement;
-import client.domain.algorithm.ResourceSpawner;
-import client.domain.algorithm.ShapeFactory;
-import client.domain.entities.*;
-import client.domain.entities.anthill.Anthill;
-import client.domain.entities.anthill.AnthillPart;
-import client.domain.entities.anthill.AnthillPlace;
-import client.domain.entities.anthill.Resources;
-import client.domain.entities.ants.SlaveAnt;
-import client.domain.map.MapContainer;
-import client.domain.map.ResourcesMap;
-import client.ui.battle.utils.Hexagon;
-import client.ui.battle.utils.HexagonResourcePoint;
-import client.ui.battle.utils.HexagonalMap;
-import client.ui.battle.BattleWindow;
-import client.ui.battle.utils.ImageProvider;
+import client.ui.PanelsSwitcher;
+import client.ui.main.MainMenu;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 
 
 public class Program {
+
     public static void main(String[] args) {
-        var size = new Dimension(800, 600);
-        var map = new HexagonalMap(size.width, size.height, 60);
-        var resourcesMap = new ResourcesMap(size, new Shape[]
-                {
-                        new HexagonResourcePoint(new Point(200, 300), 20, 20),
-                        new HexagonResourcePoint(new Point(200, 400), 20, 20),
-                        new HexagonResourcePoint(new Point(200, 500), 20, 20),
-                });
-        var container = new MapContainer(map, resourcesMap);
-        var players = new Player[] {
-            new Player(0, new Anthill(new AnthillPlace(new AnthillPart[]{
-                    new AnthillPart(map.hexagons.get(5), 100, 100),
-            }), new Resources(1000), new ChaoticMovement(new Point(500, 500)))),
-            new Player(1, new Anthill(new AnthillPlace(new AnthillPart[] {
-                    new AnthillPart(map.hexagons.get(0), 100, 100),
-                    new AnthillPart(map.hexagons.get(1), 100, 100),
-                    new AnthillPart(map.hexagons.get(2), 100, 100),
-            }), new Resources(), new ChaoticMovement(new Point(100,100))))
-        };
-
-        players[0].getAnthill().addAnt(new SlaveAnt(new Point(500, 500), 100));
-        players[0].getAnthill().addAnt(new SlaveAnt(new Point(500, 500), 100));
-        players[0].getAnthill().addAnt(new SlaveAnt(new Point(500, 500), 100));
-        players[0].getAnthill().addAnt(new SlaveAnt(new Point(500, 500), 100));
-        players[0].getAnthill().addAnt(new SlaveAnt(new Point(500, 500), 100));
-        players[0].getAnthill().addAnt(new SlaveAnt(new Point(500, 500), 100));
-        players[0].getAnthill().addAnt(new SlaveAnt(new Point(500, 500), 100));
-
-        var spawner = new ResourceSpawner(center -> new Hexagon(center, 20));
-        var game = new Game(container, players, spawner);
-        var imageProvider = new ImageProvider();
-
-        try {
-            imageProvider.loadAll();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(1);
-        }
         SwingUtilities.invokeLater(() -> {
             var frame = new JFrame("Anthill");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.add(new BattleWindow(game, imageProvider));
-            frame.setPreferredSize(map.getSize());
+            frame.setPreferredSize(new Dimension(800, 600));
+            var switcher = new PanelsSwitcher(frame);
+            var mainMenu = new MainMenu(switcher);
+            switcher.setCurrent(mainMenu);
+            frame.add(mainMenu);
             frame.pack();
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         });
-
     }
-
 }

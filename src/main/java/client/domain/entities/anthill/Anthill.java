@@ -11,6 +11,7 @@ public class Anthill {
     public static final int RESOURCE_FOR_EXTEND = 60;
     public static final int RESOURCE_FOR_ATTACK = 20;
     public static final int RESOURCE = 300; // NICE DELAEM
+    public static final int RESOURCE_FOR_HIRE = 1000; // NICE DELAEM
     private final AnthillPlace place;
     private final Resources resources;
     private final List<Ant> ants;
@@ -37,12 +38,14 @@ public class Anthill {
     }
 
     public boolean hasEnoughResourcesToExtend() {
-        return resources.getCount() > RESOURCE_FOR_EXTEND;
+        return resources.getCount() >= RESOURCE_FOR_EXTEND;
     }
 
     public boolean hasEnoughResourcesToAttack() {
-        return resources.getCount() > RESOURCE_FOR_ATTACK;
+        return resources.getCount() >= RESOURCE_FOR_ATTACK;
     }
+
+    public boolean hasEnoughResourcesToHire() { return resources.getCount() >= RESOURCE_FOR_HIRE; }
 
     public void extend(Shape shape) {
         resources.change(-RESOURCE_FOR_EXTEND);

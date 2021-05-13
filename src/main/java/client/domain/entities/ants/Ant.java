@@ -22,8 +22,10 @@ public abstract class Ant {
         return health;
     }
 
-    public void setPosition(Point position) {
-        this.position = position;
+    public void setPosition(Point position) { this.position =  new Point(position); }
+
+    public void setDestination(Point destination) {
+        this.destination = new Point(destination);
     }
 
     public Point getPosition() {
@@ -32,10 +34,6 @@ public abstract class Ant {
 
     public Point getDestination() {
         return destination;
-    }
-
-    public void setDestination(Point destination) {
-        this.destination = destination;
     }
 
     public int getSpeed() {

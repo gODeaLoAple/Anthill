@@ -9,12 +9,13 @@ import client.ui.battle.drawers.forEachPlayer.AnthillsDrawer;
 import client.ui.battle.drawers.forEachPlayer.ForEachPlayerDrawer;
 import client.ui.battle.drawers.forEachPlayer.ForEachPlayerDrawerContainer;
 import client.ui.battle.utils.ColorProvider;
-import client.ui.battle.utils.IShapeFiller;
 import client.ui.battle.utils.ImageProvider;
+import client.ui.battle.utils.ShapeFiller;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.geom.Point2D;
 import java.util.TimerTask;
 
 public class BattleField extends JPanel {
@@ -24,15 +25,16 @@ public class BattleField extends JPanel {
     private PlayerActionState state;
     private final ImageProvider imageProvider;
     private final ColorProvider colorProvider = new ColorProvider();
-    private final IShapeFiller filler;
+    private final ShapeFiller filler;
 
     private final Drawer[] drawers;
+    private Point2D.Float scale = new Point2D.Float(1, 1);
 
-    public BattleField(Game game, IShapeFiller filter, ImageProvider imageProvider) {
+    public BattleField(Game game, ShapeFiller filler, ImageProvider imageProvider) {
         super();
-        this.filler = filter;
         this.game = game;
         state = new Idle(game);
+        this.filler = filler;
         this.imageProvider = imageProvider;
         setFocusable(true);
         startTimer();
@@ -41,7 +43,9 @@ public class BattleField extends JPanel {
             @Override
             public void mouseMoved(MouseEvent e) {
                 super.mouseMoved(e);
-                lastMousePosition = e.getPoint();
+                var point = e.getPoint();
+                var scale = getScale();
+                lastMousePosition = new Point((int)(point.x / scale.x), (int)(point.y / scale.y));
             }
         });
         addMouseListener(new MouseAdapter() {
@@ -69,19 +73,27 @@ public class BattleField extends JPanel {
 
             }
         });
+
+        addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                super.componentResized(e);
+                updateScale();
+            }
+        });
         drawers = createDrawers();
     }
 
 
     private void startTimer() {
-        var timer = new java.util.Timer("jopa");
-        TimerTask timerTask = new TimerTask() {
+        var timer = new java.util.Timer("Timer");
+        var timerTask = new TimerTask() {
             @Override
             public void run() {
                 repaint();
             }
         };
-        timer.schedule(timerTask, 60, 10);
+        timer.schedule(timerTask, 60, 1000 / 60);
     }
 
     private Drawer[] createDrawers() {
@@ -100,12 +112,11 @@ public class BattleField extends JPanel {
 
     @Override
     public void paint(Graphics g) {
-        setFocusable(true);
-        requestFocus();
         var g2d = (Graphics2D) g;
         var clip = g.getClip().getBounds();
         g2d.clearRect(clip.x, clip.y, clip.width, clip.height);
-
+        var scale = getScale();
+        g2d.scale(scale.x, scale.y);
         if (game.isGameOver()) {
             g2d.drawString("Победитель: " + game.getMainPlayer().getId(), 100, 100);
         } else {
@@ -114,6 +125,18 @@ public class BattleField extends JPanel {
         for (var drawer : drawers)
             drawer.draw(g2d);
         state.paint(lastMousePosition, g2d);
+    }
+
+    public void updateScale() {
+        var size = getParent().getSize();
+        var mapSize = game.getResourcesMap().getSize();
+        var dx = size.width / (float)mapSize.width;
+        var dy = size.height / (float)mapSize.height;
+        scale = new Point.Float(dx, dy);
+    }
+
+    public Point.Float getScale() {
+        return scale;
     }
 }
 
