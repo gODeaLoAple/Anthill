@@ -5,6 +5,7 @@ import client.domain.entities.ants.Ant;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class Anthill {
@@ -27,6 +28,9 @@ public class Anthill {
     public List<Ant> getAnts() { return ants;}
     public void addAnt(Ant ant) {
         ants.add(ant);
+    }
+    public void killAnt(Ant ant) {
+        ants.remove(ant);
     }
 
     public Resources getResources() {
@@ -75,6 +79,20 @@ public class Anthill {
 
     public ChaoticMovement getMovement() {
         return movement;
+    }
+
+    public void battle(Anthill otherPlayerAnthill) {
+        for (var ant : ants) {
+            for (var otherAnt : otherPlayerAnthill.getAnts()) {
+                    var firstPoint = ant.getPosition();
+                    var otherPoint = otherAnt.getPosition();
+                    if (Point.distanceSq(firstPoint.x, firstPoint.y, otherPoint.x, otherPoint.y) < 1) {
+                        ant.applyDamage(100);
+                        otherAnt.applyDamage(100);
+                        break;
+                    }
+                }
+            }
     }
 }
 

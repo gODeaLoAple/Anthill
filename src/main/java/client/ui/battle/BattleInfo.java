@@ -2,10 +2,7 @@ package client.ui.battle;
 
 import client.domain.Game;
 import client.ui.PanelsSwitcher;
-import client.ui.battle.actionStates.Attack;
-import client.ui.battle.actionStates.ExtendAnthill;
-import client.ui.battle.actionStates.HireMole;
-import client.ui.battle.actionStates.PickUpResources;
+import client.ui.battle.actionStates.*;
 import client.ui.main.MainMenu;
 
 import javax.swing.*;
@@ -42,9 +39,9 @@ public class BattleInfo extends JPanel {
         molButton.addActionListener(e -> field.setState(new HireMole(game)));
         buttons.add(molButton, BorderLayout.LINE_END);
 
-        var armagedon = new JButton("ВЫЗВАТЬ АРМАГЕДОН");
-        armagedon.addActionListener(e -> field.setState(new HireMole(game)));
-        buttons.add(armagedon, BorderLayout.LINE_END);
+        var biteAss = new JButton("Укусить за задницу");
+        biteAss.addActionListener(e -> field.setState(new BiteAss(game)));
+        buttons.add(biteAss, BorderLayout.LINE_END);
 
 
         var exit = new JButton("ВЫХОД");

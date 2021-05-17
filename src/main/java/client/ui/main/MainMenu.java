@@ -68,11 +68,9 @@ public class MainMenu extends JPanel {
                 }), new Resources(), new ChaoticMovement(new Point(100,100))))
         };
 
-        IntStream
-                .range(10 * 20, 10 * 21)
-                .forEach(i -> players[0]
-                        .getAnthill()
-                        .addAnt(new SlaveAnt(new Point(500, 500), 100)));
+        addAnts(players[0], 10, new Point(500, 500));
+        //addAnts(players[1], 1001, new Point(100, 100));
+
 
 
         var spawner = new ResourceSpawner(center -> new Hexagon(center, 20));
@@ -87,6 +85,14 @@ public class MainMenu extends JPanel {
         }
         getParent().setPreferredSize(game.getResourcesMap().getSize());
         return new BattleWindow(switcher, game, imageProvider);
+    }
+
+    private void addAnts(Player player, int count, Point start) {
+        var anthill = player.getAnthill();
+        IntStream
+                .range(0, count)
+                .forEach(i -> anthill
+                        .addAnt(new SlaveAnt(start, 100)));
     }
     public void exitGame() {
         System.exit(0);

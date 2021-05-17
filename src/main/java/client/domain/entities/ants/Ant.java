@@ -5,7 +5,7 @@ import java.awt.*;
 
 public abstract class Ant {
     private int health;
-    private int speed = 5;
+    private final int speed = 5;
     private Point position;
     private Point destination;
 
