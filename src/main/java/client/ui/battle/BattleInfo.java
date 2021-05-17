@@ -2,12 +2,8 @@ package client.ui.battle;
 
 import client.domain.Game;
 import client.domain.entities.anthill.Anthill;
-import client.domain.entities.ants.Ant;
 import client.ui.PanelsSwitcher;
-import client.ui.battle.actionStates.Attack;
-import client.ui.battle.actionStates.ExtendAnthill;
-import client.ui.battle.actionStates.HireMole;
-import client.ui.battle.actionStates.PickUpResources;
+import client.ui.battle.actionStates.*;
 import client.ui.main.MainMenu;
 
 import javax.swing.*;
@@ -28,7 +24,7 @@ public class BattleInfo extends JPanel {
         var buttons = new JPanel();
         buttons.setLayout(new GridLayout(3, 1, 0, 5));
 
-        var extendButton = new JButton("Расширить (" + Anthill.RESOURCE_FOR_EXTEND + ")");
+        var extendButton = new JButton("Расширить");
         extendButton.addActionListener(e -> field.setState(new ExtendAnthill(game)));
         buttons.add(extendButton, BorderLayout.NORTH);
 

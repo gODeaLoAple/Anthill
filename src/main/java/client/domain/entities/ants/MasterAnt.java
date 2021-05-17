@@ -8,14 +8,4 @@ public class MasterAnt extends Ant{
         super(point, health);
     }
 
-    public void attack(){
-
-    }
-
-    public void protectColony(){
-
-    }
-    private final int health = 300;
-    private final int speed = 15;
-    private final int id = 1;
 }

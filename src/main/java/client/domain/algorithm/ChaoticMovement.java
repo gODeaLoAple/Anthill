@@ -68,9 +68,9 @@ public class ChaoticMovement {
     }
 
     public Point updateDestination(Ant ant) {
-        var dx = radius * rnd.nextDouble();
-        var dy = radius * rnd.nextDouble();
-        var dest = new Point(location.x + (int)dx, location.y + (int)dy);
+        var r = radius * rnd.nextDouble();
+        var angle = rnd.nextInt(360);
+        var dest = new Point(location.x + (int)(r * Math.cos(angle)), location.y + (int)(r * Math.sin(angle)));
         ant.setDestination(dest);
         return dest;
     }
