@@ -22,4 +22,14 @@ public class ImageProvider {
     private BufferedImage loadImage(String pathToImage) throws IOException {
         return ImageIO.read(new File(pathToImage));
     }
+
+    public BufferedImage getEnemyAntImage() {
+        var img = new BufferedImage(antImage.getWidth(), antImage.getHeight(), BufferedImage.TYPE_INT_RGB);
+        var graphics = img.createGraphics();
+        var newColor = new Color(58, 255, 0, 0);
+        graphics.setXORMode(newColor);
+        graphics.drawImage(antImage, 0, 0, null);
+        graphics.dispose();
+        return img;
+    }
 }

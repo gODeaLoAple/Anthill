@@ -26,11 +26,12 @@ public class HireMole extends ActionState {
 
     @Override
     public void clicked(Point point) {
-        var dest = game
+        var shape = game
                 .getPartsMap()
-                .getShapeAtPoint(point)
-                .getBounds()
-                .getLocation();
+                .getShapeAtPoint(point);
+        if (shape == null)
+            return;
+        var dest = shape.getBounds().getLocation();
         var anthill = game.getMainPlayer().getAnthill();
         if (canHire()) {
             anthill

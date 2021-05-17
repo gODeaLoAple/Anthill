@@ -5,9 +5,10 @@ import java.awt.*;
 
 public abstract class Ant {
     private int health;
-    private final int speed = 5;
+    private final int speed = 15;
     private Point position;
     private Point destination;
+
 
     public Ant(Point point, int health) {
         this.health = health;

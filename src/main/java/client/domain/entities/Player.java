@@ -20,5 +20,9 @@ public class Player {
         return this.anthill;
     }
 
+    public boolean isMainPlayer(){
+        return isMainPlayer();
+    }
+
 }
 

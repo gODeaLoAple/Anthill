@@ -38,7 +38,12 @@ public class BattleField extends JPanel {
         this.imageProvider = imageProvider;
         setFocusable(true);
         startTimer();
+        new Thread(this::addListeners).start();
+        addListeners();
+        drawers = createDrawers();
+    }
 
+    private void addListeners() {
         addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {
@@ -81,7 +86,6 @@ public class BattleField extends JPanel {
                 updateScale();
             }
         });
-        drawers = createDrawers();
     }
 
 
@@ -93,7 +97,7 @@ public class BattleField extends JPanel {
                 repaint();
             }
         };
-        timer.schedule(timerTask, 60, 60);
+        timer.schedule(timerTask, 60, 10);
     }
 
     private Drawer[] createDrawers() {
@@ -122,6 +126,9 @@ public class BattleField extends JPanel {
         } else {
             game.step();
         }
+
+        g2d.drawString(String.valueOf(game.getPlayers()[0].getAnthill().getAnts().size()), 500, 100);
+        g2d.drawString(String.valueOf(game.getPlayers()[1].getAnthill().getAnts().size()), 500, 120);
         for (var drawer : drawers)
            drawer.draw(g2d);
         state.paint(lastMousePosition, g2d);

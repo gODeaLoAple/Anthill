@@ -21,7 +21,7 @@ public class BiteAss extends ActionState {
     @Override
     public void clicked(Point point) {
         sendAntsToResource(point);
-        // claster
+        // cluster (who)
     }
 
     private void sendAntsToResource(Point p) {

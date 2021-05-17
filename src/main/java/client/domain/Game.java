@@ -3,13 +3,13 @@ package client.domain;
 import client.domain.algorithm.ResourceSpawner;
 import client.domain.entities.Player;
 import client.domain.entities.anthill.Anthill;
-import client.domain.entities.ants.Ant;
 import client.domain.map.Map;
 import client.domain.map.MapContainer;
 import client.domain.map.ResourcesMap;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.stream.Collectors;
 
 public class Game {
@@ -82,10 +82,15 @@ public class Game {
     private void moveAnts() {
         for (var player : getPlayers()) {
             var movement = player.getAnthill().getMovement();
-            for (var ant : player.getAnthill().getAnts())
+            var ants = player.getAnthill().getAnts();
+            for (var ant : ants)
                 movement.moveAnt(ant);
+//                        Stream.iterate(1, n -> n + 1).limit(ants.size()).parallel().forEach(ii -> {
+//                movement.moveAnt(ants.get(ii-1));
+            //        });
         }
     }
+
     private void handlePlayersCount() {
         for (var player : getPlayers()) {
             if (!checkIsAlive(player)) {
@@ -95,20 +100,21 @@ public class Game {
     }
 
     private void handleAntBitesAss() {
-        for (var player : getPlayers()) {
-            for (var other : getPlayers()) {
-                if (other != player){
-                   player.getAnthill().battle(other.getAnthill());
-                }
-            }
-        }
-        for (var player : getPlayers()) {
-            var anthill = player.getAnthill();
-            var killed = anthill.getAnts().stream().filter(x -> x.getHealth() <= 0).collect(Collectors.toList());
-            for (var killedAnt : killed)
-                anthill.killAnt(killedAnt);
-        }
+        Arrays.stream(getPlayers()).forEach(player ->
+                Arrays.stream(getPlayers())
+                        .filter(other -> other != player)
+                        .forEach(other -> player
+                                .getAnthill()
+                                .battle(other.getAnthill())));
+
+        Arrays.stream(getPlayers()).map(Player::getAnthill).forEach(anthill -> anthill
+                .getAnts()
+                .stream()
+                .filter(x -> x.getHealth() <= 0)
+                .collect(Collectors.toList())
+                .forEach(anthill::killAnt));
     }
+
     private void removePLayer(Player player) {
         var res = new Player[players.length - 1];
         var c = 0;

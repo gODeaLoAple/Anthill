@@ -2,7 +2,6 @@ package client.ui.battle.drawers.forEachPlayer;
 
 import client.domain.Game;
 import client.domain.entities.Player;
-import client.domain.entities.ants.Ant;
 import client.entities.Vector;
 import client.ui.battle.drawers.GameDrawer;
 import client.ui.battle.utils.ImageProvider;
@@ -18,10 +17,12 @@ import java.util.Map;
 public class AntDrawer extends GameDrawer implements ForEachPlayerDrawer{
 
     private final BufferedImage antImage;
+    private final BufferedImage enemyAntImage;
     private final int height;
     private final int width;
     private final ImageObserver obs;
-    private final Map<Integer, BufferedImage> angleToImage;
+    private final Map<Integer, BufferedImage> angleToImageMainPlayer;
+    private final Map<Integer, BufferedImage> angleToImageEnemyPlayer;
 
     public AntDrawer(Game game, ImageProvider provider) {
         super(game);
@@ -29,7 +30,9 @@ public class AntDrawer extends GameDrawer implements ForEachPlayerDrawer{
         antImage = provider.getAntImage();
         width = antImage.getWidth();
         height = antImage.getHeight();
-        angleToImage = createRotations();
+        angleToImageMainPlayer = createRotations(antImage);
+        enemyAntImage = provider.getEnemyAntImage();
+        angleToImageEnemyPlayer = createRotations(enemyAntImage);
     }
 
     @Override
@@ -38,21 +41,24 @@ public class AntDrawer extends GameDrawer implements ForEachPlayerDrawer{
             var position = ant.getPosition();
             var vector = new Vector(position, ant.getDestination());
             var angle = (int)Math.floor(Math.toDegrees(vector.getAngle()));
-            graphics.drawImage(angleToImage.get(angle), position.x, position.y, 30, 30, obs);
+            if (player.getId() == 0)
+                graphics.drawImage(angleToImageMainPlayer.get(angle), position.x, position.y, 30, 30, obs);
+            else
+                graphics.drawImage(angleToImageEnemyPlayer.get(angle), position.x, position.y, 30, 30, obs);
         }
     }
 
-    private Map<Integer, BufferedImage> createRotations() {
+    private Map<Integer, BufferedImage> createRotations(BufferedImage image) {
         var map = new HashMap<Integer, BufferedImage>(360);
         for (var i = -180; i < 180; i++) {
             var at = new AffineTransform();
-            var newImage = new BufferedImage(width, height, antImage.getType());
+            var newImage = new BufferedImage(width, height, image.getType());
             var newImageHeight = newImage.getHeight();
             var newImageWidth = newImage.getWidth();
             at.rotate(Math.toRadians(i) + Math.PI / 2, newImageWidth / 2.0, newImageHeight / 2.0);
             at.translate((newImageWidth - width) / 2.0, (newImageHeight - height) / 2.0);
             var op = new AffineTransformOp(at, AffineTransformOp.TYPE_BILINEAR);
-            map.put(i, op.filter(antImage, newImage));
+            map.put(i, op.filter(image, newImage));
         }
         return map;
     }
