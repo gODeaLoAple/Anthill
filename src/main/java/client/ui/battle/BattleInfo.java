@@ -40,9 +40,9 @@ public class BattleInfo extends JPanel {
         molButton.addActionListener(e -> field.setState(new HireMole(game)));
         buttons.add(molButton, BorderLayout.LINE_END);
 
-        var armagedon = new JButton("ВЫЗВАТЬ АРМАГЕДОН (" + 99999999 + ")");
-        armagedon.addActionListener(e -> field.setState(new HireMole(game)));
-        buttons.add(armagedon, BorderLayout.LINE_END);
+        var biteAss = new JButton("Укусить за задницу");
+        biteAss.addActionListener(e -> field.setState(new BiteAss(game)));
+        buttons.add(biteAss, BorderLayout.LINE_END);
 
 
         var exit = new JButton("ВЫХОД (" + 500 + ")");

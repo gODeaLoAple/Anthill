@@ -13,7 +13,10 @@ import client.domain.map.MapContainer;
 import client.domain.map.ResourcesMap;
 import client.ui.PanelsSwitcher;
 import client.ui.battle.BattleWindow;
-import client.ui.battle.utils.*;
+import client.ui.battle.utils.Hexagon;
+import client.ui.battle.utils.HexagonResourcePoint;
+import client.ui.battle.utils.HexagonalMap;
+import client.ui.battle.utils.ImageProvider;
 
 import javax.swing.*;
 import java.awt.*;
@@ -57,20 +60,19 @@ public class MainMenu extends JPanel {
                         new HexagonResourcePoint(new Point(200, 500), 20, 20),
                 });
         var container = new MapContainer(map, resourcesMap);
-        var players = new Player[] {
+        var players = new Player[]{
                 new Player(0, new Anthill(new AnthillPlace(new AnthillPart[]{
                         new AnthillPart(map.hexagons.get(5), 100, 100),
                 }), new Resources(1000), new ChaoticMovement(new Point(500, 500)))),
-                new Player(1, new Anthill(new AnthillPlace(new AnthillPart[] {
+                new Player(1, new Anthill(new AnthillPlace(new AnthillPart[]{
                         new AnthillPart(map.hexagons.get(0), 100, 100),
                         new AnthillPart(map.hexagons.get(1), 100, 100),
                         new AnthillPart(map.hexagons.get(2), 100, 100),
-                }), new Resources(), new ChaoticMovement(new Point(100,100))))
+                }), new Resources(), new ChaoticMovement(new Point(100, 100))))
         };
 
         addAnts(players[0], 10, new Point(500, 500));
-        //addAnts(players[1], 1001, new Point(100, 100));
-
+        addAnts(players[1], 5, new Point(100, 100));
 
 
         var spawner = new ResourceSpawner(center -> new Hexagon(center, 20));
@@ -94,6 +96,7 @@ public class MainMenu extends JPanel {
                 .forEach(i -> anthill
                         .addAnt(new SlaveAnt(start, 100)));
     }
+
     public void exitGame() {
         System.exit(0);
     }

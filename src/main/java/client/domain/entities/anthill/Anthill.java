@@ -86,7 +86,7 @@ public class Anthill {
             for (var otherAnt : otherPlayerAnthill.getAnts()) {
                     var firstPoint = ant.getPosition();
                     var otherPoint = otherAnt.getPosition();
-                    if (Point.distanceSq(firstPoint.x, firstPoint.y, otherPoint.x, otherPoint.y) < 1) {
+                    if (Point.distanceSq(firstPoint.x, firstPoint.y, otherPoint.x, otherPoint.y) < 10) {
                         ant.applyDamage(100);
                         otherAnt.applyDamage(100);
                         break;

@@ -132,7 +132,7 @@ public class BattleField extends JPanel {
         var mapSize = game.getResourcesMap().getSize();
         var dx = size.width / (float)mapSize.width;
         var dy = size.height / (float)mapSize.height;
-        scale = new Point.Float(dx * 0.5f, dy* 0.5f);
+        scale = new Point.Float(dx, dy);
     }
 
     public Point.Float getScale() {

@@ -11,10 +11,11 @@ public abstract class Ant {
 
     public Ant(Point point, int health) {
         this.health = health;
-        position = point;
-        destination = position;
+        position = new Point(point);
+        destination = new Point(position);
     }
-    public void applyDamage(int damage){
+
+    public void applyDamage(int damage) {
         health -= damage;
     }
 
@@ -22,7 +23,9 @@ public abstract class Ant {
         return health;
     }
 
-    public void setPosition(Point position) { this.position =  new Point(position); }
+    public void setPosition(Point position) {
+        this.position = new Point(position);
+    }
 
     public void setDestination(Point destination) {
         this.destination = new Point(destination);

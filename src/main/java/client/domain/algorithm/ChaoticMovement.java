@@ -53,16 +53,6 @@ public class ChaoticMovement {
         });
     }
 
-    public boolean isAntInRadius(Ant ant) {
-        var position = ant.getPosition();
-        return Point.distanceSq(position.x, position.y, location.x, location.y) <= radius * radius;
-    }
-
-    public boolean isAntNearPoint(Ant ant, Point point) {
-        var position = ant.getPosition();
-        return Point.distanceSq(position.x , position.y, point.x, point.y) <= radius * radius;
-    }
-
     public Point getLocation() {
         return location;
     }

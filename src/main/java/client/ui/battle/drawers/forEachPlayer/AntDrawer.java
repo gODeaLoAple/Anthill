@@ -37,7 +37,7 @@ public class AntDrawer extends GameDrawer implements ForEachPlayerDrawer{
         for (var ant : player.getAnthill().getAnts()) {
             var position = ant.getPosition();
             var vector = new Vector(position, ant.getDestination());
-            var angle = (int)(Math.toDegrees(vector.getAngle()));
+            var angle = (int)Math.floor(Math.toDegrees(vector.getAngle()));
             graphics.drawImage(angleToImage.get(angle), position.x, position.y, 30, 30, obs);
         }
     }

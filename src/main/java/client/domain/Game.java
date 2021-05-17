@@ -44,7 +44,7 @@ public class Game {
         handleResources();
         handlePlayersCount();
         moveAnts();
-        //handleAntBitesAss();
+        handleAntBitesAss();
     }
 
     private void handleResources() {
