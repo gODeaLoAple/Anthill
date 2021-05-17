@@ -11,7 +11,6 @@ public class ChaoticMovement {
     private Point location;
     private final int radius = 60;
     private final Random rnd;
-    private final int offset = 10;
 
     public ChaoticMovement(Point location) {
         this.location = location;
@@ -52,6 +51,16 @@ public class ChaoticMovement {
             var position = ant.getPosition();
             return Point.distanceSq(position.x , position.y, point.x, point.y) <= radius * radius;
         });
+    }
+
+    public boolean isAntInRadius(Ant ant) {
+        var position = ant.getPosition();
+        return Point.distanceSq(position.x, position.y, location.x, location.y) <= radius * radius;
+    }
+
+    public boolean isAntNearPoint(Ant ant, Point point) {
+        var position = ant.getPosition();
+        return Point.distanceSq(position.x , position.y, point.x, point.y) <= radius * radius;
     }
 
     public Point getLocation() {

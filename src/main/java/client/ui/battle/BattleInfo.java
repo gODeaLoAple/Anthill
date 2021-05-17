@@ -1,6 +1,8 @@
 package client.ui.battle;
 
 import client.domain.Game;
+import client.domain.entities.anthill.Anthill;
+import client.domain.entities.ants.Ant;
 import client.ui.PanelsSwitcher;
 import client.ui.battle.actionStates.Attack;
 import client.ui.battle.actionStates.ExtendAnthill;
@@ -26,11 +28,11 @@ public class BattleInfo extends JPanel {
         var buttons = new JPanel();
         buttons.setLayout(new GridLayout(3, 1, 0, 5));
 
-        var extendButton = new JButton("Расширить");
+        var extendButton = new JButton("Расширить (" + Anthill.RESOURCE_FOR_EXTEND + ")");
         extendButton.addActionListener(e -> field.setState(new ExtendAnthill(game)));
         buttons.add(extendButton, BorderLayout.NORTH);
 
-        var attackButton = new JButton("Атаковать");
+        var attackButton = new JButton("Атаковать (" + Anthill.RESOURCE_FOR_ATTACK +")");
         attackButton.addActionListener(e -> field.setState(new Attack(game)));
         buttons.add(attackButton, BorderLayout.CENTER);
 
@@ -38,16 +40,16 @@ public class BattleInfo extends JPanel {
         pickupButton.addActionListener(e -> field.setState(new PickUpResources(game)));
         buttons.add(pickupButton, BorderLayout.SOUTH);
 
-        var molButton = new JButton("Нанять крота");
+        var molButton = new JButton("Нанять крота (" + HireMole.COST + ")");
         molButton.addActionListener(e -> field.setState(new HireMole(game)));
         buttons.add(molButton, BorderLayout.LINE_END);
 
-        var armagedon = new JButton("ВЫЗВАТЬ АРМАГЕДОН");
+        var armagedon = new JButton("ВЫЗВАТЬ АРМАГЕДОН (" + 99999999 + ")");
         armagedon.addActionListener(e -> field.setState(new HireMole(game)));
         buttons.add(armagedon, BorderLayout.LINE_END);
 
 
-        var exit = new JButton("ВЫХОД");
+        var exit = new JButton("ВЫХОД (" + 500 + ")");
         exit.addActionListener(e -> switchToMainMenu());
         buttons.add(exit, BorderLayout.LINE_END);
 

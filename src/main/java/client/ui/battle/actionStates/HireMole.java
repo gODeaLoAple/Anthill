@@ -5,6 +5,8 @@ import client.domain.Game;
 import java.awt.*;
 
 public class HireMole extends ActionState {
+    public final static int COST = 1000;
+
     public HireMole(Game game) {
         super(game);
     }
@@ -39,7 +41,7 @@ public class HireMole extends ActionState {
                         ant.setPosition(dest);
                         movement.updateDestination(ant);
                     });
-            anthill.getResources().change(-1000);
+            anthill.getResources().change(-COST);
         }
     }
 }

@@ -93,7 +93,7 @@ public class BattleField extends JPanel {
                 repaint();
             }
         };
-        timer.schedule(timerTask, 60, 1000 / 60);
+        timer.schedule(timerTask, 60, 60);
     }
 
     private Drawer[] createDrawers() {
@@ -123,7 +123,7 @@ public class BattleField extends JPanel {
             game.step();
         }
         for (var drawer : drawers)
-            drawer.draw(g2d);
+           drawer.draw(g2d);
         state.paint(lastMousePosition, g2d);
     }
 
@@ -132,11 +132,12 @@ public class BattleField extends JPanel {
         var mapSize = game.getResourcesMap().getSize();
         var dx = size.width / (float)mapSize.width;
         var dy = size.height / (float)mapSize.height;
-        scale = new Point.Float(dx, dy);
+        scale = new Point.Float(dx * 0.5f, dy* 0.5f);
     }
 
     public Point.Float getScale() {
         return scale;
     }
+
 }
 

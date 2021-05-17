@@ -5,7 +5,7 @@ import client.domain.Game;
 import java.awt.*;
 
 public class PickUpResources extends ActionState {
-
+    public static final int cost = 0;
     public PickUpResources(Game game) {
         super(game);
     }

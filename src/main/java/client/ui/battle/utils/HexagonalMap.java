@@ -9,6 +9,7 @@ import java.util.stream.Stream;
 
 public class HexagonalMap implements Map {
 
+    public static final int RADIUS = 30;
     public final  java.util.List<Hexagon> hexagons;
     private final int radius;
     private final Dimension size;

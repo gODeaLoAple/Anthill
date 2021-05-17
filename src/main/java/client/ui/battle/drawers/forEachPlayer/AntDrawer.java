@@ -1,6 +1,7 @@
 package client.ui.battle.drawers.forEachPlayer;
 
 import client.domain.Game;
+import client.domain.algorithm.ChaoticMovement;
 import client.domain.entities.Player;
 import client.domain.entities.ants.Ant;
 import client.entities.Vector;
@@ -12,6 +13,9 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
+import java.lang.management.GarbageCollectorMXBean;
+import java.util.List;
+import java.util.stream.Stream;
 
 public class AntDrawer extends GameDrawer implements ForEachPlayerDrawer{
 
@@ -29,15 +33,18 @@ public class AntDrawer extends GameDrawer implements ForEachPlayerDrawer{
     }
 
     @Override
-    public void draw(Graphics2D graphics, Player player) {
+    public void  draw(Graphics2D graphics, Player player) {
         var anthill = player.getAnthill();
         var ants = anthill.getAnts();
         var movement = anthill.getMovement();
-        for (var ant : ants) {
-            movement.moveAnt(ant);
-            rotateSprite(graphics, ant);
-        }
+        moveAndRotateAnt(graphics, ants, movement);
+    }
 
+    private void moveAndRotateAnt(Graphics2D graphics, List<Ant> ants, ChaoticMovement movement){
+        Stream.iterate(0, n -> n).limit(ants.size()).parallel().forEach(ant -> {
+            movement.moveAnt(ants.get(ant));
+            rotateSprite(graphics, ants.get(ant));
+        });
     }
 
     private void rotateSprite(Graphics2D graphics, Ant ant){

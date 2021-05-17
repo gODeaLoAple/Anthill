@@ -22,8 +22,10 @@ public class Attack extends ActionState {
     }
 
     private boolean canAttack(Shape shape, Game game) {
+        var parts = game.getPartsMap();
         return !game.getMainPlayer().getAnthill().hasShape(shape)
-                && Arrays.stream(game.getPlayers()).anyMatch(x -> x.getAnthill().hasShape(shape));
+                && Arrays.stream(game.getPlayers()).anyMatch(x -> x.getAnthill().hasShape(shape) &&
+                parts.getNeighbours(shape).anyMatch(y -> game.getMainPlayer().getAnthill().hasShape(y)));
     }
 
     @Override
