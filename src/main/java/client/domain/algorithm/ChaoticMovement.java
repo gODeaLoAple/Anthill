@@ -48,7 +48,7 @@ public class ChaoticMovement {
     public boolean isAnyNearPoint(List<Ant> ants, Point point) {
         return ants.stream().anyMatch(ant -> {
             var position = ant.getPosition();
-            return Point.distanceSq(position.x , position.y, point.x, point.y) <= radius * radius;
+            return Point.distanceSq(position.x , position.y, point.x, point.y) <= radius * radius * 0.25;
         });
     }
 
@@ -62,5 +62,9 @@ public class ChaoticMovement {
         var dest = new Point(location.x + (int)(r * Math.cos(angle)), location.y + (int)(r * Math.sin(angle)));
         ant.setDestination(dest);
         return dest;
+    }
+
+    public double getRadius() {
+        return radius;
     }
 }

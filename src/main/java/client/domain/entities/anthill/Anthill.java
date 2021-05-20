@@ -7,6 +7,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Anthill {
     public static final int RESOURCE_FOR_EXTEND = 60;
@@ -88,26 +89,16 @@ public class Anthill {
     }
 
     public void battle(Anthill otherPlayerAnthill) {
-        for (var ant : ants) {
+        if (movement.getLocation().distance(otherPlayerAnthill.movement.getLocation()) < movement.getRadius()) {
             for (var otherAnt : otherPlayerAnthill.getAnts()) {
-                var firstPoint = ant.getPosition();
-                var otherPoint = otherAnt.getPosition();
-                if (Point.distanceSq(firstPoint.x, firstPoint.y, otherPoint.x, otherPoint.y) < 10) {
-                    var myDamage = ChaoticMovement.rnd.nextDouble();
-                    var otherDamage = ChaoticMovement.rnd.nextDouble();
-                    if (myDamage <= 0.5) {
-                        myDamage = 100;
-                        otherDamage = 0;
-                    } else if (otherDamage <= 0.5){
-                        myDamage = 0;
-                        otherDamage = 100;
-                    }
-                    ant.applyDamage((int) otherDamage);
-                    otherAnt.applyDamage((int) myDamage);
-                    break;
-                }
+                var myDamage = ChaoticMovement.rnd.nextDouble() <= 0.005 ? 100 : 0;
+                otherAnt.applyDamage( myDamage);
             }
         }
+    }
+
+    public void removeDeadAnts() {
+        ants.removeIf(x -> x.getHealth() <= 0);
     }
 }
 

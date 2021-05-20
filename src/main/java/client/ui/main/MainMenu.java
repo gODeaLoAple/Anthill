@@ -71,8 +71,8 @@ public class MainMenu extends JPanel {
                 }), new Resources(), new ChaoticMovement(new Point(100, 100))))
         };
 
-        addAnts(players[0], 1_000, new Point(500, 500));
-        addAnts(players[1], 5_000, new Point(100, 100));
+        addAnts(players[0], 100, new Point(500, 500));
+        addAnts(players[1], 100, new Point(100, 100));
 
 
         var spawner = new ResourceSpawner(center -> new Hexagon(center, 20));

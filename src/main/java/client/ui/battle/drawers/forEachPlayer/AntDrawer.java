@@ -37,14 +37,12 @@ public class AntDrawer extends GameDrawer implements ForEachPlayerDrawer{
 
     @Override
     public void draw(Graphics2D graphics, Player player) {
+        var dict = player.getId() == 0 ? angleToImageMainPlayer : angleToImageEnemyPlayer;
         for (var ant : player.getAnthill().getAnts()) {
             var position = ant.getPosition();
             var vector = new Vector(position, ant.getDestination());
             var angle = (int)Math.floor(Math.toDegrees(vector.getAngle()));
-            if (player.getId() == 0)
-                graphics.drawImage(angleToImageMainPlayer.get(angle), position.x, position.y, 30, 30, obs);
-            else
-                graphics.drawImage(angleToImageEnemyPlayer.get(angle), position.x, position.y, 30, 30, obs);
+            graphics.drawImage(dict.get(angle), position.x, position.y, 30, 30, obs);
         }
     }
 

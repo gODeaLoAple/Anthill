@@ -85,9 +85,6 @@ public class Game {
             var ants = player.getAnthill().getAnts();
             for (var ant : ants)
                 movement.moveAnt(ant);
-//                        Stream.iterate(1, n -> n + 1).limit(ants.size()).parallel().forEach(ii -> {
-//                movement.moveAnt(ants.get(ii-1));
-            //        });
         }
     }
 
@@ -100,19 +97,17 @@ public class Game {
     }
 
     private void handleAntBitesAss() {
-        Arrays.stream(getPlayers()).forEach(player ->
-                Arrays.stream(getPlayers())
-                        .filter(other -> other != player)
-                        .forEach(other -> player
-                                .getAnthill()
-                                .battle(other.getAnthill())));
-
-        Arrays.stream(getPlayers()).map(Player::getAnthill).forEach(anthill -> anthill
-                .getAnts()
-                .stream()
-                .filter(x -> x.getHealth() <= 0)
-                .collect(Collectors.toList())
-                .forEach(anthill::killAnt));
+        for (var player : players) {
+            var anthill = player.getAnthill();
+            for (var other : players) {
+                if (player != other) {
+                    anthill.battle(other.getAnthill());
+                }
+            }
+        }
+        for (var player : players) {
+            player.getAnthill().removeDeadAnts();
+        }
     }
 
     private void removePLayer(Player player) {
