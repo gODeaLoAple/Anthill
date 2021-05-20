@@ -11,8 +11,11 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
+import java.io.IOException;
+import java.lang.ref.SoftReference;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class AntDrawer extends GameDrawer implements ForEachPlayerDrawer{
 
@@ -21,18 +24,21 @@ public class AntDrawer extends GameDrawer implements ForEachPlayerDrawer{
     private final int height;
     private final int width;
     private final ImageObserver obs;
-    private final Map<Integer, BufferedImage> angleToImageMainPlayer;
-    private final Map<Integer, BufferedImage> angleToImageEnemyPlayer;
+    //private final Map<Integer, BufferedImage> angleToImageMainPlayer;
+    //private final Map<Integer, BufferedImage> angleToImageEnemyPlayer;
+    private SoftReference<Map<Integer, BufferedImage>> defaultImages;
+    private SoftReference<Map<Integer, BufferedImage>> enemyImages;
 
-    public AntDrawer(Game game, ImageProvider provider) {
+
+    public AntDrawer(Game game, ImageProvider provider) throws IOException {
         super(game);
         obs = (img, infoflags, x, y, width, height) -> false;
         antImage = provider.getAntImage();
         width = antImage.getWidth();
         height = antImage.getHeight();
-        angleToImageMainPlayer = createRotations(antImage);
         enemyAntImage = provider.getEnemyAntImage();
-        angleToImageEnemyPlayer = createRotations(enemyAntImage);
+        defaultImages = new SoftReference<>(createRotations(antImage));
+        enemyImages = new SoftReference<>(createRotations(enemyAntImage));
     }
 
     @Override
@@ -42,9 +48,11 @@ public class AntDrawer extends GameDrawer implements ForEachPlayerDrawer{
             var vector = new Vector(position, ant.getDestination());
             var angle = (int)Math.floor(Math.toDegrees(vector.getAngle()));
             if (player.getId() == 0)
-                graphics.drawImage(angleToImageMainPlayer.get(angle), position.x, position.y, 30, 30, obs);
+                graphics.drawImage(Objects.requireNonNull(defaultImages.get()).get(angle),
+                        position.x, position.y, 30, 30, obs);
             else
-                graphics.drawImage(angleToImageEnemyPlayer.get(angle), position.x, position.y, 30, 30, obs);
+                graphics.drawImage(Objects.requireNonNull(enemyImages.get()).get(angle),
+                        position.x, position.y, 30, 30, obs);
         }
     }
 

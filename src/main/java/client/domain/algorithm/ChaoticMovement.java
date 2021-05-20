@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class ChaoticMovement {
     private Point location;
-    private final int radius = 200;
+    private final int radius = 500;
     public static final Random rnd = new Random();
 
     public ChaoticMovement(Point location) {

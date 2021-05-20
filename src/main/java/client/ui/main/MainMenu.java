@@ -36,7 +36,13 @@ public class MainMenu extends JPanel {
         buttons.setLayout(new GridLayout(3, 1, 0, 5));
 
         var startGameButton = new JButton("Старт");
-        startGameButton.addActionListener(e -> startGame());
+        startGameButton.addActionListener(e -> {
+            try {
+                startGame();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
         buttons.add(startGameButton, BorderLayout.NORTH);
 
         var exitGameButton = new JButton("Выход");
@@ -46,11 +52,11 @@ public class MainMenu extends JPanel {
         add(buttons);
     }
 
-    public void startGame() {
+    public void startGame() throws IOException {
         switcher.switchToPanel(createGame());
     }
 
-    public BattleWindow createGame() {
+    public BattleWindow createGame() throws IOException {
         var size = new Dimension(1366, 782);
         var map = new HexagonalMap(size.width, size.height, 30);
         var resourcesMap = new ResourcesMap(size, new Shape[]

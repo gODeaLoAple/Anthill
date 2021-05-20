@@ -16,6 +16,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.Point2D;
+import java.io.IOException;
 import java.util.TimerTask;
 
 public class BattleField extends JPanel {
@@ -30,7 +31,7 @@ public class BattleField extends JPanel {
     private final Drawer[] drawers;
     private Point2D.Float scale = new Point2D.Float(1, 1);
 
-    public BattleField(Game game, ShapeFiller filler, ImageProvider imageProvider) {
+    public BattleField(Game game, ShapeFiller filler, ImageProvider imageProvider) throws IOException {
         super();
         this.game = game;
         state = new Idle(game);
@@ -100,7 +101,7 @@ public class BattleField extends JPanel {
         timer.schedule(timerTask, 60, 10);
     }
 
-    private Drawer[] createDrawers() {
+    private Drawer[] createDrawers() throws IOException {
         return new Drawer[]{
                 new ResourceDrawer(game),
                 new ForEachPlayerDrawerContainer(game, new ForEachPlayerDrawer[]{
