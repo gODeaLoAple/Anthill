@@ -13,7 +13,7 @@ public class ResourceDrawer extends GameDrawer {
     @Override
     public void draw(Graphics2D graphics) {
         for (var shape : game.getResourcesMap().getShapes()) {
-            graphics.setColor(new Color(87, 44, 5));
+            graphics.setColor(new Color(0x572c05, true));
             graphics.fill(shape);
         }
     }

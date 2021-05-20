@@ -7,11 +7,12 @@ import client.ui.battle.utils.HexagonFiller;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class BattleWindow extends JPanel {
 
 
-    public BattleWindow(PanelsSwitcher switcher, Game game, ImageProvider imageProvider) {
+    public BattleWindow(PanelsSwitcher switcher, Game game, ImageProvider imageProvider) throws IOException {
         super();
         setLayout(new BorderLayout());
 
