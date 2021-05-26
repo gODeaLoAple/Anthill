@@ -106,7 +106,7 @@ public class BattleField extends JPanel {
                 new ResourceDrawer(game),
                 new ForEachPlayerDrawerContainer(game, new ForEachPlayerDrawer[]{
                         new AnthillsDrawer(game, colorProvider, filler),
-                        new AntDrawer(game, imageProvider)
+                        new AntDrawer(game, imageProvider, colorProvider)
                 })
         };
     }

@@ -8,7 +8,6 @@ import java.awt.*;
 
 
 public class Program {
-
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             var frame = new JFrame("Anthill");

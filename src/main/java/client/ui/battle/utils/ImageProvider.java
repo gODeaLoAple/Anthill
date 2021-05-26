@@ -25,18 +25,7 @@ public class ImageProvider {
         return ImageIO.read(new File(pathToImage));
     }
 
-    public BufferedImage getEnemyAntImage() throws IOException {
-        var img = colorImage(enemyImage, new Color(150, 50, 10));
-        var graphics = img.createGraphics();
-        //var newColor = new Color(50, 150, 50 , 100);
-        //graphics.setBackground(new Color(0x00000000, true));
-        graphics.setXORMode(new Color(img.getRGB(antImage.getHeight() / 2, antImage.getHeight() / 2), true  ));
-        graphics.drawImage(img, 0, 0, null);
-        graphics.dispose();
-        return img;
-    }
-
-    private static BufferedImage colorImage(BufferedImage image, Color color) {
+    public BufferedImage colorImage(BufferedImage image, Color color) {
         var width = image.getWidth();
         var height = image.getHeight();
         var raster = image.getRaster();

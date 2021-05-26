@@ -43,8 +43,7 @@ public class ExtendAnthill extends ActionState {
             for (var rsh : resourcesMap.getShapes()){
                 var rect = rsh.getBounds();
                 var centerPoint = new Point((int)rect.getCenterX(), (int)rect.getCenterY());
-                if (shape.intersects(rect)
-                        || (anthill.hasShape(game.getPartsMap().getShapeAtPoint(centerPoint))))
+                if (shape.intersects(rect) || (anthill.hasShape(game.getPartsMap().getShapeAtPoint(centerPoint))))
                     return false;
             }
 
