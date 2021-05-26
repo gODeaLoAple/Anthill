@@ -24,10 +24,8 @@ public class AntDrawer extends GameDrawer implements ForEachPlayerDrawer{
     private final int height;
     private final int width;
     private final ImageObserver obs;
-    //private final Map<Integer, BufferedImage> angleToImageMainPlayer;
-    //private final Map<Integer, BufferedImage> angleToImageEnemyPlayer;
-    private SoftReference<Map<Integer, BufferedImage>> defaultImages;
-    private SoftReference<Map<Integer, BufferedImage>> enemyImages;
+    private final Map<Integer, BufferedImage> angleToImageMainPlayer;
+    private final Map<Integer, BufferedImage> angleToImageEnemyPlayer;
 
 
     public AntDrawer(Game game, ImageProvider provider) throws IOException {
@@ -37,8 +35,8 @@ public class AntDrawer extends GameDrawer implements ForEachPlayerDrawer{
         width = antImage.getWidth();
         height = antImage.getHeight();
         enemyAntImage = provider.getEnemyAntImage();
-        defaultImages = new SoftReference<>(createRotations(antImage));
-        enemyImages = new SoftReference<>(createRotations(enemyAntImage));
+        angleToImageMainPlayer = createRotations(antImage);
+        angleToImageEnemyPlayer = createRotations(enemyAntImage);
     }
 
     @Override
@@ -48,10 +46,10 @@ public class AntDrawer extends GameDrawer implements ForEachPlayerDrawer{
             var vector = new Vector(position, ant.getDestination());
             var angle = (int)Math.floor(Math.toDegrees(vector.getAngle()));
             if (player.getId() == 0)
-                graphics.drawImage(Objects.requireNonNull(defaultImages.get()).get(angle),
+                graphics.drawImage(Objects.requireNonNull(angleToImageMainPlayer).get(angle),
                         position.x, position.y, 30, 30, obs);
             else
-                graphics.drawImage(Objects.requireNonNull(enemyImages.get()).get(angle),
+                graphics.drawImage(Objects.requireNonNull(angleToImageEnemyPlayer).get(angle),
                         position.x, position.y, 30, 30, obs);
         }
     }

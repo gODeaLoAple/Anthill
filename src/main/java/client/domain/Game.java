@@ -40,11 +40,15 @@ public class Game {
         return players[0];
     }
 
+    public Player getPLayerById(int id){
+        return players[id];
+    }
+
     public void step() {
         handleResources();
         handlePlayersCount();
         moveAnts();
-        handleAntBitesAss();
+        //handleAntBitesAss();
     }
 
     private void handleResources() {
@@ -105,7 +109,7 @@ public class Game {
                         .filter(other -> other != player)
                         .forEach(other -> player
                                 .getAnthill()
-                                .battle(other.getAnthill())));
+                                .battleAnt(other.getAnthill())));
 
         Arrays.stream(getPlayers()).map(Player::getAnthill).forEach(anthill -> anthill
                 .getAnts()

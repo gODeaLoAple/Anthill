@@ -87,7 +87,7 @@ public class Anthill {
         return movement;
     }
 
-    public void battle(Anthill otherPlayerAnthill) {
+    public void battleAnt(Anthill otherPlayerAnthill) {
         for (var ant : ants) {
             for (var otherAnt : otherPlayerAnthill.getAnts()) {
                 var firstPoint = ant.getPosition();
