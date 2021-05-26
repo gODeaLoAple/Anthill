@@ -27,6 +27,10 @@ public class AnthillPart {
         return health;
     }
 
+    public void setHealth(int health){
+        this.health = health;
+    }
+
     public void changeHealth(int delta) {
         health  += delta;
     }

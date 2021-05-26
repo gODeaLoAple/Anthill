@@ -40,11 +40,15 @@ public class Game {
         return players[0];
     }
 
+    public Player getPLayerById(int id){
+        return players[id];
+    }
+
     public void step() {
         handleResources();
         handlePlayersCount();
         moveAnts();
-        handleAntBitesAss();
+        //handleAntBitesAss();
     }
 
     private void handleResources() {
@@ -97,6 +101,21 @@ public class Game {
     }
 
     private void handleAntBitesAss() {
+<<<<<<< HEAD
+        Arrays.stream(getPlayers()).forEach(player ->
+                Arrays.stream(getPlayers())
+                        .filter(other -> other != player)
+                        .forEach(other -> player
+                                .getAnthill()
+                                .battleAnt(other.getAnthill())));
+
+        Arrays.stream(getPlayers()).map(Player::getAnthill).forEach(anthill -> anthill
+                .getAnts()
+                .stream()
+                .filter(x -> x.getHealth() <= 0)
+                .collect(Collectors.toList())
+                .forEach(anthill::killAnt));
+=======
         for (var player : players) {
             var anthill = player.getAnthill();
             for (var other : players) {
@@ -108,6 +127,7 @@ public class Game {
         for (var player : players) {
             player.getAnthill().removeDeadAnts();
         }
+>>>>>>> a6425dbb695b3c8cb01359c507d73a9eeb098a16
     }
 
     private void removePLayer(Player player) {

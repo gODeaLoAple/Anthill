@@ -19,10 +19,5 @@ public class Player {
     public Anthill getAnthill() {
         return this.anthill;
     }
-
-    public boolean isMainPlayer(){
-        return isMainPlayer();
-    }
-
 }
 

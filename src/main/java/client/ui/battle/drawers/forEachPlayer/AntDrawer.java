@@ -17,14 +17,28 @@ import java.util.Map;
 public class AntDrawer extends GameDrawer implements ForEachPlayerDrawer{
 
     private final ImageObserver obs;
+<<<<<<< HEAD
+    private final Map<Integer, BufferedImage> angleToImageMainPlayer;
+    private final Map<Integer, BufferedImage> angleToImageEnemyPlayer;
+=======
     private final Map<Color, ImageCircular> images;
     private final ColorProvider colorProvider;
+>>>>>>> a6425dbb695b3c8cb01359c507d73a9eeb098a16
 
     public AntDrawer(Game game, ImageProvider provider, ColorProvider colorProvider) {
         super(game);
         obs = (img, infoflags, x, y, width, height) -> false;
+<<<<<<< HEAD
+        antImage = provider.getAntImage();
+        width = antImage.getWidth();
+        height = antImage.getHeight();
+        enemyAntImage = provider.getEnemyAntImage();
+        angleToImageMainPlayer = createRotations(antImage);
+        angleToImageEnemyPlayer = createRotations(enemyAntImage);
+=======
         this.colorProvider = colorProvider;
         images = createImages(colorProvider, provider);
+>>>>>>> a6425dbb695b3c8cb01359c507d73a9eeb098a16
     }
 
     private Map<Color, ImageCircular> createImages(ColorProvider colors, ImageProvider images) {
@@ -41,7 +55,16 @@ public class AntDrawer extends GameDrawer implements ForEachPlayerDrawer{
             var position = ant.getPosition();
             var vector = new Vector(position, ant.getDestination());
             var angle = (int)Math.floor(Math.toDegrees(vector.getAngle()));
+<<<<<<< HEAD
+            if (player.getId() == 0)
+                graphics.drawImage(Objects.requireNonNull(angleToImageMainPlayer).get(angle),
+                        position.x, position.y, 30, 30, obs);
+            else
+                graphics.drawImage(Objects.requireNonNull(angleToImageEnemyPlayer).get(angle),
+                        position.x, position.y, 30, 30, obs);
+=======
             graphics.drawImage(images.getImage(angle),  position.x, position.y, 30, 30, obs);
+>>>>>>> a6425dbb695b3c8cb01359c507d73a9eeb098a16
         }
     }
 
