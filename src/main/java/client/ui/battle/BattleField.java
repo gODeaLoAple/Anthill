@@ -44,6 +44,8 @@ public class BattleField extends JPanel {
         drawers = createDrawers();
     }
 
+
+
     private void addListeners() {
         addMouseMotionListener(new MouseMotionAdapter() {
             @Override
@@ -95,13 +97,16 @@ public class BattleField extends JPanel {
         var timerTask = new TimerTask() {
             @Override
             public void run() {
+                if (!game.isGameOver()) {
+                    game.step();
+                }
                 repaint();
             }
         };
         timer.schedule(timerTask, 60, 10);
     }
 
-    private Drawer[] createDrawers() throws IOException {
+    private Drawer[] createDrawers() {
         return new Drawer[]{
                 new ResourceDrawer(game),
                 new ForEachPlayerDrawerContainer(game, new ForEachPlayerDrawer[]{
@@ -124,12 +129,7 @@ public class BattleField extends JPanel {
         g2d.scale(scale.x, scale.y);
         if (game.isGameOver()) {
             g2d.drawString("Победитель: " + game.getMainPlayer().getId(), 100, 100);
-        } else {
-            game.step();
         }
-
-        g2d.drawString(String.valueOf(game.getPlayers()[0].getAnthill().getAnts().size()), 500, 100);
-        g2d.drawString(String.valueOf(game.getPlayers()[1].getAnthill().getAnts().size()), 500, 120);
         for (var drawer : drawers)
            drawer.draw(g2d);
         state.paint(lastMousePosition, g2d);

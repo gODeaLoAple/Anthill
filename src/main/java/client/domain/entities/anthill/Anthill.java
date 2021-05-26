@@ -89,6 +89,8 @@ public class Anthill {
     }
 
     public void battle(Anthill otherPlayerAnthill) {
+        if (ants.size() == 0)
+            return;
         if (movement.getLocation().distance(otherPlayerAnthill.movement.getLocation()) < movement.getRadius()) {
             for (var otherAnt : otherPlayerAnthill.getAnts()) {
                 var myDamage = ChaoticMovement.rnd.nextDouble() <= 0.005 ? 100 : 0;
