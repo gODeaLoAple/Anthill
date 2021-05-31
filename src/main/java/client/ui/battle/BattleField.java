@@ -43,7 +43,6 @@ public class BattleField extends JPanel {
         setFocusable(true);
         startTimer();
         new Thread(this::addListeners).start();
-        addListeners();
         drawers = createDrawers();
     }
 

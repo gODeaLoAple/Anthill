@@ -34,7 +34,8 @@ public class Attack extends ActionState {
         final var shape = game.getPartsMap().getShapeAtPoint(point);
         if (shape == null)
             return;
-        final var mainAnthill = game.getMainPlayer().getAnthill();
+        final var mainPlayer = game.getMainPlayer();
+        final var mainAnthill = mainPlayer.getAnthill();
         for (var player : game.getPlayers()) {
             final var anthill = player.getAnthill();
             final var part = anthill.getPartByShape(shape);
@@ -44,7 +45,7 @@ public class Attack extends ActionState {
                     if (mainAnthill.hasEnoughResourcesToAttack()) {
                         anthill.applyDamage(part, Anthill.RESOURCE_FOR_ATTACK);
                         res.change(-Anthill.RESOURCE_FOR_ATTACK);
-                        dispatcher.send(new shared.messages.Attack(game.getMainPlayer(), player, part));
+                        dispatcher.send(new shared.messages.Attack(mainPlayer, player, part));
                     }
                 }
                 break;
