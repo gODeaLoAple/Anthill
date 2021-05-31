@@ -1,13 +1,14 @@
 package client.ui.battle.actionStates;
 
 import client.domain.Game;
+import client.net.NetDispatcher;
 
 import java.awt.*;
 
 public class BiteAss extends ActionState {
 
-    public BiteAss(Game game) {
-        super(game);
+    public BiteAss(Game game, NetDispatcher dispatcher) {
+        super(game, dispatcher);
     }
 
     @Override
@@ -21,7 +22,6 @@ public class BiteAss extends ActionState {
     @Override
     public void clicked(Point point) {
         sendAntsToResource(point);
-        // cluster (who)
     }
 
     private void sendAntsToResource(Point p) {

@@ -10,6 +10,7 @@ import client.domain.map.ResourcesMap;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Game {
@@ -17,6 +18,7 @@ public class Game {
     private final MapContainer container;
     private Player[] players;
     private final ResourceSpawner spawner;
+    private ResourcePickupObserver pickupObserver;
 
     public Game(MapContainer container, Player[] players, ResourceSpawner spawner) {
         this.container = container;
@@ -40,7 +42,7 @@ public class Game {
         return players[0];
     }
 
-    public Player getPLayerById(int id){
+    public Player getPlayerById(int id){
         return players[id];
     }
 
@@ -57,7 +59,6 @@ public class Game {
         for (var player : getPlayers()) {
             var anthill = player.getAnthill();
             var movement = anthill.getMovement();
-            var shape = resourceMap.getShapeAtPoint(movement.getLocation());
             var ants = anthill.getAnts();
 
             for (var res : getResourcesMap().getShapes()) {
@@ -66,21 +67,13 @@ public class Game {
                             .getResources()
                             .change(Anthill.RESOURCE);
                     shapesToRemove.add(res);
+                    if (pickupObserver != null)
+                        pickupObserver.onResourcePickup(player, res);
                 }
             }
 
-            if (shape != null && movement.isAnyInRadius(anthill.getAnts())) {
-                anthill
-                        .getResources()
-                        .change(Anthill.RESOURCE);
-                shapesToRemove.add(shape);
-            }
-
         }
-        shapesToRemove.forEach(shape -> {
-            resourceMap.remove(shape);
-            spawner.spawn(this);
-        });
+        shapesToRemove.forEach(resourceMap::remove);
     }
 
     private void moveAnts() {
@@ -101,21 +94,6 @@ public class Game {
     }
 
     private void handleAntBitesAss() {
-<<<<<<< HEAD
-        Arrays.stream(getPlayers()).forEach(player ->
-                Arrays.stream(getPlayers())
-                        .filter(other -> other != player)
-                        .forEach(other -> player
-                                .getAnthill()
-                                .battleAnt(other.getAnthill())));
-
-        Arrays.stream(getPlayers()).map(Player::getAnthill).forEach(anthill -> anthill
-                .getAnts()
-                .stream()
-                .filter(x -> x.getHealth() <= 0)
-                .collect(Collectors.toList())
-                .forEach(anthill::killAnt));
-=======
         for (var player : players) {
             var anthill = player.getAnthill();
             for (var other : players) {
@@ -127,7 +105,6 @@ public class Game {
         for (var player : players) {
             player.getAnthill().removeDeadAnts();
         }
->>>>>>> a6425dbb695b3c8cb01359c507d73a9eeb098a16
     }
 
     private void removePLayer(Player player) {
@@ -149,5 +126,9 @@ public class Game {
 
     public boolean isGameOver() {
         return players.length == 1;
+    }
+
+    public void setPickupObserver(ResourcePickupObserver pickupObserver) {
+        this.pickupObserver = pickupObserver;
     }
 }

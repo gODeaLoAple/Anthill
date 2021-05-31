@@ -11,12 +11,15 @@ import client.domain.entities.anthill.Resources;
 import client.domain.entities.ants.SlaveAnt;
 import client.domain.map.MapContainer;
 import client.domain.map.ResourcesMap;
+import client.net.NetDispatcher;
 import client.ui.PanelsSwitcher;
 import client.ui.battle.BattleWindow;
+import client.ui.battle.actionStates.PickUpResources;
 import client.ui.battle.utils.Hexagon;
 import client.ui.battle.utils.HexagonResourcePoint;
 import client.ui.battle.utils.HexagonalMap;
 import client.ui.battle.utils.ImageProvider;
+import shared.messages.CollectResources;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,10 +29,12 @@ import java.util.stream.IntStream;
 public class MainMenu extends JPanel {
 
     private final PanelsSwitcher switcher;
+    private final NetDispatcher dispatcher;
 
-    public MainMenu(PanelsSwitcher switcher) {
+    public MainMenu(PanelsSwitcher switcher, NetDispatcher dispatcher) {
         super();
         this.switcher = switcher;
+        this.dispatcher = dispatcher;
         setLayout(new BorderLayout());
 
         var buttons = new JPanel();
@@ -56,7 +61,7 @@ public class MainMenu extends JPanel {
         switcher.switchToPanel(createGame());
     }
 
-    public BattleWindow createGame() throws IOException {
+    public BattleWindow createGame() {
         var size = new Dimension(1366, 782);
         var map = new HexagonalMap(size.width, size.height, 30);
         var resourcesMap = new ResourcesMap(size, new Shape[]
@@ -68,16 +73,16 @@ public class MainMenu extends JPanel {
         var container = new MapContainer(map, resourcesMap);
         var players = new Player[]{
                 new Player(0, new Anthill(new AnthillPlace(new AnthillPart[]{
-                        new AnthillPart(map.hexagons.get(5), 100, 100),
+                        new AnthillPart(map.hexagons.get(5), 100),
                 }), new Resources(1000), new ChaoticMovement(new Point(500, 500)))),
                 new Player(1, new Anthill(new AnthillPlace(new AnthillPart[]{
-                        new AnthillPart(map.hexagons.get(0), 100, 100),
-                        new AnthillPart(map.hexagons.get(1), 100, 100),
-                        new AnthillPart(map.hexagons.get(2), 100, 100),
+                        new AnthillPart(map.hexagons.get(0), 100),
+                        new AnthillPart(map.hexagons.get(1), 100),
+                        new AnthillPart(map.hexagons.get(2), 100),
                 }), new Resources(), new ChaoticMovement(new Point(100, 100))))
         };
 
-        addAnts(players[0], 10, new Point(500, 500));
+        addAnts(players[0], 9, new Point(500, 500));
         addAnts(players[1], 10, new Point(100, 100));
 
 
@@ -92,7 +97,16 @@ public class MainMenu extends JPanel {
             System.exit(1);
         }
         getParent().setPreferredSize(game.getResourcesMap().getSize());
-        return new BattleWindow(switcher, game, imageProvider);
+        setDispatcher(game, dispatcher);
+        return new BattleWindow(switcher, game, imageProvider, dispatcher);
+    }
+
+    private void setDispatcher(Game game, NetDispatcher dispatcher) {
+        dispatcher.setGame(game);
+        game.setPickupObserver((player, res) -> {
+            var bound = res.getBounds2D();
+            dispatcher.send(new CollectResources(player, new Point((int)bound.getCenterX(), (int)bound.getCenterY())));
+        });
     }
 
     private void addAnts(Player player, int count, Point start) {

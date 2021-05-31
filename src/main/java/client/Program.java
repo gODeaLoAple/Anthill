@@ -1,5 +1,6 @@
 package client;
 
+import client.net.NetDispatcher;
 import client.ui.PanelsSwitcher;
 import client.ui.main.MainMenu;
 
@@ -14,7 +15,8 @@ public class Program {
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setPreferredSize(new Dimension(800, 600));
             var switcher = new PanelsSwitcher(frame);
-            var mainMenu = new MainMenu(switcher);
+            var dispatcher = new NetDispatcher();
+            var mainMenu = new MainMenu(switcher, dispatcher);
             switcher.setCurrent(mainMenu);
             frame.add(mainMenu);
             frame.pack();

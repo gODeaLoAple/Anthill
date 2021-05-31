@@ -1,13 +1,13 @@
 package client.ui.battle.actionStates;
 
 import client.domain.Game;
+import client.net.NetDispatcher;
 
 import java.awt.*;
 
 public class PickUpResources extends ActionState {
-    public static final int cost = 0;
-    public PickUpResources(Game game) {
-        super(game);
+    public PickUpResources(Game game, NetDispatcher dispatcher) {
+        super(game, dispatcher);
     }
 
     @Override
@@ -23,7 +23,8 @@ public class PickUpResources extends ActionState {
     public void clicked(Point point) {
         var resourceMap = game.getResourcesMap();
         var shape = resourceMap.getShapeAtPoint(point);
-        if (shape != null) sendAntsToResource(point);
+        if (shape != null)
+            sendAntsToResource(point);
     }
 
     private void sendAntsToResource(Point p) {

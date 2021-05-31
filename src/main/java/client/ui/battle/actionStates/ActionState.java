@@ -1,13 +1,14 @@
 package client.ui.battle.actionStates;
 
 import client.domain.Game;
-
-import java.awt.*;
+import client.net.NetDispatcher;
 
 public abstract class ActionState implements PlayerActionState{
-    public final Game game;
+    protected final Game game;
+    protected final NetDispatcher dispatcher;
 
-    public ActionState(Game game) {
+    public ActionState(Game game, NetDispatcher dispatcher) {
         this.game = game;
+        this.dispatcher = dispatcher;
     }
 }

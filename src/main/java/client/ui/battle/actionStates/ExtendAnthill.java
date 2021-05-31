@@ -2,12 +2,13 @@ package client.ui.battle.actionStates;
 
 import client.domain.Game;
 import client.domain.entities.anthill.Anthill;
+import client.net.NetDispatcher;
 
 import java.awt.*;
 
 public class ExtendAnthill extends ActionState {
-    public ExtendAnthill(Game game) {
-        super(game);
+    public ExtendAnthill(Game game, NetDispatcher dispatcher) {
+        super(game, dispatcher);
     }
 
     @Override
@@ -57,8 +58,13 @@ public class ExtendAnthill extends ActionState {
     @Override
     public void clicked(Point point) {
         var shape = game.getPartsMap().getShapeAtPoint(point);
-        if (shape != null && canAddShape(shape))
-            game.getMainPlayer().getAnthill().extend(shape);
+        if (shape != null && canAddShape(shape)) {
+            var mainPlayer = game.getMainPlayer();
+            mainPlayer.getAnthill().extend(shape);
+            var bounds = shape.getBounds();
+            dispatcher.send(new shared.messages.ExtendAnthill(mainPlayer,
+                    new Point((int)bounds.getCenterX(), (int)bounds.getCenterY())));
+        }
     }
 
 }

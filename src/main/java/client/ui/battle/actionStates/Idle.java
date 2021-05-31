@@ -1,12 +1,13 @@
 package client.ui.battle.actionStates;
 
 import client.domain.Game;
+import client.net.NetDispatcher;
 
 import java.awt.*;
 
 public class Idle extends ActionState {
-    public Idle(Game game) {
-        super(game);
+    public Idle(Game game, NetDispatcher dispatcher) {
+        super(game, dispatcher);
     }
 
     @Override

@@ -1,14 +1,15 @@
 package client.ui.battle.actionStates;
 
 import client.domain.Game;
+import client.net.NetDispatcher;
 
 import java.awt.*;
 
 public class HireMole extends ActionState {
     public final static int COST = 1000;
 
-    public HireMole(Game game) {
-        super(game);
+    public HireMole(Game game, NetDispatcher dispatcher) {
+        super(game, dispatcher);
     }
 
     @Override
@@ -32,17 +33,17 @@ public class HireMole extends ActionState {
         if (shape == null)
             return;
         var dest = shape.getBounds().getLocation();
-        var anthill = game.getMainPlayer().getAnthill();
+        var mainPlayer = game.getMainPlayer();
+        var anthill = mainPlayer.getAnthill();
         if (canHire()) {
-            anthill
-                    .getAnts()
-                    .forEach(ant -> {
-                        var movement = game.getMainPlayer().getAnthill().getMovement();
-                        movement.setLocation(dest);
-                        ant.setPosition(dest);
-                        movement.updateDestination(ant);
-                    });
+            var movement = anthill.getMovement();
+            movement.setLocation(dest);
+            for (var ant : anthill.getAnts()) {
+                ant.setPosition(dest);
+                movement.updateDestination(ant);
+            }
             anthill.getResources().change(-COST);
+            dispatcher.send(new shared.messages.HireMole(mainPlayer, dest));
         }
     }
 }

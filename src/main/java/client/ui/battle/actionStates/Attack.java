@@ -2,14 +2,15 @@ package client.ui.battle.actionStates;
 
 import client.domain.Game;
 import client.domain.entities.anthill.Anthill;
+import client.net.NetDispatcher;
 
 import java.awt.*;
 import java.util.Arrays;
 
 public class Attack extends ActionState {
 
-    public Attack(Game game) {
-        super(game);
+    public Attack(Game game, NetDispatcher dispatcher) {
+        super(game, dispatcher);
     }
 
     @Override
@@ -43,6 +44,7 @@ public class Attack extends ActionState {
                     if (mainAnthill.hasEnoughResourcesToAttack()) {
                         anthill.applyDamage(part, Anthill.RESOURCE_FOR_ATTACK);
                         res.change(-Anthill.RESOURCE_FOR_ATTACK);
+                        dispatcher.send(new shared.messages.Attack(game.getMainPlayer(), player, part));
                     }
                 }
                 break;

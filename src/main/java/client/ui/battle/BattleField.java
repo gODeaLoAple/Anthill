@@ -1,6 +1,7 @@
 package client.ui.battle;
 
 import client.domain.Game;
+import client.net.NetDispatcher;
 import client.ui.battle.actionStates.*;
 import client.ui.battle.drawers.Drawer;
 import client.ui.battle.drawers.ResourceDrawer;
@@ -25,18 +26,20 @@ public class BattleField extends JPanel {
     private Point lastMousePosition = new Point();
     private PlayerActionState state;
     private final ImageProvider imageProvider;
+    private final NetDispatcher dispatcher;
     private final ColorProvider colorProvider = new ColorProvider();
     private final ShapeFiller filler;
 
     private final Drawer[] drawers;
     private Point2D.Float scale = new Point2D.Float(1, 1);
 
-    public BattleField(Game game, ShapeFiller filler, ImageProvider imageProvider) throws IOException {
+    public BattleField(Game game, ShapeFiller filler, ImageProvider imageProvider, NetDispatcher dispatcher) {
         super();
         this.game = game;
-        state = new Idle(game);
+        state = new Idle(game, null);
         this.filler = filler;
         this.imageProvider = imageProvider;
+        this.dispatcher = dispatcher;
         setFocusable(true);
         startTimer();
         new Thread(this::addListeners).start();
@@ -69,9 +72,9 @@ public class BattleField extends JPanel {
             public void keyPressed(KeyEvent e) {
                 super.keyPressed(e);
                 switch (e.getKeyCode()) {
-                    case KeyEvent.VK_E -> setState(new ExtendAnthill(game));
-                    case KeyEvent.VK_A -> setState(new Attack(game));
-                    case KeyEvent.VK_P -> setState(new PickUpResources(game));
+                    case KeyEvent.VK_E -> setState(new ExtendAnthill(game, dispatcher));
+                    case KeyEvent.VK_A -> setState(new Attack(game, dispatcher));
+                    case KeyEvent.VK_P -> setState(new PickUpResources(game, dispatcher));
                 }
             }
 

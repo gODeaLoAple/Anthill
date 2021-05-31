@@ -2,7 +2,7 @@ package shared.messages;
 
 import client.domain.Game;
 
-public class PLayerStats extends NetMessage {
+public class PlayerStats extends NetMessage {
     private int playerId;
     private int antsCount;
 

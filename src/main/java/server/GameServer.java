@@ -33,12 +33,12 @@ public class GameServer {
         var container = new MapContainer(map, resourcesMap);
         var players = new Player[]{
                 new Player(0, new Anthill(new AnthillPlace(new AnthillPart[]{
-                        new AnthillPart(map.hexagons.get(5), 100, 100),
+                        new AnthillPart(map.hexagons.get(5), 100),
                 }), new Resources(1000), new ChaoticMovement(new Point(500, 500)))),
                 new Player(1, new Anthill(new AnthillPlace(new AnthillPart[]{
-                        new AnthillPart(map.hexagons.get(0), 100, 100),
-                        new AnthillPart(map.hexagons.get(1), 100, 100),
-                        new AnthillPart(map.hexagons.get(2), 100, 100),
+                        new AnthillPart(map.hexagons.get(0), 100),
+                        new AnthillPart(map.hexagons.get(1), 100),
+                        new AnthillPart(map.hexagons.get(2), 100),
                 }), new Resources(), new ChaoticMovement(new Point(100, 100))))
         };
 
