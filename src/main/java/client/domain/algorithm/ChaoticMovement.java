@@ -4,10 +4,11 @@ import client.domain.entities.ants.Ant;
 import client.entities.Vector;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Random;
 
-public class ChaoticMovement {
+public class ChaoticMovement implements Serializable {
     private Point location;
     private final int radius = 60;
     public static final Random rnd = new Random();

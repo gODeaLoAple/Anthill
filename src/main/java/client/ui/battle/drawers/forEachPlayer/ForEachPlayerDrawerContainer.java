@@ -15,7 +15,7 @@ public class ForEachPlayerDrawerContainer extends GameDrawer {
     }
 
     @Override
-    public void draw(Graphics2D graphics) {
+    public synchronized void draw(Graphics2D graphics) {
         for (var player : game.getPlayers()){
             for (var drawer : drawers) {
                 drawer.draw(graphics, player);

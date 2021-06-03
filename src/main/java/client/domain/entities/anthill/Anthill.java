@@ -4,12 +4,15 @@ import client.domain.algorithm.ChaoticMovement;
 import client.domain.entities.ants.Ant;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-public class Anthill {
+import static client.ui.battle.actionStates.HireMole.COST;
+
+public class Anthill implements Serializable {
     public static final int RESOURCE_FOR_EXTEND = 60;
     public static final int RESOURCE_FOR_ATTACK = 20;
     public static final int RESOURCE = 300; // NICE DELAEM
@@ -94,14 +97,26 @@ public class Anthill {
             return;
         if (movement.getLocation().distance(otherPlayerAnthill.movement.getLocation()) < movement.getRadius()) {
             for (var otherAnt : otherPlayerAnthill.getAnts()) {
-                var myDamage = ChaoticMovement.rnd.nextDouble() <= 0.005 ? 100 : 0;
-                otherAnt.applyDamage( myDamage);
+                var myDamage = ChaoticMovement.rnd.nextDouble() <= 1 / 500.0 ? 100 : 0;
+                otherAnt.applyDamage(myDamage);
             }
         }
     }
 
+
+
     public void removeDeadAnts() {
         ants.removeIf(x -> x.getHealth() <= 0);
+    }
+
+    public void hireMole(Point dest) {
+        var movement = getMovement();
+        movement.setLocation(dest);
+        for (var ant : getAnts()) {
+            ant.setPosition(dest);
+            movement.updateDestination(ant);
+        }
+        getResources().change(-COST);
     }
 }
 

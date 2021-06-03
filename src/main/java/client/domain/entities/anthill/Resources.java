@@ -1,6 +1,8 @@
 package client.domain.entities.anthill;
 
-public class Resources {
+import java.io.Serializable;
+
+public class Resources implements Serializable {
     private int count;
     public Resources(int count) {
         this.count = count;

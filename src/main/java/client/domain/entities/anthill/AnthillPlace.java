@@ -2,9 +2,10 @@ package client.domain.entities.anthill;
 
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.*;
 
-public class AnthillPlace {
+public class AnthillPlace implements Serializable {
     private final ArrayList<AnthillPart> shapes;
     public AnthillPlace(AnthillPart[] shapes) {
         this.shapes = new ArrayList<>();

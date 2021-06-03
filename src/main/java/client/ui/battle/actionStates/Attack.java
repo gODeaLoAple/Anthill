@@ -1,13 +1,17 @@
 package client.ui.battle.actionStates;
 
 import client.domain.Game;
+import client.domain.entities.Player;
 import client.domain.entities.anthill.Anthill;
 import client.net.NetDispatcher;
+import shared.messages.MovementSetPosition;
 
 import java.awt.*;
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class Attack extends ActionState {
+public class Attack extends ActionState implements Serializable {
 
     public Attack(Game game, NetDispatcher dispatcher) {
         super(game, dispatcher);
@@ -25,12 +29,12 @@ public class Attack extends ActionState {
     private boolean canAttack(Shape shape, Game game) {
         var parts = game.getPartsMap();
         return !game.getMainPlayer().getAnthill().hasShape(shape)
-                && Arrays.stream(game.getPlayers()).anyMatch(x -> x.getAnthill().hasShape(shape) &&
+                && Arrays.stream(game.getPlayers().toArray(new Player[0])).anyMatch(x -> x.getAnthill().hasShape(shape) &&
                 parts.getNeighbours(shape).anyMatch(y -> game.getMainPlayer().getAnthill().hasShape(y)));
     }
 
     @Override
-    public void clicked(Point point) {
+    public void clicked(Point point) throws IOException, ClassNotFoundException {
         final var shape = game.getPartsMap().getShapeAtPoint(point);
         if (shape == null)
             return;

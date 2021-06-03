@@ -22,7 +22,7 @@ import java.util.TimerTask;
 
 public class BattleField extends JPanel {
 
-    private final Game game;
+    private Game game;
     private Point lastMousePosition = new Point();
     private PlayerActionState state;
     private final ImageProvider imageProvider;
@@ -62,7 +62,11 @@ public class BattleField extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                state.clicked(lastMousePosition);
+                try {
+                    state.clicked(lastMousePosition);
+                } catch (IOException | ClassNotFoundException ioException) {
+                    ioException.printStackTrace();
+                }
             }
         });
 
@@ -123,7 +127,7 @@ public class BattleField extends JPanel {
     }
 
     @Override
-    public void paint(Graphics g) {
+    public synchronized void paint(Graphics g) {
         var g2d = (Graphics2D) g;
         var clip = g.getClip().getBounds();
         g2d.clearRect(clip.x, clip.y, clip.width, clip.height);

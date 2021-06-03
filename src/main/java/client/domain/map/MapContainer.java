@@ -1,8 +1,12 @@
 package client.domain.map;
 
-public class MapContainer {
+import client.ui.battle.utils.HexagonalMap;
 
-    private final Map parts;
+import java.io.Serializable;
+
+public class MapContainer implements Serializable {
+
+    private Map parts;
     private final ResourcesMap resources;
 
     public MapContainer(Map parts, ResourcesMap resources) {
@@ -14,8 +18,15 @@ public class MapContainer {
         return parts;
     }
 
+    public HexagonalMap getHexagonalMap(){
+        return (HexagonalMap) parts;
+    }
+
     public ResourcesMap getResources() {
         return resources;
     }
 
+    public void setParts(Map map) {
+        this.parts = map;
+    }
 }

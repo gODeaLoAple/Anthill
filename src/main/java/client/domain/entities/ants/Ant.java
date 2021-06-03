@@ -2,8 +2,9 @@ package client.domain.entities.ants;
 
 
 import java.awt.*;
+import java.io.Serializable;
 
-public abstract class Ant {
+public abstract class Ant implements Serializable {
     private int health;
     private Point position;
     private Point destination;

@@ -1,8 +1,9 @@
 package client.entities;
 
 import java.awt.*;
+import java.io.Serializable;
 
-public class Vector {
+public class Vector implements Serializable {
     private final Point point;
 
     public Vector(Point point) {

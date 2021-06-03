@@ -9,7 +9,6 @@ import client.ui.battle.utils.ImageCircular;
 import client.ui.battle.utils.ImageProvider;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.util.HashMap;
 import java.util.Map;

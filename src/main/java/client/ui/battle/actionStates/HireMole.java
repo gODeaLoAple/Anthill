@@ -4,8 +4,10 @@ import client.domain.Game;
 import client.net.NetDispatcher;
 
 import java.awt.*;
+import java.io.IOException;
+import java.io.Serializable;
 
-public class HireMole extends ActionState {
+public class HireMole extends ActionState implements Serializable {
     public final static int COST = 1000;
 
     public HireMole(Game game, NetDispatcher dispatcher) {
@@ -26,7 +28,7 @@ public class HireMole extends ActionState {
     }
 
     @Override
-    public void clicked(Point point) {
+    public void clicked(Point point) throws IOException, ClassNotFoundException {
         var shape = game
                 .getPartsMap()
                 .getShapeAtPoint(point);
@@ -36,13 +38,7 @@ public class HireMole extends ActionState {
         var mainPlayer = game.getMainPlayer();
         var anthill = mainPlayer.getAnthill();
         if (canHire()) {
-            var movement = anthill.getMovement();
-            movement.setLocation(dest);
-            for (var ant : anthill.getAnts()) {
-                ant.setPosition(dest);
-                movement.updateDestination(ant);
-            }
-            anthill.getResources().change(-COST);
+            anthill.hireMole(dest);
             dispatcher.send(new shared.messages.HireMole(mainPlayer, dest));
         }
     }

@@ -4,7 +4,7 @@ import client.domain.Game;
 import client.net.NetDispatcher;
 
 public abstract class ActionState implements PlayerActionState{
-    protected final Game game;
+    protected Game game;
     protected final NetDispatcher dispatcher;
 
     public ActionState(Game game, NetDispatcher dispatcher) {

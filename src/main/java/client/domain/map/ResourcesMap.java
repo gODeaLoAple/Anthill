@@ -1,11 +1,12 @@
 package client.domain.map;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.stream.Stream;
 
-public class ResourcesMap implements DynamicMap {
+public class ResourcesMap implements DynamicMap, Serializable {
 
     private final Dimension size;
     private final java.util.List<Shape> resourceShapes;

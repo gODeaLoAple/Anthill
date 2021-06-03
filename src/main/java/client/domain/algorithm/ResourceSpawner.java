@@ -1,13 +1,14 @@
 package client.domain.algorithm;
 
 import client.domain.Game;
-import client.ui.battle.utils.Hexagon;
+import client.domain.entities.Player;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Random;
 
-public class ResourceSpawner {
+public class ResourceSpawner implements Serializable {
     public static final int maxResourceCountOnMap = 10;
     private final ShapeFactory factory;
     private final Random rnd;
@@ -40,6 +41,6 @@ public class ResourceSpawner {
 
     private boolean canAddResource(Point rndPoint, Game game) {
         var shape = game.getPartsMap().getShapeAtPoint(rndPoint);
-        return Arrays.stream(game.getPlayers()).noneMatch(x -> x.getAnthill().hasShape(shape));
+        return Arrays.stream(game.getPlayers().toArray(new Player[0])).noneMatch(x -> x.getAnthill().hasShape(shape));
     }
 }

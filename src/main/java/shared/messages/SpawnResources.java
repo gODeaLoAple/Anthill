@@ -1,7 +1,6 @@
 package shared.messages;
 
 import client.domain.Game;
-import client.ui.battle.utils.Hexagon;
 
 import java.awt.*;
 
@@ -14,6 +13,13 @@ public class SpawnResources extends NetMessage {
 
     @Override
     public void handle(Game game) {
-        game.getResourcesMap().add(new Hexagon(point, 20)); // TODO
+        var resourceMap = game.getResourcesMap();
+        var shape = resourceMap.getShapeAtPoint(point);
+        resourceMap.add(shape);
+    }
+
+    @Override
+    public int getPlayerId(){
+        return 0;
     }
 }

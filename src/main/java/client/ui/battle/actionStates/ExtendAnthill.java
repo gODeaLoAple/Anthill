@@ -5,8 +5,10 @@ import client.domain.entities.anthill.Anthill;
 import client.net.NetDispatcher;
 
 import java.awt.*;
+import java.io.IOException;
+import java.io.Serializable;
 
-public class ExtendAnthill extends ActionState {
+public class ExtendAnthill extends ActionState implements Serializable {
     public ExtendAnthill(Game game, NetDispatcher dispatcher) {
         super(game, dispatcher);
     }
@@ -56,7 +58,7 @@ public class ExtendAnthill extends ActionState {
     }
 
     @Override
-    public void clicked(Point point) {
+    public void clicked(Point point) throws IOException, ClassNotFoundException {
         var shape = game.getPartsMap().getShapeAtPoint(point);
         if (shape != null && canAddShape(shape)) {
             var mainPlayer = game.getMainPlayer();

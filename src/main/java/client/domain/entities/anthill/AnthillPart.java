@@ -1,8 +1,9 @@
 package client.domain.entities.anthill;
 
 import java.awt.*;
+import java.io.Serializable;
 
-public class AnthillPart {
+public class AnthillPart implements Serializable {
     public static final int MAX_HEALTH = 100;
     private final Shape shape;
     private int health;

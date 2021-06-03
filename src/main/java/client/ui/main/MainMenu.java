@@ -1,30 +1,15 @@
 package client.ui.main;
 
 import client.domain.Game;
-import client.domain.algorithm.ChaoticMovement;
-import client.domain.algorithm.ResourceSpawner;
-import client.domain.entities.Player;
-import client.domain.entities.anthill.Anthill;
-import client.domain.entities.anthill.AnthillPart;
-import client.domain.entities.anthill.AnthillPlace;
-import client.domain.entities.anthill.Resources;
-import client.domain.entities.ants.SlaveAnt;
-import client.domain.map.MapContainer;
-import client.domain.map.ResourcesMap;
 import client.net.NetDispatcher;
 import client.ui.PanelsSwitcher;
 import client.ui.battle.BattleWindow;
-import client.ui.battle.actionStates.PickUpResources;
-import client.ui.battle.utils.Hexagon;
-import client.ui.battle.utils.HexagonResourcePoint;
-import client.ui.battle.utils.HexagonalMap;
 import client.ui.battle.utils.ImageProvider;
 import shared.messages.CollectResources;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
-import java.util.stream.IntStream;
 
 public class MainMenu extends JPanel {
 
@@ -44,7 +29,7 @@ public class MainMenu extends JPanel {
         startGameButton.addActionListener(e -> {
             try {
                 startGame();
-            } catch (IOException ioException) {
+            } catch (IOException | ClassNotFoundException ioException) {
                 ioException.printStackTrace();
             }
         });
@@ -57,37 +42,12 @@ public class MainMenu extends JPanel {
         add(buttons);
     }
 
-    public void startGame() throws IOException {
+    public void startGame() throws IOException, ClassNotFoundException {
         switcher.switchToPanel(createGame());
     }
 
-    public BattleWindow createGame() {
-        var size = new Dimension(1366, 782);
-        var map = new HexagonalMap(size.width, size.height, 30);
-        var resourcesMap = new ResourcesMap(size, new Shape[]
-                {
-                        new HexagonResourcePoint(new Point(200, 300), 20, 20),
-                        new HexagonResourcePoint(new Point(200, 400), 20, 20),
-                        new HexagonResourcePoint(new Point(200, 500), 20, 20),
-                });
-        var container = new MapContainer(map, resourcesMap);
-        var players = new Player[]{
-                new Player(0, new Anthill(new AnthillPlace(new AnthillPart[]{
-                        new AnthillPart(map.hexagons.get(5), 100),
-                }), new Resources(1000), new ChaoticMovement(new Point(500, 500)))),
-                new Player(1, new Anthill(new AnthillPlace(new AnthillPart[]{
-                        new AnthillPart(map.hexagons.get(0), 100),
-                        new AnthillPart(map.hexagons.get(1), 100),
-                        new AnthillPart(map.hexagons.get(2), 100),
-                }), new Resources(), new ChaoticMovement(new Point(100, 100))))
-        };
-
-        addAnts(players[0], 9, new Point(500, 500));
-        addAnts(players[1], 10, new Point(100, 100));
-
-
-        var spawner = new ResourceSpawner(center -> new Hexagon(center, 20));
-        var game = new Game(container, players, spawner);
+    public BattleWindow createGame() throws IOException, ClassNotFoundException {
+        var game = getGame();
         var imageProvider = new ImageProvider();
 
         try {
@@ -101,21 +61,18 @@ public class MainMenu extends JPanel {
         return new BattleWindow(switcher, game, imageProvider, dispatcher);
     }
 
-    private void setDispatcher(Game game, NetDispatcher dispatcher) {
+    private Game getGame() {
+        return dispatcher.getGame();
+    }
+
+    private void setDispatcher(Game game, NetDispatcher dispatcher) throws IOException {
         dispatcher.setGame(game);
         game.setPickupObserver((player, res) -> {
             var bound = res.getBounds2D();
-            dispatcher.send(new CollectResources(player, new Point((int)bound.getCenterX(), (int)bound.getCenterY())));
+            dispatcher.send(new CollectResources(player, new Point((int) bound.getCenterX(), (int) bound.getCenterY())));
         });
     }
 
-    private void addAnts(Player player, int count, Point start) {
-        var anthill = player.getAnthill();
-        IntStream
-                .range(0, count)
-                .forEach(i -> anthill
-                        .addAnt(new SlaveAnt(start, 100)));
-    }
 
     public void exitGame() {
         System.exit(0);

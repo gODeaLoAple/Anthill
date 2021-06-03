@@ -4,8 +4,9 @@ import client.domain.Game;
 import client.net.NetDispatcher;
 
 import java.awt.*;
+import java.io.Serializable;
 
-public class Idle extends ActionState {
+public class Idle extends ActionState implements Serializable {
     public Idle(Game game, NetDispatcher dispatcher) {
         super(game, dispatcher);
     }

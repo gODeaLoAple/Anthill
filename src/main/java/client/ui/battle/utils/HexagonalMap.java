@@ -3,11 +3,12 @@ package client.ui.battle.utils;
 import client.domain.map.Map;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
-public class HexagonalMap implements Map {
+public class HexagonalMap implements Map, Serializable {
 
     public static final int RADIUS = 30;
     public final  java.util.List<Hexagon> hexagons;
